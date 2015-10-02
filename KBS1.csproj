@@ -3,8 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ADC8E98-AC68-4E50-9D34-AB409088854F}</ProjectGuid>
+    <ProjectGuid>{9935278B-342A-4D0E-8822-68CEE33BEE81}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -82,6 +81,7 @@
   <ItemGroup>
     <Folder Include="controller\" />
     <Folder Include="view\" />
+    <Content Include="Voorbeeldlevel.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

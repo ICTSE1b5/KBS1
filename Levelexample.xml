@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<level>
+  <start>
+    <pos>
+      0 0
+    </pos>
+  </start>
+  <end>
+    <pos>
+      600 600
+    </pos>
+  </end>
+  <obstacle>
+    <xpos>
+      300 400
+    </xpos>
+    <ypos>
+      0 400
+    </ypos>
+  </obstacle>
+</level>
