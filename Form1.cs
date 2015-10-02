@@ -15,6 +15,8 @@ namespace KBS1
         public Form1()
         {
             InitializeComponent();
+
+            Console.WriteLine("Hallo");
         }
     }
 }
