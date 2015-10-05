@@ -8,8 +8,8 @@ namespace KBS1.model
 {
     class Enemy_Static : Enemy
     {
-        public Enemy_Static(int pos_x, int pos_y)
-            : base(pos_x, pos_y, 20, 20, 0, 0, 5, 10)
+        public Enemy_Static(int pos_x, int pos_y, List<GameObject> props)
+            : base(pos_x, pos_y, 20, 20, 0, 0, 5, 10, props)
         {
 
         }

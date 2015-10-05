@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="controller\GameController.cs" />
     <Compile Include="model\Enemy.cs" />
+    <Compile Include="model\Enemy_Following.cs" />
     <Compile Include="model\Enemy_Static.cs" />
     <Compile Include="model\GameObject.cs" />
     <Compile Include="model\Player.cs" />
