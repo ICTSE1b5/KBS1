@@ -41,6 +41,7 @@
             this.button_Main_Menu.TabIndex = 0;
             this.button_Main_Menu.Text = "Main Menu";
             this.button_Main_Menu.UseVisualStyleBackColor = true;
+            this.button_Main_Menu.Click += new System.EventHandler(this.Button_Main_Menu_Click);
             // 
             // button_Save
             // 
@@ -60,7 +61,7 @@
             this.button_Load.TabIndex = 2;
             this.button_Load.Text = "Load";
             this.button_Load.UseVisualStyleBackColor = true;
-            this.button_Load.Click += new System.EventHandler(this.button_Load_Click);
+            this.button_Load.Click += new System.EventHandler(this.Button_Load_Click);
             // 
             // LevelSelectScreen
             // 

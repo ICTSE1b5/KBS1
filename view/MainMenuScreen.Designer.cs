@@ -52,6 +52,7 @@
             this.button_Select_Level.TabIndex = 1;
             this.button_Select_Level.Text = "Select level";
             this.button_Select_Level.UseVisualStyleBackColor = true;
+            this.button_Select_Level.Click += new System.EventHandler(this.Button_Select_Level_Click);
             // 
             // button_Level_Editor
             // 
