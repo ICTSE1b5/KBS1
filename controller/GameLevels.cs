@@ -49,11 +49,19 @@ namespace KBS1
 
         public void LoadLevel(string name)
         {
-            string file = @"\levels\"+name+".xml";
+            string file = @"\levels\" + name + ".xml";
             string directory = path + file;
             MessageBox.Show("Gefeliciteerd, uw eigen level is geladen ! pad: " + directory);
 
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(directory);
+
+            //get elements
+            XmlNodeList allnodes = xmlDoc.DocumentElement.SelectNodes("/level");
+            string allnodestext = allnodes[0].InnerText;
+            
         }
+
 
         private void writePlayer(int speed, int health, int damage, XmlTextWriter writer)
         {
