@@ -83,6 +83,9 @@ namespace KBS1
             } else if (sender == levelSelectScreen.Get_Button_Load())
             {
                 game_levels.LoadLevel("level1");
+            } else if (sender == levelSelectScreen.Get_Button_Save())
+            {
+                game_levels.SaveLevel("level1");
             }
 
         }
