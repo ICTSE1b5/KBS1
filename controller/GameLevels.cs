@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Windows.Forms;
 
 namespace KBS1
 {
@@ -12,6 +13,7 @@ namespace KBS1
         public GameLevels(Form1 form)
         {
             this.form1 = form;
+
         }
 
         public void SaveLevel()
@@ -23,6 +25,8 @@ namespace KBS1
         {
             string file = @"\levels\"+name+".xml";
             string directory = path + file;
+            MessageBox.Show("Gefeliciteerd, uw eigen level is geladen ! pad: " + directory);
+
 
         }
        

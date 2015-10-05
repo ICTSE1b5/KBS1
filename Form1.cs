@@ -28,8 +28,8 @@ namespace KBS1
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
 
-            mainMenuScreen.Visible = false;
-            mainMenuScreen.Enabled = false;
+            //mainMenuScreen.Visible = false;
+            //mainMenuScreen.Enabled = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -80,6 +80,9 @@ namespace KBS1
             {
                 this.levelSelectScreen.Visible = false;
                 this.mainMenuScreen.Visible = true;
+            } else if (sender == levelSelectScreen.Get_Button_Load())
+            {
+                game_levels.LoadLevel("level1");
             }
 
         }

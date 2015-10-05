@@ -23,12 +23,6 @@ namespace KBS1.view
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Button_Load_Click(object sender, EventArgs e)
-        {
-
             // get the path of the current project
             string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
             string file = @"\levels\level1.xml";
@@ -57,10 +51,11 @@ namespace KBS1.view
             writer.Close();
             MessageBox.Show("Gefeliciteerd, uw eigen level is aangemaakt! pad: " + savefile);
 
+        }
 
-
-
-
+        private void Button_Load_Click(object sender, EventArgs e)
+        {
+            LevelSelectScreenClick(sender, e);
         }
 
         private void Button_Main_Menu_Click(object sender, EventArgs e)
@@ -71,6 +66,11 @@ namespace KBS1.view
         public Button Get_Button_Main_Click()
         {
             return button_Main_Menu;
+        }
+
+        public Button Get_Button_Load()
+        {
+            return button_Load;
         }
 
 
