@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace KBS1.model
 {
@@ -43,8 +44,9 @@ namespace KBS1.model
         protected int Damage;
         protected int Health;
         public ObjectType Type { get; set; }
+        protected Form game_Form;
 
-        protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health)
+        protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form form)
         {
             Position_X = pos_x;
             Position_Y = pos_y;
@@ -54,6 +56,7 @@ namespace KBS1.model
             Speed_Y = speed_y;
             Damage = damage;
             Health = health;
+            game_Form = form;
         }
 
         public abstract void Move();

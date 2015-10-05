@@ -18,26 +18,48 @@ namespace KBS1
     {
         private GameLoop game_loop;
         private GameView game_view;
+        private GameLevels game_levels;
+
 
         public Form1()
         {
             InitializeComponent();
             this.mainMenuScreen.Button_Select_Level_Click(new EventHandler(UserControl_ButtonClick));
+<<<<<<< HEAD
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
+=======
+            this.levelSelectScreen.Button_Main_Menu_Click(new EventHandler(UserControl_ButtonClick));
+            mainMenuScreen.Visible = false;
+            mainMenuScreen.Enabled = false;
+>>>>>>> origin/master
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             //switch the direction of the player
+            //switch statement
+            game_loop.player1.changeDirections(e.KeyCode, true);
+            if (e.KeyCode == Keys.Escape)
+            {
+                game_loop.Shutdown();
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //switch statement if key is released
+            game_loop.player1.changeDirections(e.KeyCode, false);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Remove this when the main menu has been added.
             this.Show();
-            game_loop = new GameLoop(this, GameLoop.FrameRate.THIRTY);
+            this.Focus();
+            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
             game_view = new GameView(this, game_loop);
+            game_levels = new GameLevels(this);
             game_loop.Start();
         }
 
@@ -68,6 +90,7 @@ namespace KBS1
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             game_loop.Shutdown();
+            Application.Exit();
         }
     }
 }
