@@ -95,6 +95,7 @@ namespace KBS1.controller
         {
             //Initialize all components (ie. Player, Wall, Enemy,  etc.)
             properties_Gameover = false;
+            properties_Pause = false;
             //Is replaced with information from the XML-file to make the enemies (loop)
             /*Right now this is a hardcoded placement*/
 

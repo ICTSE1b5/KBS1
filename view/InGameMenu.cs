@@ -25,10 +25,31 @@ namespace KBS1.view
             InGameMenuScreenClick(sender, e);
         }
 
+        private void button_Resume_Click(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            InGameMenuScreenClick(sender, e);
+        }
+
+        private void Button_Close_Click(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            InGameMenuScreenClick(sender, e);
+        }
+
         public Button Get_Button_Main_Menu()
         {
             return button_Main_Menu;
         }
-    }
 
+        public Button Get_Button_Resume()
+        {
+            return button_Resume;
+        }
+
+        public Button Get_Button_Close()
+        {
+            return button_Close;
+        }
+    }
 }

@@ -48,7 +48,6 @@ namespace KBS1
                     game_loop.Set_Properties_Pause(true);
                     inGameMenu.Visible = true;
                     inGameMenu.Enabled = true;
-                    //game_loop.Shutdown();
                 }
             }
         }
@@ -113,11 +112,23 @@ namespace KBS1
             else if (sender == inGameMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
-                game_loop.Set_Properties_Pause(false);
                 inGameMenu.Visible = false;
                 inGameMenu.Enabled = false;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+            }
+            else if (sender == inGameMenu.Get_Button_Resume())
+            {
+                game_loop.Set_Properties_Pause(false);
+                inGameMenu.Visible = false;
+                inGameMenu.Enabled = false;
+            }
+            else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
+            {
+                game_loop.Shutdown();
+                Application.Exit();
+                //The application doesn't close properly with only Application.Exit()
+                Environment.Exit(1);
             }
         }
 

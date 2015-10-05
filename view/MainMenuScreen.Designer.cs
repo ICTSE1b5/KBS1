@@ -37,10 +37,9 @@
             // 
             // button_New_Game
             // 
-            this.button_New_Game.Location = new System.Drawing.Point(45, 394);
-            this.button_New_Game.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_New_Game.Location = new System.Drawing.Point(34, 320);
             this.button_New_Game.Name = "button_New_Game";
-            this.button_New_Game.Size = new System.Drawing.Size(153, 48);
+            this.button_New_Game.Size = new System.Drawing.Size(115, 39);
             this.button_New_Game.TabIndex = 0;
             this.button_New_Game.Text = "New game";
             this.button_New_Game.UseVisualStyleBackColor = true;
@@ -48,10 +47,9 @@
             // 
             // button_Select_Level
             // 
-            this.button_Select_Level.Location = new System.Drawing.Point(45, 449);
-            this.button_Select_Level.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Select_Level.Location = new System.Drawing.Point(34, 365);
             this.button_Select_Level.Name = "button_Select_Level";
-            this.button_Select_Level.Size = new System.Drawing.Size(153, 48);
+            this.button_Select_Level.Size = new System.Drawing.Size(115, 39);
             this.button_Select_Level.TabIndex = 1;
             this.button_Select_Level.Text = "Select level";
             this.button_Select_Level.UseVisualStyleBackColor = true;
@@ -59,37 +57,35 @@
             // 
             // button_Level_Editor
             // 
-            this.button_Level_Editor.Location = new System.Drawing.Point(45, 505);
-            this.button_Level_Editor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Level_Editor.Location = new System.Drawing.Point(34, 410);
             this.button_Level_Editor.Name = "button_Level_Editor";
-            this.button_Level_Editor.Size = new System.Drawing.Size(153, 48);
+            this.button_Level_Editor.Size = new System.Drawing.Size(115, 39);
             this.button_Level_Editor.TabIndex = 2;
             this.button_Level_Editor.Text = "Level editor";
             this.button_Level_Editor.UseVisualStyleBackColor = true;
             // 
             // button_Highscores
             // 
-            this.button_Highscores.Location = new System.Drawing.Point(45, 560);
-            this.button_Highscores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Highscores.Location = new System.Drawing.Point(34, 455);
             this.button_Highscores.Name = "button_Highscores";
-            this.button_Highscores.Size = new System.Drawing.Size(153, 48);
+            this.button_Highscores.Size = new System.Drawing.Size(115, 39);
             this.button_Highscores.TabIndex = 3;
             this.button_Highscores.Text = "Highscores";
             this.button_Highscores.UseVisualStyleBackColor = true;
             // 
             // button_Close
             // 
-            this.button_Close.Location = new System.Drawing.Point(45, 615);
-            this.button_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Close.Location = new System.Drawing.Point(34, 500);
             this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(153, 48);
+            this.button_Close.Size = new System.Drawing.Size(115, 39);
             this.button_Close.TabIndex = 4;
             this.button_Close.Text = "Close";
             this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
             // MainMenuScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.background;
             this.Controls.Add(this.button_Close);
@@ -97,9 +93,8 @@
             this.Controls.Add(this.button_Level_Editor);
             this.Controls.Add(this.button_Select_Level);
             this.Controls.Add(this.button_New_Game);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainMenuScreen";
-            this.Size = new System.Drawing.Size(1067, 689);
+            this.Size = new System.Drawing.Size(800, 560);
             this.ResumeLayout(false);
 
         }

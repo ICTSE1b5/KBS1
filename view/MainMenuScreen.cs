@@ -31,6 +31,12 @@ namespace KBS1.view
             MainMenuScreenClick(sender, e);
         }
 
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            MainMenuScreenClick(sender, e);
+        }
+
         public Button Get_Button_Select_Level()
         {
             return button_Select_Level;
@@ -40,5 +46,11 @@ namespace KBS1.view
         {
             return button_New_Game;
         }
+
+        public Button Get_Button_Close()
+        {
+            return button_Close;
+        }
+
     }
 }
