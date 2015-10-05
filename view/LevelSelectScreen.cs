@@ -19,7 +19,7 @@ namespace KBS1.view
         public LevelSelectScreen()
         {
             InitializeComponent();
-    }
+        }
 
         private void button_Save_Click(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace KBS1.view
             writer.WriteEndDocument();
 
             writer.Close();
-            MessageBox.Show("Gefeliciteerd, uw eigen level is aangemaakt! pad: "+savefile);
+            MessageBox.Show("Gefeliciteerd, uw eigen level is aangemaakt! pad: " + savefile);
 
 
 
