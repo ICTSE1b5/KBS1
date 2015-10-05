@@ -43,6 +43,7 @@
             this.button_New_Game.TabIndex = 0;
             this.button_New_Game.Text = "New game";
             this.button_New_Game.UseVisualStyleBackColor = true;
+            this.button_New_Game.Click += new System.EventHandler(this.button_New_Game_Click);
             // 
             // button_Select_Level
             // 

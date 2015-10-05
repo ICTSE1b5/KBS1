@@ -19,19 +19,26 @@ namespace KBS1.view
             InitializeComponent();
         }
 
-        public void Button_Select_Level_Click(EventHandler handler)
-        {
-            this.button_Select_Level.Click += handler;
+        private void Button_Select_Level_Click(object sender, EventArgs e)
+        {   
+            //Fires event to the EventHandler and then sends it to Form1
+            MainMenuScreenClick(sender, e);
         }
 
-        private void Button_Select_Level_Click(object sender, EventArgs e)
-        {
+        private void button_New_Game_Click(object sender, EventArgs e)
+        {   
+            //Fires event to the EventHandler and then sends it to Form1
             MainMenuScreenClick(sender, e);
         }
 
         public Button Get_Button_Select_Level()
         {
             return button_Select_Level;
+        }
+
+        public Button Get_Button_New_Game()
+        {
+            return button_New_Game;
         }
     }
 }

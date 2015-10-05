@@ -28,11 +28,13 @@ namespace KBS1.view
 
         private void Button_Load_Click(object sender, EventArgs e)
         {
+            //Fires event to the EventHandler and then sends it to Form1
             LevelSelectScreenClick(sender, e);
         }
 
         private void Button_Main_Menu_Click(object sender, EventArgs e)
         {
+            //Fires event to the EventHandler and then sends it to Form1
             LevelSelectScreenClick(sender, e);
         }
 
