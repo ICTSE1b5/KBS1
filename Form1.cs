@@ -24,10 +24,10 @@ namespace KBS1
         public Form1()
         {
             InitializeComponent();
-
             //Event handler for buttons that have been pressed
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
+            inGameMenu.InGameMenuScreenClick += new EventHandler(UserControl_ButtonClick);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -37,7 +37,19 @@ namespace KBS1
             game_loop.player1.changeDirections(e.KeyCode, true);
             if (e.KeyCode == Keys.Escape)
             {
-                game_loop.Shutdown();
+                if (game_loop.Get_Properties_Pause())
+                {
+                    game_loop.Set_Properties_Pause(false);
+                    inGameMenu.Visible = false;
+                    inGameMenu.Enabled = false;
+                }
+                else
+                {
+                    game_loop.Set_Properties_Pause(true);
+                    inGameMenu.Visible = true;
+                    inGameMenu.Enabled = true;
+                    //game_loop.Shutdown();
+                }
             }
         }
 
@@ -81,7 +93,7 @@ namespace KBS1
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
                 game_loop.Start();
-                
+
             }
             else if (sender == levelSelectScreen.Get_Button_Main_Click())
             {
@@ -93,9 +105,19 @@ namespace KBS1
             else if (sender == levelSelectScreen.Get_Button_Load())
             {
                 game_levels.LoadLevel("level1");
-            } else if (sender == levelSelectScreen.Get_Button_Save())
+            }
+            else if (sender == levelSelectScreen.Get_Button_Save())
             {
                 game_levels.SaveLevel("level1");
+            }
+            else if (sender == inGameMenu.Get_Button_Main_Menu())
+            {
+                game_loop.Shutdown();
+                game_loop.Set_Properties_Pause(false);
+                inGameMenu.Visible = false;
+                inGameMenu.Enabled = false;
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
             }
         }
 

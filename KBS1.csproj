@@ -63,6 +63,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\GameView.cs" />
+    <Compile Include="view\InGameMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\InGameMenu.Designer.cs">
+      <DependentUpon>InGameMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\LevelSelectScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="view\InGameMenu.resx">
+      <DependentUpon>InGameMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\LevelSelectScreen.resx">
       <DependentUpon>LevelSelectScreen.cs</DependentUpon>
     </EmbeddedResource>
