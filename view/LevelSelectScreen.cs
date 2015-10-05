@@ -14,17 +14,19 @@ namespace KBS1.view
 {
     public partial class LevelSelectScreen : UserControl
     {
+        public event EventHandler LevelSelectScreenClick;
+
         public LevelSelectScreen()
         {
             InitializeComponent();
     }
 
-        public void Button_Main_Menu_Click(EventHandler handler)
+        private void button_Save_Click(object sender, EventArgs e)
         {
-            this.button_Main_Menu.Click += handler;
+
         }
 
-        private void button_Save_Click(object sender, EventArgs e)
+        private void Button_Load_Click(object sender, EventArgs e)
         {
 
             // get the path of the current project
@@ -61,9 +63,14 @@ namespace KBS1.view
 
         }
 
-        private void button_Load_Click(object sender, EventArgs e)
+        private void Button_Main_Menu_Click(object sender, EventArgs e)
         {
+            LevelSelectScreenClick(sender, e);
+        }
 
+        public Button Get_Button_Main_Click()
+        {
+            return button_Main_Menu;
         }
 
 

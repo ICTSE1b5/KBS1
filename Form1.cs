@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +25,11 @@ namespace KBS1
         {
             InitializeComponent();
             this.mainMenuScreen.Button_Select_Level_Click(new EventHandler(UserControl_ButtonClick));
-            this.levelSelectScreen.Button_Main_Menu_Click(new EventHandler(UserControl_ButtonClick));
+
+            mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
+            levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
+
+            this.levelSelectScreen.Button_Main_Menu_Click(new       EventHandler(UserControl_ButtonClick));
             //mainMenuScreen.Visible = false;
             //mainMenuScreen.Enabled = false;
         }
@@ -69,15 +73,17 @@ namespace KBS1
         protected void UserControl_ButtonClick(object sender, EventArgs e)
         {
             //handle the event
-            this.mainMenuScreen.Visible = false;
-            this.levelSelectScreen.Visible = true;
-        }
+            if (sender == mainMenuScreen.Get_Button_Select_Level())
+            {
+                this.mainMenuScreen.Visible = false;
+                this.levelSelectScreen.Visible = true;
+            }
+            else if (sender == levelSelectScreen.Get_Button_Main_Click())
+            {
+                this.levelSelectScreen.Visible = false;
+                this.mainMenuScreen.Visible = true;
+            }
 
-        protected void UserControl_ButtonClick1(object sender, EventArgs e)
-        {
-            //handle the event
-            this.mainMenuScreen.Visible = false;
-            this.levelSelectScreen.Visible = true;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
