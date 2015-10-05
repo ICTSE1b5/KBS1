@@ -25,14 +25,13 @@ namespace KBS1
         {
             InitializeComponent();
             this.mainMenuScreen.Button_Select_Level_Click(new EventHandler(UserControl_ButtonClick));
-<<<<<<< HEAD
+
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
-=======
-            this.levelSelectScreen.Button_Main_Menu_Click(new EventHandler(UserControl_ButtonClick));
+
             mainMenuScreen.Visible = false;
             mainMenuScreen.Enabled = false;
->>>>>>> origin/master
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
