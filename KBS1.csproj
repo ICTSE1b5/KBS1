@@ -87,13 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Voorbeeldlevel.xml" />
-<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controller\" />
     <Folder Include="view\" />
-=======
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
