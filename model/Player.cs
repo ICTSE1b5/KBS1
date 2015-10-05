@@ -7,14 +7,14 @@ namespace KBS1.model
     public class Player : GameObject
     {
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
-        static int player_speed = 2;
-        static int player_size = 20;
+        static int player_speed = 5;
+        static int player_size = 50;
         
 
         private bool direction_UP, direction_DOWN, direction_LEFT, direction_RIGHT;
 
 
-        public Player(int pos_x, int pos_y) : base(pos_x, pos_y, player_size, player_size, player_speed, player_speed, 2, 5)
+        public Player(int pos_x, int pos_y, Form form) : base(pos_x, pos_y, player_size, player_size, player_speed, player_speed, 2, 5, form)
         {
             Type = ObjectType.PLAYER;
         }
@@ -23,24 +23,24 @@ namespace KBS1.model
         public override void Move()
         {
             //Checks up
-            if(direction_UP)
+            if(direction_UP && Position_Y >= (0 + Speed_Y))
             {
                 Position_Y -= Speed_Y;
             }
             //Checks Down
-            else if(direction_DOWN)
+            else if(direction_DOWN && Position_Y < (game_Form.Height - (Speed_Y + Height + 35)))
             {
                 Position_Y += Speed_Y;
             }
             //If none, don't move
 
             //Checks left
-            if (direction_LEFT)
+            if (direction_LEFT && Position_X >= (0 + Speed_Y))
             {
                 Position_X -= Speed_X;
             }
             //Checks right
-            else if (direction_RIGHT)
+            else if (direction_RIGHT && Position_X < (game_Form.Width - (Speed_X + Width + 14)))
             {
                 Position_X += Speed_X;
             }

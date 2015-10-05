@@ -14,7 +14,7 @@ namespace KBS1.controller
         public Form game_Form;
         public GameController game_Controller;
         private List<GameObject> game_objects = new List<GameObject>();
-        public Player player1 = new Player(0,0);
+        public Player player1;
         
         public enum FrameRate : int
         {
@@ -39,6 +39,7 @@ namespace KBS1.controller
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
+            player1 = new Player(0, 0, game_Form);
 
             SetUpdateRate(updateRate);
         }
@@ -100,11 +101,11 @@ namespace KBS1.controller
             //Adds the player to the List
             game_objects.Add(player1);
 
-            Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects);
+            Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects, game_Form);
             game_objects.Add(enemy1);
-            Enemy_Static enemy2 = new Enemy_Static(200, 100, game_objects);
+            Enemy_Static enemy2 = new Enemy_Static(200, 100, game_objects, game_Form);
             game_objects.Add(enemy2);
-            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects);
+            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
             game_objects.Add(enemy3);
         }
 

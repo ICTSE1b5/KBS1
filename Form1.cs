@@ -47,6 +47,7 @@ namespace KBS1
         {
             //Remove this when the main menu has been added.
             this.Show();
+            this.Focus();
             game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
             game_view = new GameView(this, game_loop);
             game_loop.Start();
@@ -79,6 +80,9 @@ namespace KBS1
             game_loop.Shutdown();
         }
 
-        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

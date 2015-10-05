@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KBS1.model
 {
     class Enemy_Following : Enemy
     {
-        public Enemy_Following(int pos_x, int pos_y, List<GameObject> props)
-            : base(pos_x, pos_y, 20, 20, 1, 1, 5, 10, props)
+        public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form form)
+            : base(pos_x, pos_y, 20, 20, 1, 1, 5, 10, props, form)
         {
 
         }
