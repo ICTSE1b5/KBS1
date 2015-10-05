@@ -24,6 +24,8 @@ namespace KBS1
             InitializeComponent();
             this.mainMenuScreen.Button_Select_Level_Click(new EventHandler(UserControl_ButtonClick));
             this.levelSelectScreen.Button_Main_Menu_Click(new EventHandler(UserControl_ButtonClick));
+            mainMenuScreen.Visible = false;
+            mainMenuScreen.Enabled = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
