@@ -14,6 +14,7 @@ namespace KBS1.controller
         public Form game_Form;
         public GameController game_Controller;
         private List<GameObject> game_objects = new List<GameObject>();
+        public Player player1;
         
         public enum FrameRate : int
         {
@@ -38,6 +39,7 @@ namespace KBS1.controller
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
+            player1 = new Player(0, 0, game_Form);
 
             SetUpdateRate(updateRate);
         }
@@ -51,7 +53,6 @@ namespace KBS1.controller
             {
                 //Gets the current 'time'
                 properties_CurrentTime = Environment.TickCount;
-
                 
                 //Every frame it updates, use the function SetUpdateRate to set the updateRate to 60FPS or 30FPS
                 if(properties_CurrentTime > properties_StartTime + properties_UpdateRate)
@@ -85,6 +86,7 @@ namespace KBS1.controller
             }
 
 
+            Game_End();
         }
 
 
@@ -95,17 +97,25 @@ namespace KBS1.controller
 
             //Is replaced with information from the XML-file to make the enemies (loop)
             /*Right now this is a hardcoded placement*/
-            Player player1 = new Player(0, 0);
+
+            //Adds the player to the List
             game_objects.Add(player1);
-            Enemy_Static enemy1 = new Enemy_Static(100, 100);
+
+            Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects, game_Form);
             game_objects.Add(enemy1);
-            Enemy_Static enemy2 = new Enemy_Static(200, 100);
+            Enemy_Static enemy2 = new Enemy_Static(200, 100, game_objects, game_Form);
             game_objects.Add(enemy2);
+            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
+            game_objects.Add(enemy3);
         }
 
         private void Game_End()
         {
             //Remove all existing components (ie. Objects, GameController, etc.)
+
+            MessageBox.Show("Game ended");
+            game_objects = new List<GameObject>();
+            Application.Exit();
         }
 
         public void Shutdown()
