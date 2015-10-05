@@ -18,6 +18,8 @@ namespace KBS1
     {
         private GameLoop game_loop;
         private GameView game_view;
+        private GameLevels game_levels;
+
 
         public Form1()
         {
@@ -52,6 +54,7 @@ namespace KBS1
             this.Focus();
             game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
             game_view = new GameView(this, game_loop);
+            game_levels = new GameLevels(this);
             game_loop.Start();
         }
 
