@@ -28,6 +28,11 @@ namespace KBS1
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
             inGameMenu.InGameMenuScreenClick += new EventHandler(UserControl_ButtonClick);
+
+            this.SetStyle(
+          ControlStyles.UserPaint |
+          ControlStyles.AllPaintingInWmPaint |
+          ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -73,7 +78,7 @@ namespace KBS1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            game_loop = new GameLoop(this, GameLoop.FrameRate.THIRTY);
+            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
             game_view = new GameView(this, game_loop);
             game_levels = new GameLevels(this);
         }
