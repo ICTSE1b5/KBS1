@@ -43,7 +43,6 @@ namespace KBS1.view
                     switch (game_prop.Direction)
                     {
                         case GameObject.ObjectDirection.UP:
-                            
                             graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.DOWN:
@@ -62,7 +61,24 @@ namespace KBS1.view
                 }
                 else if (game_prop.Type.Equals(GameObject.ObjectType.ENEMY))
                 {
-                    graphics_GraphicsDevice.FillRectangle(Brushes.Red, game_prop.getRectangle());
+                    switch (game_prop.Direction)
+                    {
+                        case GameObject.ObjectDirection.UP:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.DOWN:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_down, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.LEFT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_left, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.RIGHT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_right, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.NONE:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            break;
+                    }
                 }
                 else
                 {

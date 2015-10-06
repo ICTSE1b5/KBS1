@@ -139,4 +139,25 @@
   <data name="Gamebackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Gamebackground.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="wolf_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-down.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_down_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-down-left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_down_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-down-right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-up.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_up_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-up-left.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
