@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainMenuScreen = new KBS1.view.MainMenuScreen();
             this.levelSelectScreen = new KBS1.view.LevelSelectScreen();
             this.inGameMenu = new KBS1.view.InGameMenu();
@@ -35,6 +36,7 @@
             // 
             // mainMenuScreen
             // 
+            this.mainMenuScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuScreen.BackgroundImage")));
             this.mainMenuScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuScreen.Location = new System.Drawing.Point(0, 0);
             this.mainMenuScreen.Name = "mainMenuScreen";
@@ -52,6 +54,8 @@
             // 
             // inGameMenu
             // 
+            this.inGameMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.inGameMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inGameMenu.Location = new System.Drawing.Point(289, 144);
             this.inGameMenu.Name = "inGameMenu";
             this.inGameMenu.Size = new System.Drawing.Size(199, 250);

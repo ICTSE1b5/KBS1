@@ -33,6 +33,7 @@
             this.button_Level_Editor = new System.Windows.Forms.Button();
             this.button_Highscores = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button_New_Game
@@ -83,11 +84,25 @@
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.checkBox1.Location = new System.Drawing.Point(34, 18);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(57, 17);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Music ";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // MainMenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.background;
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.button_Highscores);
             this.Controls.Add(this.button_Level_Editor);
@@ -96,6 +111,7 @@
             this.Name = "MainMenuScreen";
             this.Size = new System.Drawing.Size(800, 560);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +122,6 @@
         private System.Windows.Forms.Button button_Level_Editor;
         private System.Windows.Forms.Button button_Highscores;
         private System.Windows.Forms.Button button_Close;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace KBS1.view
 {
     public partial class MainMenuScreen : UserControl
     {
         public event EventHandler MainMenuScreenClick;
+        private SoundPlayer soundPlayer;
 
         public MainMenuScreen()
         {
             InitializeComponent();
+            soundPlayer = new SoundPlayer("Creepy_Ambient_Horror_Suspense_Music_(Instrumental_Scary_Music).wav");
+
         }
 
         private void Button_Select_Level_Click(object sender, EventArgs e)
@@ -52,5 +56,21 @@ namespace KBS1.view
             return button_Close;
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            playMusic();
+        }
+
+        private void playMusic()
+        {
+            if (checkBox1.Checked)
+            {
+                soundPlayer.Play();
+            }
+            else
+            {
+                soundPlayer.Stop();
+            }
+        }
     }
 }
