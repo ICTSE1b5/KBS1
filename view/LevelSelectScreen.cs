@@ -32,6 +32,11 @@ namespace KBS1.view
             LevelSelectScreenClick(sender, e);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LevelSelectScreenClick(sender, e);
+        }
+
         private void Button_Main_Menu_Click(object sender, EventArgs e)
         {
             //Fires event to the EventHandler and then sends it to Form1
@@ -51,6 +56,11 @@ namespace KBS1.view
         {
             return button_Save;
         }
+        public Button Get_Button_Show()
+        {
+            return button1;
+        }
+
 
     }
 }

@@ -121,6 +121,11 @@ namespace KBS1
             {
                 game_levels.SaveLevel("level1");
             }
+            else if (sender == levelSelectScreen.Get_Button_Show())
+            {
+                game_levels.ShowLevels();
+
+            }
             else if (sender == inGameMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();

@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -13,6 +16,24 @@ namespace KBS1
         public GameLevels(Form1 form)
         {
             this.form1 = form;
+        }
+
+        public List<string> ShowLevels(){
+            List<string> lijst = new List<string>();
+
+            //get files from directory with filetype XML
+            string[] files = Directory.GetFiles(path+@"\levels\", "*.xml");
+            // returns:
+            // "\project\levels\level1.xml"
+            // "\project\levels\level2.xml"
+
+            foreach(string file in files)
+            {
+                // do something for each file
+                lijst.Add(file);
+                MessageBox.Show(file);
+            }
+            return lijst;
         }
 
         public void SaveLevel(string name)
