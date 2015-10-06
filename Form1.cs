@@ -128,13 +128,15 @@ namespace KBS1
                 game_loop.Shutdown();
                 Application.Exit();
                 //The application doesn't close properly with only Application.Exit()
-                Environment.Exit(1);
+                //Environment.Exit(1);
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             game_loop.Shutdown();
+            game_loop = null;
+            game_view = null;
             Application.Exit();
         }
     }

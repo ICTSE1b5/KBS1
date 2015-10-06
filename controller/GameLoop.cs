@@ -40,7 +40,7 @@ namespace KBS1.controller
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
-            player1 = new Player(0, 0, game_Form);
+            
 
             SetUpdateRate(updateRate);
         }
@@ -99,7 +99,10 @@ namespace KBS1.controller
             //Is replaced with information from the XML-file to make the enemies (loop)
             /*Right now this is a hardcoded placement*/
 
+            game_objects = new List<GameObject>();
+
             //Adds the player to the List
+            player1 = new Player(0, 0, game_Form);
             game_objects.Add(player1);
 
             Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects, game_Form);
