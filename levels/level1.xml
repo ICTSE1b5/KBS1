@@ -1,17 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <level>
-  <finish>
-    <Xposition>500</Xposition>
-    <Yposition>500</Yposition>
-  </finish>
-  <player>
-    <Xposition>0</Xposition>
-    <Yposition>0</Yposition>
-    <speed>100</speed>
-    <health>1000</health>
-    <damage>200</damage>
-  </player>
-  <elements>
+  <finish xposition="500" yposition="500"/>
+  <player xposition="0" yposition="0" speed="100" hp="100" damage="200"/>
     <enemy>
       <enemy_id>1</enemy_id>
       <Xposition>300</Xposition>
@@ -46,5 +36,4 @@
       <Xposition>200</Xposition>
       <Yposition>200</Yposition>
     </wall>
-  </elements>
 </level>
