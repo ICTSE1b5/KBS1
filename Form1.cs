@@ -73,7 +73,7 @@ namespace KBS1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
+            game_loop = new GameLoop(this, GameLoop.FrameRate.THIRTY);
             game_view = new GameView(this, game_loop);
             game_levels = new GameLevels(this);
         }
