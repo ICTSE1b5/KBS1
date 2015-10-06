@@ -157,3 +157,42 @@ namespace KBS1
         }
     }
 }
+
+
+// Voor de XML reader
+/*
+using System;
+using System.Collections.Generic;
+using System.Xml;
+
+namespace XMLReader {
+    public class Reader {
+
+        private XmlTextReader reader;
+        private List<List<string>> data;
+
+        public Reader( string name ) {
+            this.reader = new XmlTextReader(name);
+            this.data = new List<List<string>>();
+        }
+
+        public void Read() {
+            if( this.reader != null )
+                while( this.reader.Read() )
+                    switch( reader.NodeType ) {
+                        case XmlNodeType.Element:
+                            if( reader.Name != "level" ) {
+                                string hp = reader.GetAttribute("hp");
+                                string speed = reader.GetAttribute("speed");
+                                List<string> temp = new List<string> { reader.Name, hp, speed };
+                                this.data.Add(temp);
+                                Console.WriteLine("Name = {0}, hp = {1}, speed = {2}", reader.Name, hp, speed);
+                            }
+                            break;
+                    }
+
+
+        }
+    }
+}
+*/
