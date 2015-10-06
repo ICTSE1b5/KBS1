@@ -110,6 +110,8 @@ namespace KBS1.controller
             game_objects.Add(enemy3);
             Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
             game_objects.Add(enemy4);
+            Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
+            game_objects.Add(enemy5);
         }
 
         private void Game_End()
