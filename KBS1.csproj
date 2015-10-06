@@ -60,6 +60,7 @@
     <Compile Include="model\Enemy_Static.cs" />
     <Compile Include="model\GameObject.cs" />
     <Compile Include="model\Player.cs" />
+    <Compile Include="model\wall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\GameView.cs" />
