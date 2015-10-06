@@ -34,35 +34,45 @@ namespace KBS1
         {
             //switch the direction of the player
             //switch statement
-            game_loop.player1.changeDirections(e.KeyCode, true);
-            if (e.KeyCode == Keys.Escape)
+            try
             {
-                if (game_loop.Get_Properties_Pause())
+                game_loop.player1.changeDirections(e.KeyCode, true);
+                if (e.KeyCode == Keys.Escape)
                 {
-                    game_loop.Set_Properties_Pause(false);
-                    inGameMenu.Visible = false;
-                    inGameMenu.Enabled = false;
-                }
-                else
-                {
-                    game_loop.Set_Properties_Pause(true);
-                    inGameMenu.Visible = true;
-                    inGameMenu.Enabled = true;
+                    if (game_loop.Get_Properties_Pause())
+                    {
+                        game_loop.Set_Properties_Pause(false);
+                        inGameMenu.Visible = false;
+                        inGameMenu.Enabled = false;
+                    }
+                    else
+                    {
+                        game_loop.Set_Properties_Pause(true);
+                        inGameMenu.Visible = true;
+                        inGameMenu.Enabled = true;
+                    }
                 }
             }
+            catch (NullReferenceException d)
+            {
+            }
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             //switch statement if key is released
-            game_loop.player1.changeDirections(e.KeyCode, false);
+            try
+            {
+                game_loop.player1.changeDirections(e.KeyCode, false);
+            }
+            catch (NullReferenceException d)
+            {
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Remove this when the main menu has been added.
-            this.Show();
-            this.Focus();
             game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
             game_view = new GameView(this, game_loop);
             game_levels = new GameLevels(this);
@@ -72,7 +82,6 @@ namespace KBS1
         {
             base.OnPaint(e);
             Graphics graphics_GraphicDevice = e.Graphics;
-
             game_view.DrawGame(e.Graphics);
         }
 
@@ -84,13 +93,16 @@ namespace KBS1
                 this.mainMenuScreen.Visible = false;
                 this.mainMenuScreen.Enabled = false;
                 this.levelSelectScreen.Visible = true;
-                this.levelSelectScreen.Visible = true;
+                this.levelSelectScreen.Enabled = true;
 
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
             {
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
+                game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
+                game_view = new GameView(this, game_loop);
+                game_levels = new GameLevels(this);
                 game_loop.Start();
 
             }
@@ -116,6 +128,7 @@ namespace KBS1
                 inGameMenu.Enabled = false;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+                game_loop = null;
             }
             else if (sender == inGameMenu.Get_Button_Resume())
             {
@@ -125,19 +138,35 @@ namespace KBS1
             }
             else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
             {
-                game_loop.Shutdown();
-                Application.Exit();
-                //The application doesn't close properly with only Application.Exit()
-                //Environment.Exit(1);
+                try
+                {
+                    game_loop.Shutdown();
+                }
+                catch (NullReferenceException d)
+                {
+
+                }
+                finally
+                {
+                    Application.Exit();
+                }
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            game_loop.Shutdown();
-            game_loop = null;
-            game_view = null;
-            Application.Exit();
+            try
+            {
+                game_loop.Shutdown();
+            }
+            catch (NullReferenceException d)
+            {
+
+            }
+            finally
+            {
+                Application.Exit();
+            }
         }
     }
 }

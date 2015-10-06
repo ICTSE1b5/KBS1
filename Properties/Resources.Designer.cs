@@ -69,5 +69,14 @@ namespace KBS1.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream MainMenuMusic {
+            get {
+                return ResourceManager.GetStream("MainMenuMusic", resourceCulture);
+            }
+        }
     }
 }

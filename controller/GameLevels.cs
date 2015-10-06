@@ -10,11 +10,9 @@ namespace KBS1
         
         string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
-
         public GameLevels(Form1 form)
         {
             this.form1 = form;
-
         }
 
         public void SaveLevel(string name)
@@ -31,8 +29,8 @@ namespace KBS1
             writeFinish(500, 500, writer);
             writePlayer(100, 1000, 200,0,0, writer);
             writer.WriteStartElement("elements");
-            writeEnemy("1", 300, 150, 500, 100, writer);
-            writeEnemy("2", 200, 200, 500, 100, writer);
+            writeEnemy("1","Following", 300, 150, 500, 100, writer);
+            writeEnemy("2","Static", 200, 200, 500, 100, writer);
             writeWall("1", 50, 50, writer);
             writeWall("2", 100, 100, writer);
             writeWall("3", 150, 150, writer);
@@ -60,7 +58,6 @@ namespace KBS1
             string allnodestext = allnodes[0].InnerText;
             
         }
-
 
         private void writePlayer(int speed, int health, int damage,int posX,int posY, XmlTextWriter writer)
         {
@@ -95,8 +92,6 @@ namespace KBS1
             writer.WriteEndElement();
         }
 
-
-
         private void writeWall(string pID, int posX, int posY, XmlTextWriter writer)
         {
             writer.WriteStartElement("wall");
@@ -112,11 +107,14 @@ namespace KBS1
             writer.WriteEndElement();
         }
 
-        private void writeEnemy(string pID, int posX, int posY, int health, int damage, XmlTextWriter writer)
+        private void writeEnemy(string pID, string type, int posX, int posY, int health, int damage, XmlTextWriter writer)
         {
             writer.WriteStartElement("enemy");
             writer.WriteStartElement("enemy_id");
             writer.WriteString(pID);
+            writer.WriteEndElement();
+            writer.WriteStartElement("type");
+            writer.WriteValue(posX);
             writer.WriteEndElement();
             writer.WriteStartElement("Xposition");
             writer.WriteValue(posX);
