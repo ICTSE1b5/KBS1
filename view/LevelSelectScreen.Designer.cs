@@ -81,6 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_Load);
             this.Controls.Add(this.button_Save);
