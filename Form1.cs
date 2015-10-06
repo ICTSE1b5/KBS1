@@ -93,7 +93,7 @@ namespace KBS1
                 this.mainMenuScreen.Visible = false;
                 this.mainMenuScreen.Enabled = false;
                 this.levelSelectScreen.Visible = true;
-                this.levelSelectScreen.Visible = true;
+                this.levelSelectScreen.Enabled = true;
 
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
@@ -138,8 +138,18 @@ namespace KBS1
             }
             else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
             {
-                game_loop.Shutdown();
-                Application.Exit();
+                try
+                {
+                    game_loop.Shutdown();
+                }
+                catch (NullReferenceException d)
+                {
+
+                }
+                finally
+                {
+                    Application.Exit();
+                }
             }
         }
 
@@ -157,7 +167,6 @@ namespace KBS1
             {
                 Application.Exit();
             }
-
         }
     }
 }
