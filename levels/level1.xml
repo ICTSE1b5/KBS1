@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <level>
-  <start>
-    <Xposition>0</Xposition>
-    <Yposition>0</Yposition>
-  </start>
   <finish>
     <Xposition>500</Xposition>
     <Yposition>500</Yposition>
   </finish>
   <player>
+    <Xposition>0</Xposition>
+    <Yposition>0</Yposition>
     <speed>100</speed>
     <health>1000</health>
     <damage>200</damage>

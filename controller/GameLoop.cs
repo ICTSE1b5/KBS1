@@ -15,7 +15,7 @@ namespace KBS1.controller
         public GameController game_Controller;
         private List<GameObject> game_objects = new List<GameObject>();
         public Player player1;
-        
+
         public enum FrameRate : int
         {
             SIXTY = 16,
@@ -24,6 +24,7 @@ namespace KBS1.controller
 
         //Game Loop Update Properties
         private bool properties_Gameover = false;
+        private bool properties_Pause = false;
         private int properties_CurrentTime = 0;
         private int properties_StartTime = 0;
 
@@ -39,7 +40,7 @@ namespace KBS1.controller
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
-            player1 = new Player(0, 0, game_Form);
+            
 
             SetUpdateRate(updateRate);
         }
@@ -53,9 +54,9 @@ namespace KBS1.controller
             {
                 //Gets the current 'time'
                 properties_CurrentTime = Environment.TickCount;
-                
+
                 //Every frame it updates, use the function SetUpdateRate to set the updateRate to 60FPS or 30FPS
-                if(properties_CurrentTime > properties_StartTime + properties_UpdateRate)
+                if (properties_CurrentTime > properties_StartTime + properties_UpdateRate)
                 {
                     //Reset the 'timer'
                     properties_StartTime = properties_CurrentTime;
@@ -63,6 +64,10 @@ namespace KBS1.controller
                     //Makes the application availible to listen to events, like the KeyDown event or Button_Click
                     Application.DoEvents();
 
+                    while (properties_Pause)
+                    {
+                        Application.DoEvents();
+                    }
                     //Gives the command for the game to do its calculations
                     game_Controller.Update();
 
@@ -73,32 +78,31 @@ namespace KBS1.controller
 
                 }
 
-
                 //Frame Rate Update
                 properties_FrameCount++;
-                if(properties_CurrentTime > properties_FrameTimer + properties_FrameUpdates)
+                if (properties_CurrentTime > properties_FrameTimer + properties_FrameUpdates)
                 {
                     properties_FrameTimer = properties_CurrentTime;
                     properties_FrameRate = properties_FrameCount;
                     properties_FrameCount = 0;
                 }
-
             }
-
 
             Game_End();
         }
 
-
-
         public void Game_Init()
         {
             //Initialize all components (ie. Player, Wall, Enemy,  etc.)
-
+            properties_Gameover = false;
+            properties_Pause = false;
             //Is replaced with information from the XML-file to make the enemies (loop)
             /*Right now this is a hardcoded placement*/
 
+            game_objects = new List<GameObject>();
+
             //Adds the player to the List
+            player1 = new Player(0, 0, game_Form);
             game_objects.Add(player1);
 
             Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects, game_Form);
@@ -112,10 +116,10 @@ namespace KBS1.controller
         private void Game_End()
         {
             //Remove all existing components (ie. Objects, GameController, etc.)
-
-            MessageBox.Show("Game ended");
             game_objects = new List<GameObject>();
-            Application.Exit();
+            game_Controller = null;
+
+            
         }
 
         public void Shutdown()
@@ -132,6 +136,16 @@ namespace KBS1.controller
         public List<GameObject> GameEntities
         {
             get { return game_objects; }
+        }
+
+        public void Set_Properties_Pause(bool boolean)
+        {
+            properties_Pause = boolean;
+        }
+
+        public bool Get_Properties_Pause()
+        {
+            return properties_Pause;
         }
     }
 }

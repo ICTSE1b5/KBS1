@@ -10,47 +10,46 @@ using System.Windows.Forms;
 
 namespace KBS1.view
 {
-    public partial class MainMenuScreen : UserControl
+    public partial class InGameMenu : UserControl
     {
-        public event EventHandler MainMenuScreenClick;
+        public event EventHandler InGameMenuScreenClick;
 
-        public MainMenuScreen()
+        public InGameMenu()
         {
             InitializeComponent();
         }
 
-        private void Button_Select_Level_Click(object sender, EventArgs e)
-        {   
-            //Fires event to the EventHandler and then sends it to Form1
-            MainMenuScreenClick(sender, e);
-        }
-
-        private void button_New_Game_Click(object sender, EventArgs e)
-        {   
-            //Fires event to the EventHandler and then sends it to Form1
-            MainMenuScreenClick(sender, e);
-        }
-
-        private void button_Close_Click(object sender, EventArgs e)
+        private void Button_Main_Menu_Click(object sender, EventArgs e)
         {
             //Fires event to the EventHandler and then sends it to Form1
-            MainMenuScreenClick(sender, e);
+            InGameMenuScreenClick(sender, e);
         }
 
-        public Button Get_Button_Select_Level()
+        private void button_Resume_Click(object sender, EventArgs e)
         {
-            return button_Select_Level;
+            //Fires event to the EventHandler and then sends it to Form1
+            InGameMenuScreenClick(sender, e);
         }
 
-        public Button Get_Button_New_Game()
+        private void Button_Close_Click(object sender, EventArgs e)
         {
-            return button_New_Game;
+            //Fires event to the EventHandler and then sends it to Form1
+            InGameMenuScreenClick(sender, e);
+        }
+
+        public Button Get_Button_Main_Menu()
+        {
+            return button_Main_Menu;
+        }
+
+        public Button Get_Button_Resume()
+        {
+            return button_Resume;
         }
 
         public Button Get_Button_Close()
         {
             return button_Close;
         }
-
     }
 }

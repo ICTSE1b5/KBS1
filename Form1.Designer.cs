@@ -30,6 +30,7 @@
         {
             this.mainMenuScreen = new KBS1.view.MainMenuScreen();
             this.levelSelectScreen = new KBS1.view.LevelSelectScreen();
+            this.inGameMenu = new KBS1.view.InGameMenu();
             this.SuspendLayout();
             // 
             // mainMenuScreen
@@ -49,6 +50,14 @@
             this.levelSelectScreen.TabIndex = 1;
             this.levelSelectScreen.Visible = false;
             // 
+            // inGameMenu
+            // 
+            this.inGameMenu.Location = new System.Drawing.Point(289, 144);
+            this.inGameMenu.Name = "inGameMenu";
+            this.inGameMenu.Size = new System.Drawing.Size(199, 250);
+            this.inGameMenu.TabIndex = 2;
+            this.inGameMenu.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -56,6 +65,7 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainMenuScreen);
             this.Controls.Add(this.levelSelectScreen);
+            this.Controls.Add(this.inGameMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -71,6 +81,7 @@
 
         private view.MainMenuScreen mainMenuScreen;
         private view.LevelSelectScreen levelSelectScreen;
+        private view.InGameMenu inGameMenu;
     }
 }
 

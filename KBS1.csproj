@@ -63,9 +63,16 @@
     <Compile Include="model\Enemy_Static.cs" />
     <Compile Include="model\GameObject.cs" />
     <Compile Include="model\Player.cs" />
+    <Compile Include="model\wall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\GameView.cs" />
+    <Compile Include="view\InGameMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\InGameMenu.Designer.cs">
+      <DependentUpon>InGameMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\LevelSelectScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,7 +96,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="view\InGameMenu.resx">
+      <DependentUpon>InGameMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\LevelSelectScreen.resx">
       <DependentUpon>LevelSelectScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,7 +123,9 @@
   <ItemGroup>
     <Folder Include="levels\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="background.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

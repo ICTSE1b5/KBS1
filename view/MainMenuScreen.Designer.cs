@@ -43,6 +43,7 @@
             this.button_New_Game.TabIndex = 0;
             this.button_New_Game.Text = "New game";
             this.button_New_Game.UseVisualStyleBackColor = true;
+            this.button_New_Game.Click += new System.EventHandler(this.button_New_Game_Click);
             // 
             // button_Select_Level
             // 
@@ -80,11 +81,13 @@
             this.button_Close.TabIndex = 4;
             this.button_Close.Text = "Close";
             this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
             // MainMenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::KBS1.Properties.Resources.background;
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.button_Highscores);
             this.Controls.Add(this.button_Level_Editor);
