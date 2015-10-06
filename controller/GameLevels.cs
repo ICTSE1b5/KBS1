@@ -82,6 +82,10 @@ namespace KBS1
 
         private void writePlayer(int speed, int health, int damage,int posX,int posY, XmlTextWriter writer)
         {
+            // In plaats van Elementen kunnen er beter attributen aangemaakt worden,
+            // zodat de xml reader gebruik kan maken van XmlReader.GetAttribute(Attributename)
+            // Hoe dit werkt is te vinden op : https://msdn.microsoft.com/en-us/library/97dce9e6%28v=vs.80%29.aspx
+            // Robin
             writer.WriteStartElement("player");
             writer.WriteStartElement("Xposition");
             writer.WriteValue(posX);
