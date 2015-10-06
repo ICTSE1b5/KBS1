@@ -117,6 +117,9 @@ namespace KBS1.controller
         {
             //Remove all existing components (ie. Objects, GameController, etc.)
             game_objects = new List<GameObject>();
+            game_Controller = null;
+
+            
         }
 
         public void Shutdown()
