@@ -7,19 +7,18 @@ using System.Windows.Forms;
 
 namespace KBS1.model
 {
-    class Wall : GameObject
+    class Finish : GameObject
     {
-        public Wall(int pos_x, int pos_y, Form form)
+       public Finish(int pos_x, int pos_y, int width, int height, Form form)
             : base(pos_x, pos_y, 20, 20, 0, 0, 0, 0, form)
         {
-                Type = ObjectType.WALL;
+            Type = ObjectType.GOAL;
         }
-            
-
+        
 
         public override void Move()
         {
-            //Doesn't move because it's immobile
+            //Doesn't move because it's immobile;
         }
     }
 }
