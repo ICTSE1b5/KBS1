@@ -50,24 +50,24 @@ namespace KBS1.model
 
 
         public void changeDirections(Keys dir, bool enabled)
-        {            
+        {
             //There is an up down left right, so that you have the option to stand still
             switch (dir)
             {
                 case Keys.Up:
-                    if (enabled && !direction_DOWN) { direction_UP = true; }
+                    if (enabled && !direction_DOWN) { direction_UP = true; Direction = ObjectDirection.UP; }
                     else { direction_UP = false; }
                     break;
                 case Keys.Down:
-                    if (enabled && !direction_UP) { direction_DOWN = true; }
+                    if (enabled && !direction_UP) { direction_DOWN = true; Direction = ObjectDirection.DOWN; }
                     else { direction_DOWN = false; }
                     break;
                 case Keys.Left:
-                    if (enabled && !direction_RIGHT) { direction_LEFT = true; }
+                    if (enabled && !direction_RIGHT) { direction_LEFT = true; Direction = ObjectDirection.LEFT; }
                     else { direction_LEFT = false; }
                     break;
                 case Keys.Right:
-                    if (enabled && !direction_LEFT) { direction_RIGHT = true; }
+                    if (enabled && !direction_LEFT) { direction_RIGHT = true; Direction = ObjectDirection.RIGHT; }
                     else { direction_RIGHT = false; }
                     break;
                 default:

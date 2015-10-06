@@ -38,11 +38,28 @@ namespace KBS1.view
 
             foreach(GameObject game_prop in game_loop.GameEntities)
             {
-                if(game_prop.Type.Equals(GameObject.ObjectType.PLAYER))
+                if (game_prop.Type.Equals(GameObject.ObjectType.PLAYER))
                 {
-                    graphics_GraphicsDevice.FillRectangle(Brushes.Blue, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                    switch (game_prop.Direction)
+                    {
+                        case GameObject.ObjectDirection.UP:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            break;
+                        case GameObject.ObjectDirection.DOWN:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerDOWN, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            break;
+                        case GameObject.ObjectDirection.LEFT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerLEFT, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            break;
+                        case GameObject.ObjectDirection.RIGHT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerRIGHT, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            break;
+                        case GameObject.ObjectDirection.NONE:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            break;
+                    }
                 }
-                else if(game_prop.Type.Equals(GameObject.ObjectType.ENEMY))
+                else if (game_prop.Type.Equals(GameObject.ObjectType.ENEMY))
                 {
                     graphics_GraphicsDevice.FillRectangle(Brushes.Red, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
                 }

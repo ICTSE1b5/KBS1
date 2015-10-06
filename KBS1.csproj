@@ -129,6 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
+    <Content Include="Images\playerDOWN.gif" />
+    <Content Include="Images\playerLEFT.gif" />
+    <Content Include="Images\playerRIGHT.gif" />
+    <Content Include="Images\playerUP.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
