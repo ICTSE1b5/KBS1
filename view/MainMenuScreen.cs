@@ -13,10 +13,12 @@ namespace KBS1.view
     public partial class MainMenuScreen : UserControl
     {
         public event EventHandler MainMenuScreenClick;
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
         public MainMenuScreen()
         {
             InitializeComponent();
+            player.Stream = Properties.Resources.MainMenuMusic;
         }
 
         private void Button_Select_Level_Click(object sender, EventArgs e)
@@ -52,5 +54,21 @@ namespace KBS1.view
             return button_Close;
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            playMusic();
+        }
+
+        private void playMusic()
+        {
+            if (checkBox1.Checked)
+            {
+                player.Play();
+            }
+            else
+            {
+                player.Stop();
+            }
+        }
     }
 }
