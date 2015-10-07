@@ -112,6 +112,18 @@ namespace KBS1.controller
             game_objects.Add(enemy4);
             Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
             game_objects.Add(enemy5);
+            Wall wall1 = new Wall(100, 100, game_Form);
+            game_objects.Add(wall1);
+            Wall wall2 = new Wall(200, 200, game_Form);
+            game_objects.Add(wall2);
+            Wall wall3 = new Wall(50, 300, game_Form);
+            game_objects.Add(wall3);
+            Wall wall4 = new Wall(400, 50, game_Form);
+            game_objects.Add(wall4);
+            Wall wall5 = new Wall(400, 400, game_Form);
+            game_objects.Add(wall5);
+            Wall wall6 = new Wall(600, 350, game_Form);
+            game_objects.Add(wall6);
         }
 
         private void Game_End()

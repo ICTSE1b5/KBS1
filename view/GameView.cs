@@ -80,6 +80,10 @@ namespace KBS1.view
                             break;
                     }
                 }
+                else if (game_prop.Type.Equals(GameObject.ObjectType.WALL))
+                {
+                    graphics_GraphicsDevice.DrawImage(Properties.Resources.bush, game_prop.getRectangle());
+                }
                 else
                 {
                     graphics_GraphicsDevice.FillRectangle(Brushes.Green, game_prop.getRectangle());
