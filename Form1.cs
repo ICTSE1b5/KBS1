@@ -28,6 +28,11 @@ namespace KBS1
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
             inGameMenu.InGameMenuScreenClick += new EventHandler(UserControl_ButtonClick);
+
+            this.SetStyle(
+          ControlStyles.UserPaint |
+          ControlStyles.AllPaintingInWmPaint |
+          ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

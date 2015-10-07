@@ -105,12 +105,13 @@ namespace KBS1.controller
             player1 = new Player(0, 0, game_Form);
             game_objects.Add(player1);
 
-            Enemy_Static enemy1 = new Enemy_Static(100, 100, game_objects, game_Form);
-            game_objects.Add(enemy1);
-            Enemy_Static enemy2 = new Enemy_Static(200, 100, game_objects, game_Form);
-            game_objects.Add(enemy2);
+            
             Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
             game_objects.Add(enemy3);
+            Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
+            game_objects.Add(enemy4);
+            Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
+            game_objects.Add(enemy5);
         }
 
         private void Game_End()

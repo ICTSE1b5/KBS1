@@ -64,6 +64,7 @@ namespace KBS1.view
             if (checkBox1.Checked)
             {
                 player.Play();
+                player.PlayLooping();
             }
             else
             {

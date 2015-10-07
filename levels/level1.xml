@@ -14,6 +14,7 @@
   <elements>
     <enemy>
       <enemy_id>1</enemy_id>
+      <type>300</type>
       <Xposition>300</Xposition>
       <Yposition>150</Yposition>
       <health>500</health>
@@ -21,6 +22,7 @@
     </enemy>
     <enemy>
       <enemy_id>2</enemy_id>
+      <type>200</type>
       <Xposition>200</Xposition>
       <Yposition>200</Yposition>
       <health>500</health>

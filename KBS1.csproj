@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{0ADC8E98-AC68-4E50-9D34-AB409088854F}</ProjectGuid>
+    <ProjectGuid>{AC26DAB8-4A40-4E08-A06D-7F547130C4FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\GameLoop.cs" />
+    <Compile Include="controller\XmlParser.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,12 +124,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="levels\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="background.gif" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
+    <Content Include="Images\wolf-down-left.gif" />
+    <Content Include="Images\wolf-down-right.gif" />
+    <Content Include="Images\wolf-down.gif" />
+    <Content Include="Images\wolf-left.gif" />
+    <Content Include="Images\wolf-right.gif" />
+    <Content Include="Images\wolf-up-left.gif" />
+    <Content Include="Images\wolf-up.gif" />
+    <None Include="Images\Gamebackground.gif" />
     <Content Include="Images\playerDOWN.gif" />
     <Content Include="Images\playerLEFT.gif" />
     <Content Include="Images\playerRIGHT.gif" />

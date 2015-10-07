@@ -43,29 +43,46 @@ namespace KBS1.view
                     switch (game_prop.Direction)
                     {
                         case GameObject.ObjectDirection.UP:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.DOWN:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerDOWN, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerDOWN, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.LEFT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerLEFT, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerLEFT, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.RIGHT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerRIGHT, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerRIGHT, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.NONE:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.getRectangle());
                             break;
                     }
                 }
                 else if (game_prop.Type.Equals(GameObject.ObjectType.ENEMY))
                 {
-                    graphics_GraphicsDevice.FillRectangle(Brushes.Red, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                    switch (game_prop.Direction)
+                    {
+                        case GameObject.ObjectDirection.UP:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.DOWN:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_down, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.LEFT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_left, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.RIGHT:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_right, game_prop.getRectangle());
+                            break;
+                        case GameObject.ObjectDirection.NONE:
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            break;
+                    }
                 }
                 else
                 {
-                    graphics_GraphicsDevice.FillRectangle(Brushes.Green, game_prop.GetProperty(GameObject.ObjectProperties.Position_X), game_prop.GetProperty(GameObject.ObjectProperties.Position_Y), game_prop.GetProperty(GameObject.ObjectProperties.Width), game_prop.GetProperty(GameObject.ObjectProperties.Height));
+                    graphics_GraphicsDevice.FillRectangle(Brushes.Green, game_prop.getRectangle());
                 }
                 
             }

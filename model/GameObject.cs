@@ -74,6 +74,10 @@ namespace KBS1.model
 
         public abstract void Move();
         
+        public Rectangle getRectangle()
+        {
+            return new Rectangle(Position_X, Position_Y, Width, Height);
+        }
         /*Make a better GETTER for objects*/
         public int GetProperty(ObjectProperties propertyType)
         {
