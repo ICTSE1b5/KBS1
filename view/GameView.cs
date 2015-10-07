@@ -84,6 +84,10 @@ namespace KBS1.view
                 {
                     graphics_GraphicsDevice.DrawImage(Properties.Resources.bush, game_prop.getRectangle());
                 }
+                else if (game_prop.Type.Equals(GameObject.ObjectType.GOAL))
+                {
+                    graphics_GraphicsDevice.DrawImage(Properties.Resources.loghouse, game_prop.getRectangle());
+                }
                 else
                 {
                     graphics_GraphicsDevice.FillRectangle(Brushes.Green, game_prop.getRectangle());
