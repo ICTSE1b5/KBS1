@@ -31,7 +31,7 @@
             this.button_Main_Menu = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.button_Resume = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_Options = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Main_Menu
@@ -67,14 +67,16 @@
             this.button_Resume.UseVisualStyleBackColor = false;
             this.button_Resume.Click += new System.EventHandler(this.button_Resume_Click);
             // 
-            // button2
+            // button_Options
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(34, 123);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 39);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = false;
+            this.button_Options.BackColor = System.Drawing.SystemColors.Control;
+            this.button_Options.Location = new System.Drawing.Point(34, 123);
+            this.button_Options.Name = "button_Options";
+            this.button_Options.Size = new System.Drawing.Size(135, 39);
+            this.button_Options.TabIndex = 5;
+            this.button_Options.Text = "Options";
+            this.button_Options.UseVisualStyleBackColor = false;
+            this.button_Options.Click += new System.EventHandler(this.Button_Options_Click);
             // 
             // InGameMenu
             // 
@@ -82,7 +84,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_Options);
             this.Controls.Add(this.button_Resume);
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.button_Main_Menu);
@@ -97,6 +99,6 @@
         private System.Windows.Forms.Button button_Main_Menu;
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.Button button_Resume;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_Options;
     }
 }

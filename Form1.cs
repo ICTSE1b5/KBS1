@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using KBS1.controller;
 using KBS1.model;
 using KBS1.view;
+using System.Media;
 
 namespace KBS1
 {
@@ -19,15 +19,21 @@ namespace KBS1
         private GameLoop game_loop;
         private GameView game_view;
         private GameLevels game_levels;
+        private SoundPlayer player;
 
 
         public Form1()
         {
             InitializeComponent();
+
+            player = new System.Media.SoundPlayer();
+            player.Stream = Properties.Resources.MainMenuMusic;
+
             //Event handler for buttons that have been pressed
             mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
             inGameMenu.InGameMenuScreenClick += new EventHandler(UserControl_ButtonClick);
+            optionsMenu.OptionsMenuClick += new EventHandler(UserControl_ButtonClick);
 
             this.SetStyle(
           ControlStyles.UserPaint |
@@ -109,7 +115,29 @@ namespace KBS1
                 game_view = new GameView(this, game_loop);
                 game_levels = new GameLevels(this);
                 game_loop.Start();
-
+            }
+            else if (sender == mainMenuScreen.Get_CheckBox1())
+            {
+                if (mainMenuScreen.Get_CheckBox1().Checked)
+                {
+                    optionsMenu.Set_CheckBox_Music(true);
+                } else
+                {
+                    optionsMenu.Set_CheckBox_Music(false);
+                }
+                playMusic();
+            }
+            else if(sender == optionsMenu.Get_CheckBox_Music())
+            {
+                if (optionsMenu.Get_CheckBox_Music().Checked)
+                {
+                    mainMenuScreen.Set_CheckBox1(true);
+                }
+                else
+                {
+                    mainMenuScreen.Set_CheckBox1(false);
+                }
+                playMusic();
             }
             else if (sender == levelSelectScreen.Get_Button_Main_Click())
             {
@@ -129,7 +157,6 @@ namespace KBS1
             else if (sender == levelSelectScreen.Get_Button_Show())
             {
                 game_levels.ShowLevels();
-
             }
             else if (sender == inGameMenu.Get_Button_Main_Menu())
             {
@@ -146,6 +173,20 @@ namespace KBS1
                 inGameMenu.Visible = false;
                 inGameMenu.Enabled = false;
             }
+            else if (sender == inGameMenu.Get_Button_Options())
+            {
+                inGameMenu.Visible = false;
+                inGameMenu.Enabled = false;
+                optionsMenu.Visible = true;
+                optionsMenu.Enabled = true;
+            }
+            else if (sender == optionsMenu.Get_Button_Return())
+            {
+                inGameMenu.Visible = true;
+                inGameMenu.Enabled = true;
+                optionsMenu.Visible = false;
+                optionsMenu.Enabled = false;
+            }
             else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
             {
                 try
@@ -160,6 +201,19 @@ namespace KBS1
                 {
                     Application.Exit();
                 }
+            }
+        }
+
+        private void playMusic()
+        {
+            if (mainMenuScreen.Get_CheckBox1().Checked || optionsMenu.Get_CheckBox_Music().Checked)
+            {
+                player.Play();
+                player.PlayLooping();
+            }
+            else
+            {
+                player.Stop();
             }
         }
 

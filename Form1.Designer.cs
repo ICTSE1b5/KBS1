@@ -32,6 +32,7 @@
             this.mainMenuScreen = new KBS1.view.MainMenuScreen();
             this.levelSelectScreen = new KBS1.view.LevelSelectScreen();
             this.inGameMenu = new KBS1.view.InGameMenu();
+            this.optionsMenu = new KBS1.view.OptionsMenu();
             this.SuspendLayout();
             // 
             // mainMenuScreen
@@ -39,9 +40,9 @@
             this.mainMenuScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuScreen.BackgroundImage")));
             this.mainMenuScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuScreen.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuScreen.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.mainMenuScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mainMenuScreen.Name = "mainMenuScreen";
-            this.mainMenuScreen.Size = new System.Drawing.Size(1045, 690);
+            this.mainMenuScreen.Size = new System.Drawing.Size(784, 561);
             this.mainMenuScreen.TabIndex = 0;
             // 
             // levelSelectScreen
@@ -49,9 +50,9 @@
             this.levelSelectScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelSelectScreen.BackgroundImage")));
             this.levelSelectScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSelectScreen.Location = new System.Drawing.Point(0, 0);
-            this.levelSelectScreen.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.levelSelectScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.levelSelectScreen.Name = "levelSelectScreen";
-            this.levelSelectScreen.Size = new System.Drawing.Size(1045, 690);
+            this.levelSelectScreen.Size = new System.Drawing.Size(784, 561);
             this.levelSelectScreen.TabIndex = 1;
             this.levelSelectScreen.Visible = false;
             // 
@@ -59,24 +60,34 @@
             // 
             this.inGameMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.inGameMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inGameMenu.Location = new System.Drawing.Point(385, 177);
-            this.inGameMenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.inGameMenu.Location = new System.Drawing.Point(289, 144);
+            this.inGameMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.inGameMenu.Name = "inGameMenu";
-            this.inGameMenu.Size = new System.Drawing.Size(265, 307);
+            this.inGameMenu.Size = new System.Drawing.Size(199, 250);
             this.inGameMenu.TabIndex = 2;
             this.inGameMenu.Visible = false;
             // 
+            // optionsMenu
+            // 
+            this.optionsMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.optionsMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.optionsMenu.Location = new System.Drawing.Point(195, 144);
+            this.optionsMenu.Name = "optionsMenu";
+            this.optionsMenu.Size = new System.Drawing.Size(440, 231);
+            this.optionsMenu.TabIndex = 3;
+            this.optionsMenu.Visible = false;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
-            this.ClientSize = new System.Drawing.Size(1045, 690);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainMenuScreen);
             this.Controls.Add(this.levelSelectScreen);
             this.Controls.Add(this.inGameMenu);
+            this.Controls.Add(this.optionsMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -92,6 +103,7 @@
         private view.MainMenuScreen mainMenuScreen;
         private view.LevelSelectScreen levelSelectScreen;
         private view.InGameMenu inGameMenu;
+        private view.OptionsMenu optionsMenu;
     }
 }
 

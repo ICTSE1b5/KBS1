@@ -13,27 +13,31 @@ namespace KBS1.view
     public partial class MainMenuScreen : UserControl
     {
         public event EventHandler MainMenuScreenClick;
-        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
 
         public MainMenuScreen()
         {
             InitializeComponent();
-            player.Stream = Properties.Resources.MainMenuMusic;
         }
 
         private void Button_Select_Level_Click(object sender, EventArgs e)
-        {   
+        {
             //Fires event to the EventHandler and then sends it to Form1
             MainMenuScreenClick(sender, e);
         }
 
         private void button_New_Game_Click(object sender, EventArgs e)
-        {   
+        {
             //Fires event to the EventHandler and then sends it to Form1
             MainMenuScreenClick(sender, e);
         }
 
         private void button_Close_Click(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            MainMenuScreenClick(sender, e);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             //Fires event to the EventHandler and then sends it to Form1
             MainMenuScreenClick(sender, e);
@@ -54,22 +58,15 @@ namespace KBS1.view
             return button_Close;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        public CheckBox Get_CheckBox1()
         {
-            playMusic();
+            return checkBox1;
         }
 
-        private void playMusic()
+        public void Set_CheckBox1(bool boolean)
         {
-            if (checkBox1.Checked)
-            {
-                player.Play();
-                player.PlayLooping();
-            }
-            else
-            {
-                player.Stop();
-            }
+            checkBox1.Checked = boolean;
         }
+
     }
 }
