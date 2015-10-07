@@ -11,7 +11,7 @@ namespace KBS1.controller
     class XmlParser
     {
         private XmlTextReader reader;
-        private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()))
+        private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
         public List<List<string>> data { get; }
 
         public XmlParser()
