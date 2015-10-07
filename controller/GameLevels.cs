@@ -11,7 +11,6 @@ namespace KBS1
     {
         private Form1 form1;
         
-        string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
         public GameLevels(Form1 form)
         {
@@ -67,9 +66,8 @@ namespace KBS1
 
         public void LoadLevel(string name)
         {
-            string file = @"\levels\" + name + ".xml";
-            string directory = path + file;
-            MessageBox.Show("Gefeliciteerd, uw eigen level is geladen ! pad: " + directory);
+            
+            MessageBox.Show("Gefeliciteerd, uw eigen level is geladen ! pad: ");
             
             
         }
