@@ -10,7 +10,7 @@ namespace KBS1
     class GameLevels
     {
         private Form1 form1;
-        
+        private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
         public GameLevels(Form1 form)
         {
