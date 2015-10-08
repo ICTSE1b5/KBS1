@@ -108,6 +108,12 @@
     <Compile Include="view\OptionsMenu.Designer.cs">
       <DependentUpon>OptionsMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\StatisticsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\StatisticsScreen.Designer.cs">
+      <DependentUpon>StatisticsScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\OptionsMenu.resx">
       <DependentUpon>OptionsMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\StatisticsScreen.resx">
+      <DependentUpon>StatisticsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

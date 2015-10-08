@@ -121,13 +121,14 @@ namespace KBS1
                 if (mainMenuScreen.Get_CheckBox1().Checked)
                 {
                     optionsMenu.Set_CheckBox_Music(true);
-                } else
+                }
+                else
                 {
                     optionsMenu.Set_CheckBox_Music(false);
                 }
                 playMusic();
             }
-            else if(sender == optionsMenu.Get_CheckBox_Music())
+            else if (sender == optionsMenu.Get_CheckBox_Music())
             {
                 if (optionsMenu.Get_CheckBox_Music().Checked)
                 {
@@ -186,6 +187,20 @@ namespace KBS1
                 inGameMenu.Enabled = true;
                 optionsMenu.Visible = false;
                 optionsMenu.Enabled = false;
+            }
+            else if (sender == optionsMenu.Get_CheckBox_Statistics())
+            {
+                if (optionsMenu.Get_CheckBox_Statistics().Checked)
+                {
+                    statisticsScreen1.Visible = true;
+                    statisticsScreen1.Enabled = true;
+                    this.Width = 1040;
+                }
+                else
+                {
+                    statisticsScreen1.Visible = false;
+                    this.Width = 800;
+                }
             }
             else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
             {
