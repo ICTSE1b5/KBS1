@@ -40,6 +40,8 @@ namespace KBS1
           ControlStyles.UserPaint |
           ControlStyles.AllPaintingInWmPaint |
           ControlStyles.OptimizedDoubleBuffer, true);
+            MaximizeBox = false;
+            MinimizeBox = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
