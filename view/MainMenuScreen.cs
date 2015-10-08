@@ -37,7 +37,7 @@ namespace KBS1.view
             MainMenuScreenClick(sender, e);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void button_Options_Click(object sender, EventArgs e)
         {
             //Fires event to the EventHandler and then sends it to Form1
             MainMenuScreenClick(sender, e);
@@ -58,15 +58,9 @@ namespace KBS1.view
             return button_Close;
         }
 
-        public CheckBox Get_CheckBox1()
+        public Button Get_Button_Options()
         {
-            return checkBox1;
+            return button_Options;
         }
-
-        public void Set_CheckBox1(bool boolean)
-        {
-            checkBox1.Checked = boolean;
-        }
-
     }
 }

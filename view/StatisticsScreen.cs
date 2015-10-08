@@ -28,7 +28,7 @@ namespace KBS1.view
             string s2 = "Y = 50";
             string s3 = "Speed = 5";
             string s4 = "This is the player, you can move it with \n using the arrow keys on the keyboard";
-
+            
             for (int i = 0; i < 20; i++)
             {
                 Label l1 = new Label();
@@ -49,20 +49,20 @@ namespace KBS1.view
                 l3.AutoSize = true;
                 l3.Text = s3;
 
-                //TextBox tb1 = new TextBox();
-                //tb1.BackColor = SystemColors.ActiveCaption;
-                //tb1.BorderStyle = BorderStyle.None;
-                //tb1.Location = new Point(16, 69);
-                //tb1.Multiline = true;
-                //tb1.Size = new Size(200, 41);
-                //tb1.Text = s4;
+                TextBox tb1 = new TextBox();
+                tb1.BackColor = SystemColors.ActiveCaption;
+                tb1.BorderStyle = BorderStyle.None;
+                tb1.Location = new Point(16, 69);
+                tb1.Multiline = true;
+                tb1.Size = new Size(200, 41);
+                tb1.Text = s4;
 
                 Label l4 = new Label();
-                l4.Location = new Point(16,69);
-                l4.Size = new Size(200,41);
+                l4.Location = new Point(16, 69);
+                l4.Size = new Size(200, 41);
                 l4.AutoSize = true;
                 l4.Text = s4;
-                
+
                 PictureBox pb1 = new PictureBox();
                 pb1.Image = Properties.Resources.playerDOWN;
                 pb1.Location = new Point(16, 11);

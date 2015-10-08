@@ -20,6 +20,7 @@ namespace KBS1
         private GameView game_view;
         private GameLevels game_levels;
         private SoundPlayer player;
+        private bool mainOptions;
 
 
         public Form1()
@@ -30,10 +31,10 @@ namespace KBS1
             player.Stream = Properties.Resources.MainMenuMusic;
 
             //Event handler for buttons that have been pressed
-            mainMenuScreen.MainMenuScreenClick += new EventHandler(UserControl_ButtonClick);
-            levelSelectScreen.LevelSelectScreenClick += new EventHandler(UserControl_ButtonClick);
-            inGameMenu.InGameMenuScreenClick += new EventHandler(UserControl_ButtonClick);
-            optionsMenu.OptionsMenuClick += new EventHandler(UserControl_ButtonClick);
+            mainMenuScreen.MainMenuScreenClick += new EventHandler(MainMenu_ButtonHandler);
+            levelSelectScreen.LevelSelectScreenClick += new EventHandler(LevelSelect_ButtonHandler);
+            inGameMenu.InGameMenuScreenClick += new EventHandler(InGameMenu_ButtonHandler);
+            optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
 
             this.SetStyle(
           ControlStyles.UserPaint |
@@ -96,16 +97,15 @@ namespace KBS1
             game_view.DrawGame(e.Graphics);
         }
 
-        protected void UserControl_ButtonClick(object sender, EventArgs e)
+        public void MainMenu_ButtonHandler(object sender, EventArgs e)
         {
             //Check what button is pressed.
             if (sender == mainMenuScreen.Get_Button_Select_Level())
             {
-                this.mainMenuScreen.Visible = false;
-                this.mainMenuScreen.Enabled = false;
-                this.levelSelectScreen.Visible = true;
-                this.levelSelectScreen.Enabled = true;
-
+                mainMenuScreen.Visible = false;
+                mainMenuScreen.Enabled = false;
+                levelSelectScreen.Visible = true;
+                levelSelectScreen.Enabled = true;
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
             {
@@ -116,36 +116,27 @@ namespace KBS1
                 game_levels = new GameLevels(this);
                 game_loop.Start();
             }
-            else if (sender == mainMenuScreen.Get_CheckBox1())
+            else if (sender == mainMenuScreen.Get_Button_Options())
             {
-                if (mainMenuScreen.Get_CheckBox1().Checked)
-                {
-                    optionsMenu.Set_CheckBox_Music(true);
-                }
-                else
-                {
-                    optionsMenu.Set_CheckBox_Music(false);
-                }
-                playMusic();
+                optionsMenu.Visible = true;
+                optionsMenu.Enabled = true;
+                optionsMenu.BringToFront();
+                mainOptions = true;
             }
-            else if (sender == optionsMenu.Get_CheckBox_Music())
+            else if (sender == mainMenuScreen.Get_Button_Close())
             {
-                if (optionsMenu.Get_CheckBox_Music().Checked)
-                {
-                    mainMenuScreen.Set_CheckBox1(true);
-                }
-                else
-                {
-                    mainMenuScreen.Set_CheckBox1(false);
-                }
-                playMusic();
+                CloseGame();
             }
-            else if (sender == levelSelectScreen.Get_Button_Main_Click())
+        }
+
+        public void LevelSelect_ButtonHandler(object sender, EventArgs e)
+        {
+            if (sender == levelSelectScreen.Get_Button_Main_Click())
             {
-                this.levelSelectScreen.Visible = false;
-                this.levelSelectScreen.Enabled = false;
-                this.mainMenuScreen.Visible = true;
-                this.mainMenuScreen.Enabled = true;
+                levelSelectScreen.Visible = false;
+                levelSelectScreen.Enabled = false;
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
             }
             else if (sender == levelSelectScreen.Get_Button_Load())
             {
@@ -159,7 +150,11 @@ namespace KBS1
             {
                 game_levels.ShowLevels();
             }
-            else if (sender == inGameMenu.Get_Button_Main_Menu())
+        }
+
+        public void InGameMenu_ButtonHandler(object sender, EventArgs e)
+        {
+            if (sender == inGameMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
                 inGameMenu.Visible = false;
@@ -180,13 +175,29 @@ namespace KBS1
                 inGameMenu.Enabled = false;
                 optionsMenu.Visible = true;
                 optionsMenu.Enabled = true;
+                mainOptions = false;
+            }
+            else if (sender == inGameMenu.Get_Button_Close())
+            {
+                CloseGame();
+            }
+        }
+
+        public void OptionMenu_ButtonHandler(object sender, EventArgs e)
+        {
+            if (sender == optionsMenu.Get_CheckBox_Music())
+            {
+                playMusic();
             }
             else if (sender == optionsMenu.Get_Button_Return())
             {
-                inGameMenu.Visible = true;
-                inGameMenu.Enabled = true;
-                optionsMenu.Visible = false;
-                optionsMenu.Enabled = false;
+                if (!mainOptions)
+                {
+                    inGameMenu.Visible = true;
+                    inGameMenu.Enabled = true;
+                }
+                    optionsMenu.Visible = false;
+                    optionsMenu.Enabled = false;
             }
             else if (sender == optionsMenu.Get_CheckBox_Statistics())
             {
@@ -194,34 +205,19 @@ namespace KBS1
                 {
                     statisticsScreen1.Visible = true;
                     statisticsScreen1.Enabled = true;
-                    this.Width = 1040;
+                    Width = 1040;
                 }
                 else
                 {
                     statisticsScreen1.Visible = false;
-                    this.Width = 800;
-                }
-            }
-            else if (sender == inGameMenu.Get_Button_Close() || sender == mainMenuScreen.Get_Button_Close())
-            {
-                try
-                {
-                    game_loop.Shutdown();
-                }
-                catch (NullReferenceException d)
-                {
-
-                }
-                finally
-                {
-                    Application.Exit();
+                    Width = 800;
                 }
             }
         }
 
         private void playMusic()
         {
-            if (mainMenuScreen.Get_CheckBox1().Checked || optionsMenu.Get_CheckBox_Music().Checked)
+            if (optionsMenu.Get_CheckBox_Music().Checked)
             {
                 player.Play();
                 player.PlayLooping();
@@ -232,7 +228,7 @@ namespace KBS1
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void CloseGame()
         {
             try
             {
@@ -246,6 +242,11 @@ namespace KBS1
             {
                 Application.Exit();
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseGame();
         }
     }
 }
