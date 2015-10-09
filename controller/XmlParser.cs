@@ -23,17 +23,20 @@ namespace KBS1.controller
         //dumps the data from the level xml file specified above in a List<List<string>>
         public void Parse(string name)
         {
+            //finding the directory of the XML file
             string file = @"\levels\" + name + ".xml";
             string directory = path + file;
             this.reader = new XmlTextReader(directory);
 
+            // if the reader exists, start reading
             if (this.reader != null)
             {
+                //reads the nodes in the xml file
                 while (this.reader.Read())
                 {
                     switch (reader.NodeType)
                     {
-                        // contents of the if-statements will be changed after a definitive format for the level-xml has been decided.
+                        //if the nodetype is an element, read the name of the element, and add the data in the XML-attributes to the List<List<string>>
                         case XmlNodeType.Element:
                             if(reader.Name!= "level" && reader.Name == "player")
                             {
