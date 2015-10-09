@@ -35,6 +35,7 @@ namespace KBS1
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(LevelSelect_ButtonHandler);
             inGameMenu.InGameMenuScreenClick += new EventHandler(InGameMenu_ButtonHandler);
             optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
+            levelSelectScreen.AddForm(this);
 
             this.SetStyle(
           ControlStyles.UserPaint |
@@ -125,18 +126,7 @@ namespace KBS1
             {
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
-                game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
-                game_view = new GameView(this, game_loop);
-                game_levels = new GameLevels(this);
-
-                if (optionsMenu.Get_CheckBox_Statistics().Checked)
-                {
-                    statisticsScreen1.Visible = true;
-                    statisticsScreen1.Enabled = true;
-                    Width = 1040;
-                    statisticsScreen1.DrawPanel2(game_loop.GameEntities);
-                }
-                game_loop.Start("level1");
+                StartGame("level1");
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
@@ -261,6 +251,23 @@ namespace KBS1
                 optionsMenu.Enabled = true;
             }
         }
+
+        public void StartGame(string level)
+        {
+            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
+            game_view = new GameView(this, game_loop);
+            game_levels = new GameLevels(this);
+
+            if (optionsMenu.Get_CheckBox_Statistics().Checked)
+            {
+                statisticsScreen1.Visible = true;
+                statisticsScreen1.Enabled = true;
+                Width = 1040;
+                statisticsScreen1.DrawPanel2(game_loop.GameEntities);
+            }
+            game_loop.Start(level);
+        }
+
 
         private void CloseGame()
         {

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using KBS1.controller;
 
 namespace KBS1.view
 {
@@ -16,8 +17,9 @@ namespace KBS1.view
     {
         List<Button> listOfButtons = new List<Button>();
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-
+       
         public event EventHandler LevelSelectScreenClick;
+        public Form1 form;
 
         public LevelSelectScreen()
         {
@@ -114,44 +116,17 @@ namespace KBS1.view
         private void DynamicButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            switch (button.Text)
-            {
-                case "level1":
-                    System.Windows.Forms.MessageBox.Show("1");
-                    break;
-                case "Level2":
-                    System.Windows.Forms.MessageBox.Show("2");
-                    break;
-                case "Level3":
-                    System.Windows.Forms.MessageBox.Show("3");
-                    break;
-                case "Level4":
-                    System.Windows.Forms.MessageBox.Show("4");
-                    break;
-                case "Level5":
-                    System.Windows.Forms.MessageBox.Show("5");
-                    break;
-                case "Level6":
-                    System.Windows.Forms.MessageBox.Show("6");
-                    break;
-                case "Level7":
-                    System.Windows.Forms.MessageBox.Show("7");
-                    break;
-                case "Level8":
-                    System.Windows.Forms.MessageBox.Show("8");
-                    break;
-                case "Level9":
-                    System.Windows.Forms.MessageBox.Show("9");
-                    break;
-                case "Level10":
-                    System.Windows.Forms.MessageBox.Show("10");
-                    break;
 
-            }
+            string XMLfile = path + @"\levels\" + button.Text + "*.xml";
 
+            this.Visible = false;
+            this.Enabled = false;
+            form.StartGame(button.Text);
+        }
 
-
-
+        public void AddForm(Form1 form)
+        {
+            this.form = form;
         }
 
 
