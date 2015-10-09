@@ -53,7 +53,14 @@ namespace KBS1
                 game_loop.parser.player1.changeDirections(e.KeyCode, true);
                 if (e.KeyCode == Keys.Escape)
                 {
-                    if (game_loop.Get_Properties_Pause())
+                    if (optionsMenu.Visible == true)
+                    {
+                        optionsMenu.Visible = false;
+                        optionsMenu.Enabled = false;
+                        inGameMenu.Visible = true;
+                        inGameMenu.Enabled = true;
+                    }
+                    else if (game_loop.Get_Properties_Pause())
                     {
                         game_loop.Set_Properties_Pause(false);
                         inGameMenu.Visible = false;
