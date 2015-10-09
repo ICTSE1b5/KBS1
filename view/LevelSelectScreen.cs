@@ -67,8 +67,8 @@ namespace KBS1.view
             string[] files = Directory.GetFiles(path + @"\levels\", "*.xml");
             
             int i = 0;
-            
-         
+            int i3 = 0;
+
 
             for (int i2 = 0; i2 < files.Length; i2++)
             {
@@ -92,9 +92,10 @@ namespace KBS1.view
                 {
                     string path2 = files[i2];
                     String result = Path.GetFileNameWithoutExtension(path2);
-                    i += 80;
+         
+                     i3 += 80;
                     Button btn = new Button();
-                    btn.Location = new Point(100 + i, 300);
+                    btn.Location = new Point(100 + i3, 300);
                     btn.Name = "btn1";
                     btn.Text = result;
 
