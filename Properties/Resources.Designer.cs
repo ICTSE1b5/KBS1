@@ -73,6 +73,16 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundgame {
+            get {
+                object obj = ResourceManager.GetObject("backgroundgame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bush {
             get {
                 object obj = ResourceManager.GetObject("bush", resourceCulture);
@@ -83,8 +93,7 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap 
-            ground {
+        internal static System.Drawing.Bitmap Gamebackground {
             get {
                 object obj = ResourceManager.GetObject("Gamebackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -146,6 +155,26 @@ namespace KBS1.Properties {
         internal static System.Drawing.Bitmap playerUP {
             get {
                 object obj = ResourceManager.GetObject("playerUP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerUPreverse {
+            get {
+                object obj = ResourceManager.GetObject("playerUPreverse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap selectlevel {
+            get {
+                object obj = ResourceManager.GetObject("selectlevel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
