@@ -117,14 +117,15 @@ namespace KBS1
                 game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
                 game_view = new GameView(this, game_loop);
                 game_levels = new GameLevels(this);
+
                 if (optionsMenu.Get_CheckBox_Statistics().Checked)
                 {
                     statisticsScreen1.Visible = true;
                     statisticsScreen1.Enabled = true;
                     Width = 1040;
+                    statisticsScreen1.DrawPanel2(game_loop.GameEntities);
                 }
                 game_loop.Start();
-
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
@@ -218,6 +219,7 @@ namespace KBS1
                         statisticsScreen1.Visible = true;
                         statisticsScreen1.Enabled = true;
                         Width = 1040;
+                        statisticsScreen1.DrawPanel2(game_loop.GameEntities);
                     }
                 }
                 else

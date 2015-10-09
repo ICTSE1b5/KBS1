@@ -40,7 +40,7 @@ namespace KBS1.controller
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
-            
+
 
             SetUpdateRate(updateRate);
         }
@@ -107,11 +107,10 @@ namespace KBS1.controller
             player1 = new Player(0, 0, game_Form);
             game_objects.Add(player1);
 
-            Finish finish = new Finish(720,500,50,50, game_Form);
+            Finish finish = new Finish(720, 500, 50, 50, game_Form);
             game_objects.Add(finish);
             Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
             game_objects.Add(enemy3);
-
             Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
             game_objects.Add(enemy4);
             Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
