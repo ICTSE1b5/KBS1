@@ -1,9 +1,11 @@
-﻿using System;
+﻿using KBS1.model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace KBS1.controller
@@ -13,7 +15,7 @@ namespace KBS1.controller
         private XmlTextReader reader;
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
         public List<List<string>> data { get; }
-
+        public Player player1;
         public XmlParser()
         {
             this.data = new List<List<string>>();
@@ -95,5 +97,35 @@ namespace KBS1.controller
             }
         }
 
+        public void Handle(List<GameObject> game_objects, Form game_Form, List<List<string>> data)
+        {
+            //Adds the player to the List
+            player1 = new Player(0, 0, game_Form);
+            game_objects.Add(player1);
+
+            Finish finish = new Finish(720, 500, 50, 50, game_Form);
+            game_objects.Add(finish);
+            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
+            game_objects.Add(enemy3);
+
+            Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
+            game_objects.Add(enemy4);
+            Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
+            game_objects.Add(enemy5);
+            Wall wall1 = new Wall(100, 100, game_Form);
+            game_objects.Add(wall1);
+            Wall wall2 = new Wall(200, 200, game_Form);
+            game_objects.Add(wall2);
+            Wall wall3 = new Wall(50, 300, game_Form);
+            game_objects.Add(wall3);
+            Wall wall4 = new Wall(400, 50, game_Form);
+            game_objects.Add(wall4);
+            Wall wall5 = new Wall(400, 400, game_Form);
+            game_objects.Add(wall5);
+            Wall wall6 = new Wall(600, 350, game_Form);
+            game_objects.Add(wall6);
+
+            
+        }
     }
 }
