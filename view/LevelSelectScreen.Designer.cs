@@ -67,11 +67,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
-            this.Controls.Add(this.button1);
-=======
-            this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
->>>>>>> origin/master
             this.Controls.Add(this.button_Load);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.button_Main_Menu);
