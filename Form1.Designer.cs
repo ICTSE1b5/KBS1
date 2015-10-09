@@ -38,6 +38,7 @@
             // 
             // statisticsScreen1
             // 
+            this.statisticsScreen1.AutoScroll = true;
             this.statisticsScreen1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.statisticsScreen1.Enabled = false;
             this.statisticsScreen1.Location = new System.Drawing.Point(784, 0);
@@ -48,7 +49,6 @@
             // 
             // mainMenuScreen
             // 
-            this.mainMenuScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuScreen.BackgroundImage")));
             this.mainMenuScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuScreen.Location = new System.Drawing.Point(0, 0);
             this.mainMenuScreen.Margin = new System.Windows.Forms.Padding(4);
@@ -58,7 +58,6 @@
             // 
             // levelSelectScreen
             // 
-            this.levelSelectScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelSelectScreen.BackgroundImage")));
             this.levelSelectScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSelectScreen.Location = new System.Drawing.Point(0, 0);
             this.levelSelectScreen.Margin = new System.Windows.Forms.Padding(4);
@@ -92,7 +91,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.statisticsScreen1);
             this.Controls.Add(this.mainMenuScreen);

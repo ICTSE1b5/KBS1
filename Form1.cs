@@ -116,7 +116,14 @@ namespace KBS1
                 game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
                 game_view = new GameView(this, game_loop);
                 game_levels = new GameLevels(this);
+                if (optionsMenu.Get_CheckBox_Statistics().Checked)
+                {
+                    statisticsScreen1.Visible = true;
+                    statisticsScreen1.Enabled = true;
+                    Width = 1040;
+                }
                 game_loop.Start();
+
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
@@ -159,11 +166,14 @@ namespace KBS1
             if (sender == inGameMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
+                game_loop = null;
                 inGameMenu.Visible = false;
                 inGameMenu.Enabled = false;
+                statisticsScreen1.Visible = false;
+                Width = 800;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
-                game_loop = null;
+                
             }
             else if (sender == inGameMenu.Get_Button_Resume())
             {
@@ -198,16 +208,19 @@ namespace KBS1
                     inGameMenu.Visible = true;
                     inGameMenu.Enabled = true;
                 }
-                    optionsMenu.Visible = false;
-                    optionsMenu.Enabled = false;
+                optionsMenu.Visible = false;
+                optionsMenu.Enabled = false;
             }
             else if (sender == optionsMenu.Get_CheckBox_Statistics())
             {
                 if (optionsMenu.Get_CheckBox_Statistics().Checked)
                 {
-                    statisticsScreen1.Visible = true;
-                    statisticsScreen1.Enabled = true;
-                    Width = 1040;
+                    if (!mainOptions)
+                    {
+                        statisticsScreen1.Visible = true;
+                        statisticsScreen1.Enabled = true;
+                        Width = 1040;
+                    }
                 }
                 else
                 {
