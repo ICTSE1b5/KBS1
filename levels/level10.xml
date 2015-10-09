@@ -8,8 +8,8 @@
     width="50"
     height="50"/>
   <finish
-    x="0"
-    y="0"
+    x="360"
+    y="280"
     width="50"
     height="50"/>
   <enemy
@@ -36,22 +36,22 @@
       <enemy
     hp="1"
     speed="3"
-    x="400"
+    x="430"
     y="400"
     width="3"
     height="9"/>
   <enemy
     hp="1"
     speed="3"
-    x="50"
-    y="300"
+    x="380"
+    y="400"
     width="3"
     height="9"/>
   <enemy
     hp="1"
     speed="3"
-    x="300"
-    y="50"
+    x="480"
+    y="400"
     width="3"
     height="9"/>
   <!-- 
@@ -68,39 +68,53 @@
     height="2"/>
   <!-- Static objects are things like walls -->
   <static
-    x="100"
-    y="100"
+    x="440"
+    y="230"
     width="50"
     height="50"
     />
   <static
-    x="200"
-    y="200"
+    x="440"
+    y="280"
     width="50"
     height="50"
     />
   <static
-    x="50"
+    x="440"
+    y="250"
+    width="50"
+    height="50"
+    />
+      <static
+    x="440"
     y="300"
     width="50"
     height="50"
     />
       <static
-    x="400"
-    y="50"
+    x="280"
+    y="350"
     width="50"
     height="50"
     />
   <static
-    x="400"
+    x="280"
     y="400"
     width="50"
     height="50"
     />
   <static
-    x="600"
-    y="350"
+    x="280"
+    y="450"
     width="50"
     height="50"
     />
+      <static
+    x="280"
+    y="200"
+    width="50"
+    height="50"
+    />
+    
+
 </level>
