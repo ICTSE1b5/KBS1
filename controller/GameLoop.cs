@@ -102,12 +102,13 @@ namespace KBS1.controller
             game_objects = new List<GameObject>();
             // makes an XMLparser
             parser = new XmlParser();
-            parser.Parse("level_test");
+            // level name is still hard coded, must be dynamic in the future.
+            string level = "level_test";
 
             // get the list
             List<List<string>> data;
             data = parser.data;
-            parser.Handle(game_objects, game_Form, data);
+            parser.Handle(game_objects, game_Form, data,level);
             
         }
 

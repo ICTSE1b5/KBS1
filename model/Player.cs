@@ -7,15 +7,11 @@ namespace KBS1.model
     public class Player : GameObject
     {
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
-        static int player_speed = 5;
-        static int player_size = 50;
         static String player_description = "The player is the character that needs to avoid being attacked by the wolves, solve puzzles and make it to the finish.";
-
-
         private bool direction_UP, direction_DOWN, direction_LEFT, direction_RIGHT;
 
 
-        public Player(int pos_x, int pos_y, Form form) : base(pos_x, pos_y, player_size, player_size, player_speed, player_speed, 2, 5, form)
+        public Player(int player_health,int player_speed, int pos_x, int pos_y, int player_width, int player_height, Form form) : base(pos_x, pos_y, player_width, player_height, player_speed, player_speed, player_health, player_health, form)
         {
             Type = ObjectType.PLAYER;
         }
