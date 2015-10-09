@@ -9,7 +9,8 @@ namespace KBS1.model
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
         static int player_speed = 5;
         static int player_size = 50;
-        
+        static String player_description = "The player is the character that needs to avoid being attacked by the wolves, solve puzzles and make it to the finish.";
+
 
         private bool direction_UP, direction_DOWN, direction_LEFT, direction_RIGHT;
 

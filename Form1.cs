@@ -108,6 +108,7 @@ namespace KBS1
                 mainMenuScreen.Enabled = false;
                 levelSelectScreen.Visible = true;
                 levelSelectScreen.Enabled = true;
+                levelSelectScreen.CreateDynamicButton();
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
             {
@@ -155,10 +156,7 @@ namespace KBS1
             {
                 game_levels.SaveLevel("level1");
             }
-            else if (sender == levelSelectScreen.Get_Button_Show())
-            {
-                game_levels.ShowLevels();
-            }
+           
         }
 
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)

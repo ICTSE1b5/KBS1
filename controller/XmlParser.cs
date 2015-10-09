@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace KBS1.controller
 {
-    class XmlParser
+    public class XmlParser
     {
         private XmlTextReader reader;
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
