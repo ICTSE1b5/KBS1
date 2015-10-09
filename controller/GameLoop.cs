@@ -15,6 +15,7 @@ namespace KBS1.controller
         public GameController game_Controller;
         private List<GameObject> game_objects = new List<GameObject>();
         public Player player1;
+        public XmlParser parser;
 
         public enum FrameRate : int
         {
@@ -101,32 +102,9 @@ namespace KBS1.controller
 
             game_objects = new List<GameObject>();
             // makes an XMLparser
-            XmlParser parser = new XmlParser();
-            parser.Parse("level_test");
-            //Adds the player to the List
-            player1 = new Player(0, 0, game_Form);
-            game_objects.Add(player1);
-
-            Finish finish = new Finish(720, 500, 50, 50, game_Form);
-            game_objects.Add(finish);
-            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
-            game_objects.Add(enemy3);
-            Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
-            game_objects.Add(enemy4);
-            Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
-            game_objects.Add(enemy5);
-            Wall wall1 = new Wall(100, 100, game_Form);
-            game_objects.Add(wall1);
-            Wall wall2 = new Wall(200, 200, game_Form);
-            game_objects.Add(wall2);
-            Wall wall3 = new Wall(50, 300, game_Form);
-            game_objects.Add(wall3);
-            Wall wall4 = new Wall(400, 50, game_Form);
-            game_objects.Add(wall4);
-            Wall wall5 = new Wall(400, 400, game_Form);
-            game_objects.Add(wall5);
-            Wall wall6 = new Wall(600, 350, game_Form);
-            game_objects.Add(wall6);
+            parser = new XmlParser();
+            string level = "level_test";
+            parser.Handle(game_objects, game_Form, level);
         }
 
         private void Game_End()

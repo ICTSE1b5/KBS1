@@ -8,10 +8,10 @@
     width="50"
     height="50"/>
   <finish
-    x="10"
-    y="10"
-    width="2"
-    height="2"/>
+    x="720"
+    y="500"
+    width="50"
+    height="50"/>
   <enemy
     hp="1"
     speed="3"

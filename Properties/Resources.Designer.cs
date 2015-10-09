@@ -73,16 +73,6 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backgroundgame {
-            get {
-                object obj = ResourceManager.GetObject("backgroundgame", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bush {
             get {
                 object obj = ResourceManager.GetObject("bush", resourceCulture);

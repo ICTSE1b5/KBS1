@@ -100,7 +100,7 @@ namespace KBS1.controller
             }
         }
 
-        public void Handle(List<GameObject> game_objects, Form game_Form, List<List<string>> data,string levelslug)
+        public void Handle(List<GameObject> game_objects, Form game_Form,string levelslug)
         {
             this.Parse(levelslug);
 
@@ -111,9 +111,18 @@ namespace KBS1.controller
                 game_objects.Add(player1);
             }
 
+            if (this.data[1][0] == "finish")
+            {
+                
+                Finish finish = new Finish(Int32.Parse(data[1][1]), Int32.Parse(data[1][2]), Int32.Parse(data[1][3]), Int32.Parse(data[1][4]), game_Form);
+                //Adds the finish to the List
+                game_objects.Add(finish);
+            }
+
+
+
+
             
-            Finish finish = new Finish(720, 500, 50, 50, game_Form);
-            game_objects.Add(finish);
             Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
             game_objects.Add(enemy3);
 
