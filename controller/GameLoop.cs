@@ -47,9 +47,9 @@ namespace KBS1.controller
         }
 
         //Starts the game loop
-        public void Start()
+        public void Start(string level)
         {
-            Game_Init();
+            Game_Init(level);
 
             while (!properties_Gameover)
             {
@@ -92,7 +92,7 @@ namespace KBS1.controller
             Game_End();
         }
 
-        public void Game_Init()
+        public void Game_Init(string level)
         {
             //Initialize all components (ie. Player, Wall, Enemy,  etc.)
             properties_Gameover = false;
@@ -103,7 +103,6 @@ namespace KBS1.controller
             game_objects = new List<GameObject>();
             // makes an XMLparser
             parser = new XmlParser();
-            string level = "level_test";
             parser.Handle(game_objects, game_Form, level);
         }
 

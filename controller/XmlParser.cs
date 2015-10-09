@@ -104,46 +104,35 @@ namespace KBS1.controller
         {
             this.Parse(levelslug);
 
-            if (this.data[0][0] == "player")
+            // voor elke item in data
+            foreach (List<string> item in data)
             {
-                player1 = new Player(Int32.Parse(data[0][1]), Int32.Parse(data[0][2]), Int32.Parse(data[0][3]), Int32.Parse(data[0][4]), Int32.Parse(data[0][5]), Int32.Parse(data[0][6]), game_Form);
-                //Adds the player to the List
-                game_objects.Add(player1);
+                if (item[0] == "player")
+                {
+                    player1 = new Player(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), Int32.Parse(item[5]), Int32.Parse(item[6]), game_Form);
+                    //Adds the player to the List
+                    game_objects.Add(player1);
+                }
+                if (item[0] == "finish")
+                {
+                    Finish finish = new Finish(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), game_Form);
+                    //Adds the finish to the List
+                    game_objects.Add(finish);
+                }
+                if (item[0] == "enemy")
+                {
+                    Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    game_objects.Add(enemy);
+                }
+                if (item[0] == "static")
+                {
+                    Wall wall = new Wall(Int32.Parse(item[1]), Int32.Parse(item[2]), game_Form);
+                    game_objects.Add(wall);
+                }
             }
-
-            if (this.data[1][0] == "finish")
-            {
-                
-                Finish finish = new Finish(Int32.Parse(data[1][1]), Int32.Parse(data[1][2]), Int32.Parse(data[1][3]), Int32.Parse(data[1][4]), game_Form);
-                //Adds the finish to the List
-                game_objects.Add(finish);
-            }
-
-
-
-
-            
-            Enemy_Following enemy3 = new Enemy_Following(500, 500, game_objects, game_Form);
-            game_objects.Add(enemy3);
-
-            Enemy_Following enemy4 = new Enemy_Following(50, 300, game_objects, game_Form);
-            game_objects.Add(enemy4);
-            Enemy_Following enemy5 = new Enemy_Following(300, 50, game_objects, game_Form);
-            game_objects.Add(enemy5);
-            Wall wall1 = new Wall(100, 100, game_Form);
-            game_objects.Add(wall1);
-            Wall wall2 = new Wall(200, 200, game_Form);
-            game_objects.Add(wall2);
-            Wall wall3 = new Wall(50, 300, game_Form);
-            game_objects.Add(wall3);
-            Wall wall4 = new Wall(400, 50, game_Form);
-            game_objects.Add(wall4);
-            Wall wall5 = new Wall(400, 400, game_Form);
-            game_objects.Add(wall5);
-            Wall wall6 = new Wall(600, 350, game_Form);
-            game_objects.Add(wall6);
-
-            
         }
+
+            
+        
     }
 }

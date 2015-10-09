@@ -136,7 +136,7 @@ namespace KBS1
                     Width = 1040;
                     statisticsScreen1.DrawPanel2(game_loop.GameEntities);
                 }
-                game_loop.Start();
+                game_loop.Start("level1");
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
