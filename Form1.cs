@@ -53,6 +53,7 @@ namespace KBS1
                 game_loop.parser.player1.changeDirections(e.KeyCode, true);
                 if (e.KeyCode == Keys.Escape)
                 {
+                    //if options menu is opened while in-game it will close by pressing escape
                     if (optionsMenu.Visible == true)
                     {
                         optionsMenu.Visible = false;
@@ -60,12 +61,14 @@ namespace KBS1
                         inGameMenu.Visible = true;
                         inGameMenu.Enabled = true;
                     }
+                    //pressing escape will close the in-game menu if it is already open
                     else if (game_loop.Get_Properties_Pause())
                     {
                         game_loop.Set_Properties_Pause(false);
                         inGameMenu.Visible = false;
                         inGameMenu.Enabled = false;
                     }
+                    //pressing escape will open the in-game menu if it is not already open
                     else
                     {
                         game_loop.Set_Properties_Pause(true);
@@ -228,12 +231,16 @@ namespace KBS1
                         statisticsScreen1.Enabled = true;
                         Width = 1040;
                         statisticsScreen1.DrawPanel2(game_loop.GameEntities);
+                        optionsMenu.Enabled = false;
+                        optionsMenu.Enabled = true;
                     }
                 }
                 else
                 {
                     statisticsScreen1.Visible = false;
                     Width = 800;
+                    optionsMenu.Enabled = false;
+                    optionsMenu.Enabled = true;
                 }
             }
         }
@@ -244,10 +251,14 @@ namespace KBS1
             {
                 player.Play();
                 player.PlayLooping();
+                optionsMenu.Enabled = false;
+                optionsMenu.Enabled = true;
             }
             else
             {
                 player.Stop();
+                optionsMenu.Enabled = false;
+                optionsMenu.Enabled = true;
             }
         }
 
