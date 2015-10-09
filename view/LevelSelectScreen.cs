@@ -59,44 +59,54 @@ namespace KBS1.view
         {
             return button_Save;
         }
-        
+
+      
 
         public void CreateDynamicButton()
         {
             string[] files = Directory.GetFiles(path + @"\levels\", "*.xml");
-
+            
             int i = 0;
-            int i2 = 0;
-            int items = 0;
-            foreach (string file in files)
-            {
-                items += 1;
+            
+         
 
-                if (items <= 5)
+            for (int i2 = 0; i2 < files.Length; i2++)
+            {
+                if (i2 < 6)
                 {
+                    string path2 = files[i2];
+                    String result = Path.GetFileNameWithoutExtension(path2);
+
                     i += 80;
                     Button btn = new Button();
                     btn.Location = new Point(100 + i, 200);
                     btn.Name = "btn1";
-                    btn.Text = "Level" + items;
+                    btn.Text = result;
 
                     btn.Click += new EventHandler(DynamicButton_Click);
                     this.Controls.Add(btn);
                     listOfButtons.Add(btn);
                 }
-                if (items > 5)
-                {
-                    i2 += 80;
-                    Button btn2 = new Button();
-                    btn2.Location = new Point(100 + i2, 300);
-                    btn2.Name = "btn2";
-                    btn2.Text = "Level" + items;
 
-                    btn2.Click += new EventHandler(DynamicButton_Click);
-                    this.Controls.Add(btn2);
-                    listOfButtons.Add(btn2);
+                if (i2 >6)
+                {
+                    string path2 = files[i2];
+                    String result = Path.GetFileNameWithoutExtension(path2);
+                    i += 80;
+                    Button btn = new Button();
+                    btn.Location = new Point(100 + i, 300);
+                    btn.Name = "btn1";
+                    btn.Text = result;
+
+                    btn.Click += new EventHandler(DynamicButton_Click);
+                    this.Controls.Add(btn);
+                    listOfButtons.Add(btn);
                 }
+
             }
+
+
+           
         }
 
 
@@ -105,7 +115,7 @@ namespace KBS1.view
             Button button = sender as Button;
             switch (button.Text)
             {
-                case "Level1":
+                case "level1":
                     System.Windows.Forms.MessageBox.Show("1");
                     break;
                 case "Level2":
