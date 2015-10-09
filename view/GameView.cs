@@ -28,7 +28,7 @@ namespace KBS1.view
 
         public void DrawGame(Graphics graphics_GraphicsDevice)
         //public void DrawGame(ref Graphics graphics_GraphicsDevice)
-        {
+        { 
             //draw background?? or is this done at initialization
 
             //go through each object currently alive and draw them
@@ -43,7 +43,7 @@ namespace KBS1.view
                     switch (game_prop.Direction)
                     {
                         case GameObject.ObjectDirection.UP:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.getRectangle());
+                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUPreverse, game_prop.getRectangle());
                             break;
                         case GameObject.ObjectDirection.DOWN:
                             graphics_GraphicsDevice.DrawImage(Properties.Resources.playerDOWN, game_prop.getRectangle());

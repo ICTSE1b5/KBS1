@@ -50,7 +50,7 @@ namespace KBS1
             //switch statement
             try
             {
-                game_loop.player1.changeDirections(e.KeyCode, true);
+                game_loop.parser.player1.changeDirections(e.KeyCode, true);
                 if (e.KeyCode == Keys.Escape)
                 {
                     if (game_loop.Get_Properties_Pause())
@@ -71,6 +71,7 @@ namespace KBS1
             {
             }
 
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -78,7 +79,7 @@ namespace KBS1
             //switch statement if key is released
             try
             {
-                game_loop.player1.changeDirections(e.KeyCode, false);
+                game_loop.parser.player1.changeDirections(e.KeyCode, false);
             }
             catch (NullReferenceException d)
             {

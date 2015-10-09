@@ -35,12 +35,16 @@
             // 
             // button_Main_Menu
             // 
+            this.button_Main_Menu.BackColor = System.Drawing.Color.White;
+            this.button_Main_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button_Main_Menu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Main_Menu.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_Main_Menu.Location = new System.Drawing.Point(33, 491);
             this.button_Main_Menu.Name = "button_Main_Menu";
             this.button_Main_Menu.Size = new System.Drawing.Size(115, 39);
             this.button_Main_Menu.TabIndex = 0;
             this.button_Main_Menu.Text = "Main Menu";
-            this.button_Main_Menu.UseVisualStyleBackColor = true;
+            this.button_Main_Menu.UseVisualStyleBackColor = false;
             this.button_Main_Menu.Click += new System.EventHandler(this.Button_Main_Menu_Click);
             // 
             // button_Save
@@ -67,6 +71,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::KBS1.Properties.Resources.selectlevel;
             this.Controls.Add(this.button_Load);
             this.Controls.Add(this.button_Save);
             this.Controls.Add(this.button_Main_Menu);
