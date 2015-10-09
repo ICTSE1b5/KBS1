@@ -14,6 +14,9 @@ namespace KBS1.view
 {
     public partial class LevelSelectScreen : UserControl
     {
+        List<Button> listOfButtons = new List<Button>();
+        private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+
         public event EventHandler LevelSelectScreenClick;
 
         public LevelSelectScreen()
@@ -56,11 +59,92 @@ namespace KBS1.view
         {
             return button_Save;
         }
-        public Button Get_Button_Show()
+        
+
+        public void CreateDynamicButton()
         {
-            return button1;
+            string[] files = Directory.GetFiles(path + @"\levels\", "*.xml");
+
+            int i = 0;
+            int i2 = 0;
+            int items = 0;
+            foreach (string file in files)
+            {
+                items += 1;
+
+                if (items <= 5)
+                {
+                    i += 80;
+                    Button btn = new Button();
+                    btn.Location = new Point(100 + i, 200);
+                    btn.Name = "btn1";
+                    btn.Text = "Level" + items;
+
+                    btn.Click += new EventHandler(DynamicButton_Click);
+                    this.Controls.Add(btn);
+                    listOfButtons.Add(btn);
+                }
+                if (items > 5)
+                {
+                    i2 += 80;
+                    Button btn2 = new Button();
+                    btn2.Location = new Point(100 + i2, 300);
+                    btn2.Name = "btn2";
+                    btn2.Text = "Level" + items;
+
+                    btn2.Click += new EventHandler(DynamicButton_Click);
+                    this.Controls.Add(btn2);
+                    listOfButtons.Add(btn2);
+                }
+            }
+        }
+
+
+        private void DynamicButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            switch (button.Text)
+            {
+                case "Level1":
+                    System.Windows.Forms.MessageBox.Show("1");
+                    break;
+                case "Level2":
+                    System.Windows.Forms.MessageBox.Show("2");
+                    break;
+                case "Level3":
+                    System.Windows.Forms.MessageBox.Show("3");
+                    break;
+                case "Level4":
+                    System.Windows.Forms.MessageBox.Show("4");
+                    break;
+                case "Level5":
+                    System.Windows.Forms.MessageBox.Show("5");
+                    break;
+                case "Level6":
+                    System.Windows.Forms.MessageBox.Show("6");
+                    break;
+                case "Level7":
+                    System.Windows.Forms.MessageBox.Show("7");
+                    break;
+                case "Level8":
+                    System.Windows.Forms.MessageBox.Show("8");
+                    break;
+                case "Level9":
+                    System.Windows.Forms.MessageBox.Show("9");
+                    break;
+                case "Level10":
+                    System.Windows.Forms.MessageBox.Show("10");
+                    break;
+
+            }
+
+
+
+
         }
 
 
     }
 }
+
+
