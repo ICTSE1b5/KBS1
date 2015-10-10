@@ -10,14 +10,15 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using KBS1.controller;
+using System.Text.RegularExpressions;
 
 namespace KBS1.view
 {
     public partial class LevelSelectScreen : UserControl
     {
-        List<Button> listOfButtons = new List<Button>();
+        public List<Button> listOfButtons = new List<Button>();
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-       
+      
         public event EventHandler LevelSelectScreenClick;
         public Form1 form;
 
@@ -67,43 +68,46 @@ namespace KBS1.view
         public void CreateDynamicButton()
         {
             string[] files = Directory.GetFiles(path + @"\levels\", "*.xml");
-            
+            Array.Sort(files, (a, b) => int.Parse(Regex.Replace(a, "[^0-9]", "")) - int.Parse(Regex.Replace(b, "[^0-9]", "")));
+
+
             int i = 0;
             int i3 = 0;
+            int i4 = 0;
 
 
             for (int i2 = 0; i2 < files.Length; i2++)
             {
-                if (i2 < 6)
+                string path2 = files[i2];
+                String result = Path.GetFileNameWithoutExtension(path2);
+                Button btn = new Button();
+                btn.Name = "btn1";
+                btn.Text = result;
+
+                btn.Click += new EventHandler(DynamicButton_Click);
+                this.Controls.Add(btn);
+                listOfButtons.Add(btn);
+                if (i2 <= 4)
                 {
-                    string path2 = files[i2];
-                    String result = Path.GetFileNameWithoutExtension(path2);
-
                     i += 80;
-                    Button btn = new Button();
+                    
                     btn.Location = new Point(100 + i, 200);
-                    btn.Name = "btn1";
-                    btn.Text = result;
-
-                    btn.Click += new EventHandler(DynamicButton_Click);
-                    this.Controls.Add(btn);
-                    listOfButtons.Add(btn);
+                    
                 }
 
-                if (i2 >6)
+                if (i2 >4 && i2 <= 9)
                 {
-                    string path2 = files[i2];
-                    String result = Path.GetFileNameWithoutExtension(path2);
-         
                      i3 += 80;
-                    Button btn = new Button();
+                   
                     btn.Location = new Point(100 + i3, 300);
-                    btn.Name = "btn1";
-                    btn.Text = result;
+                   
+                }
+                if (i2 > 9)
+                {
+                    i4 += 80;
 
-                    btn.Click += new EventHandler(DynamicButton_Click);
-                    this.Controls.Add(btn);
-                    listOfButtons.Add(btn);
+                    btn.Location = new Point(100 + i4, 400);
+
                 }
 
             }
