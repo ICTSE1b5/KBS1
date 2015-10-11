@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KBS1.model;
+using KBS1.view;
 
 namespace KBS1.controller
 {
@@ -16,6 +17,7 @@ namespace KBS1.controller
         private List<GameObject> game_objects = new List<GameObject>();
         public Player player1;
         public XmlParser parser;
+        private StatisticsScreen game_StatScreen;
 
         public enum FrameRate : int
         {
@@ -37,11 +39,11 @@ namespace KBS1.controller
         private int properties_UpdateRate = 16; //60 FPS is the default
 
 
-        public GameLoop(Form form, FrameRate updateRate)
+        public GameLoop(Form form, FrameRate updateRate, StatisticsScreen statScreen)
         {
             game_Form = form;
             game_Controller = new GameController(form, this);
-
+            game_StatScreen = statScreen;
 
             SetUpdateRate(updateRate);
         }
@@ -50,7 +52,7 @@ namespace KBS1.controller
         public void Start(string level)
         {
             Game_Init(level);
-
+            game_StatScreen.DrawPanel(GameEntities);
             while (!properties_Gameover)
             {
                 //Gets the current 'time'
@@ -64,6 +66,9 @@ namespace KBS1.controller
 
                     //Makes the application availible to listen to events, like the KeyDown event or Button_Click
                     Application.DoEvents();
+
+                    //Updates the info like X and Y position on the statisticsScreen
+                    game_StatScreen.updatePanel(GameEntities);
 
                     while (properties_Pause)
                     {

@@ -99,7 +99,7 @@ namespace KBS1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
+            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY, statisticsScreen1);
             game_view = new GameView(this, game_loop);
             game_levels = new GameLevels(this);
         }
@@ -161,6 +161,7 @@ namespace KBS1
            
         }
 
+        //The button handler for the in game menu
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)
         {
             if (sender == inGameMenu.Get_Button_Main_Menu())
@@ -195,6 +196,7 @@ namespace KBS1
             }
         }
 
+        //The button handler for the options menu
         public void OptionMenu_ButtonHandler(object sender, EventArgs e)
         {
             if (sender == optionsMenu.Get_CheckBox_Music())
@@ -220,7 +222,7 @@ namespace KBS1
                         statisticsScreen1.Visible = true;
                         statisticsScreen1.Enabled = true;
                         Width = 1040;
-                        statisticsScreen1.DrawPanel2(game_loop.GameEntities);
+                        statisticsScreen1.DrawPanel(game_loop.GameEntities);
                         optionsMenu.Enabled = false;
                         optionsMenu.Enabled = true;
                     }
@@ -254,7 +256,7 @@ namespace KBS1
 
         public void StartGame(string level)
         {
-            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY);
+            game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY, statisticsScreen1);
             game_view = new GameView(this, game_loop);
             game_levels = new GameLevels(this);
 
@@ -263,11 +265,12 @@ namespace KBS1
                 statisticsScreen1.Visible = true;
                 statisticsScreen1.Enabled = true;
                 Width = 1040;
-                statisticsScreen1.DrawPanel2(game_loop.GameEntities);
+                //statisticsScreen1.DrawPanel(game_loop.GameEntities);
             }
-            game_loop.Start(level);
-        }
 
+            game_loop.Start(level);
+
+        }
 
         private void CloseGame()
         {
