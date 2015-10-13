@@ -57,47 +57,44 @@ namespace KBS1.view
 
         public void CreateDynamicButton()
         {
+            // get file directory from levels
             string[] files = Directory.GetFiles(path + @"\levels\", "*.xml");
+            // sort the levels ascending
             Array.Sort(files, (a, b) => int.Parse(Regex.Replace(a, "[^0-9]", "")) - int.Parse(Regex.Replace(b, "[^0-9]", "")));
-
 
             int i = 0;
             int i3 = 0;
             int i4 = 0;
 
-
+            // for each file in the directory, create a button with the name of the file
             for (int i2 = 0; i2 < files.Length; i2++)
             {
                 string path2 = files[i2];
+                // get the file name
                 String result = Path.GetFileNameWithoutExtension(path2);
                 Button btn = new Button();
                 btn.Name = "btn1";
+                // text from the button is the file name
                 btn.Text = result;
 
                 btn.Click += new EventHandler(DynamicButton_Click);
+                // add the button to the form
                 this.Controls.Add(btn);
-                listOfButtons.Add(btn);
                 if (i2 <= 4)
                 {
                     i += 80;
-                    
-                    btn.Location = new Point(100 + i, 200);
-                    
+                    btn.Location = new Point(100 + i, 200);  
                 }
 
                 if (i2 >4 && i2 <= 9)
                 {
-                     i3 += 80;
-                   
-                    btn.Location = new Point(100 + i3, 300);
-                   
+                    i3 += 80;
+                    btn.Location = new Point(100 + i3, 250);
                 }
                 if (i2 > 9)
                 {
                     i4 += 80;
-
-                    btn.Location = new Point(100 + i4, 400);
-
+                    btn.Location = new Point(100 + i4, 300);
                 }
 
             }
