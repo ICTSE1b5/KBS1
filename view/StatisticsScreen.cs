@@ -20,8 +20,10 @@ namespace KBS1.view
 
         //Loops through all gameobjects and creates a panel for each object
         public void DrawPanel(List<GameObject> gameobjects)
-        {
+        { 
+            //Clears the controls so when a new level is started this list is clean
             Controls.Clear();
+
             int x = 0;
             foreach (GameObject item in gameobjects)
             {
@@ -41,6 +43,7 @@ namespace KBS1.view
                     panelList.Add(panel);
                     Controls.Add(panel);
                 }
+                //Adds 100 to the X position of the Panel
                 x += 100;
             }
         }
