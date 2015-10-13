@@ -66,6 +66,8 @@ namespace KBS1.view
             int i3 = 0;
             int i4 = 0;
 
+            this.panel1.AutoScroll = true;
+
             // for each file in the directory, create a button with the name of the file
             for (int i2 = 0; i2 < files.Length; i2++)
             {
@@ -79,22 +81,24 @@ namespace KBS1.view
 
                 btn.Click += new EventHandler(DynamicButton_Click);
                 // add the button to the form
-                this.Controls.Add(btn);
+                this.panel1.Controls.Add(btn);
+
+                
                 if (i2 <= 4)
                 {
                     i += 80;
-                    btn.Location = new Point(100 + i, 200);  
+                    btn.Location = new Point(-55 + i, 25);  
                 }
 
                 if (i2 >4 && i2 <= 9)
                 {
                     i3 += 80;
-                    btn.Location = new Point(100 + i3, 250);
+                    btn.Location = new Point(-55 + i3, 75);
                 }
                 if (i2 > 9)
                 {
                     i4 += 80;
-                    btn.Location = new Point(100 + i4, 300);
+                    btn.Location = new Point(-55 + i4, 125);
                 }
 
             }
