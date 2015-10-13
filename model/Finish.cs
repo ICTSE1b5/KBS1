@@ -40,7 +40,7 @@ namespace KBS1.model
                 switch(ob.Type)
                 {
                     case ObjectType.PLAYER:
-                        //MessageBox.Show("YOU WIN!!!!! TEST STUFF");
+                        MessageBox.Show("YOU WIN!!!!");
                         break;
                     default:
                         break;
