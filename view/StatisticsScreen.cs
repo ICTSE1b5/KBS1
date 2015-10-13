@@ -25,7 +25,7 @@ namespace KBS1.view
             {
                 if (item.GetType() == typeof(Player))
                 {
-                    StatisticPanel panel = new StatisticPanel(item, Properties.Resources.playerDOWN);
+                    StatisticPanel panel = new StatisticPanel(item);
                     panel.Location = new Point(0, x);
                     panel.Size = new Size(220, 100);
                     panel.Name = "Player";
@@ -35,7 +35,7 @@ namespace KBS1.view
                 }
                 else if (item is Enemy)
                 {
-                    StatisticPanel panel = new StatisticPanel(item, Properties.Resources.wolf_down);
+                    StatisticPanel panel = new StatisticPanel(item);
                     panel.Location = new Point(0, x);
                     panel.Size = new Size(220, 100);
                     panel.Name = "Enemy";

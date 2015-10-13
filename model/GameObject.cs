@@ -32,9 +32,9 @@ namespace KBS1.model
             Height,
             Damage,
             Health,
-            Type
+            Type,
+            Image
         }
-
         public enum ObjectDirection
         {
             UP,
@@ -43,8 +43,6 @@ namespace KBS1.model
             RIGHT,
             NONE
         }
-
-
 
         // Properties that all game objects have
         protected int Position_X;
@@ -58,6 +56,7 @@ namespace KBS1.model
         public ObjectType Type { get; set; }
         public ObjectDirection Direction = ObjectDirection.NONE;
         protected Form game_Form;
+        public Image image { get; set; }
 
         protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form form)
         {

@@ -14,6 +14,7 @@ namespace KBS1.model
         public Player(int player_health,int player_speed, int pos_x, int pos_y, int player_width, int player_height, Form form) : base(pos_x, pos_y, player_width, player_height, player_speed, player_speed, player_health, player_health, form)
         {
             Type = ObjectType.PLAYER;
+            this.image = Properties.Resources.playerDOWN;
         }
 
 

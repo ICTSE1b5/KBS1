@@ -14,7 +14,8 @@ namespace KBS1.model
             : base(pos_x, pos_y, width, height, 0, 0, 0, 0, form)
         {
             Type = ObjectType.GOAL;
-        }
+           this.image = Properties.Resources.loghouse;
+       }
         
 
         public override void Move()

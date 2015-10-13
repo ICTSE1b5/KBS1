@@ -11,9 +11,8 @@ namespace KBS1.model
     {
         static String enemy_description = "The wolf will attack the player when you get too close. getting attacked by the wolf will kill you.";
         public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form form)
-            : base(pos_x, pos_y, 80, 80, 1, 1, 5, 10, props, form)
-        {
-
+            : base(pos_x, pos_y, 80, 80, 1, 1, 5, 10, props, form) {
+            this.image = Properties.Resources.wolf_up;
         }
 
         public override void AI()

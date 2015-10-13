@@ -22,7 +22,7 @@ namespace KBS1.view
         public GameObject gameObject { get; }
 
         //Creates a Panel for each gameobject
-        public StatisticPanel(GameObject gameObject, Image objectImage)
+        public StatisticPanel(GameObject gameObject)
         {
             this.gameObject = gameObject;
             xLabel = new Label();
@@ -61,7 +61,7 @@ namespace KBS1.view
             descriptionLabel.Size = new Size(200, 41);
 
             objectPicture = new PictureBox();
-            objectPicture.Image = objectImage;
+            objectPicture.Image = gameObject.image;
             objectPicture.Location = new Point(16, 11);
             objectPicture.Size = new Size(73, 54);
             objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;

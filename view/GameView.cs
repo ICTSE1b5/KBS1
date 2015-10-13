@@ -30,7 +30,7 @@ namespace KBS1.view
         //public void DrawGame(ref Graphics graphics_GraphicsDevice)
         { 
             //draw background?? or is this done at initialization
-
+            graphics_GraphicsDevice.FillRectangle(Brushes.Red, 0, 0, game_Form.Width, game_Form.Height);
             //go through each object currently alive and draw them
 
             /*Test Block*/
@@ -43,19 +43,19 @@ namespace KBS1.view
                     switch (game_prop.Direction)
                     {
                         case GameObject.ObjectDirection.UP:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUPreverse, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.playerUPreverse;
                             break;
                         case GameObject.ObjectDirection.DOWN:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerDOWN, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.playerDOWN;
                             break;
                         case GameObject.ObjectDirection.LEFT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerLEFT, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.playerLEFT;
                             break;
                         case GameObject.ObjectDirection.RIGHT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerRIGHT, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.playerRIGHT;
                             break;
                         case GameObject.ObjectDirection.NONE:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.playerUP, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.playerUP;
                             break;
                     }
                 }
@@ -64,35 +64,25 @@ namespace KBS1.view
                     switch (game_prop.Direction)
                     {
                         case GameObject.ObjectDirection.UP:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.wolf_up;
                             break;
                         case GameObject.ObjectDirection.DOWN:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_down, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.wolf_down;
                             break;
                         case GameObject.ObjectDirection.LEFT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_left, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.wolf_left;
                             break;
                         case GameObject.ObjectDirection.RIGHT:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_right, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.wolf_right;
                             break;
                         case GameObject.ObjectDirection.NONE:
-                            graphics_GraphicsDevice.DrawImage(Properties.Resources.wolf_up, game_prop.getRectangle());
+                            game_prop.image = Properties.Resources.wolf_up;
                             break;
                     }
                 }
-                else if (game_prop.Type.Equals(GameObject.ObjectType.WALL))
-                {
-                    graphics_GraphicsDevice.DrawImage(Properties.Resources.bush, game_prop.getRectangle());
-                }
-                else if (game_prop.Type.Equals(GameObject.ObjectType.GOAL))
-                {
-                    graphics_GraphicsDevice.DrawImage(Properties.Resources.loghouse, game_prop.getRectangle());
-                }
-                else
-                {
-                    graphics_GraphicsDevice.FillRectangle(Brushes.Green, game_prop.getRectangle());
-                }
-                
+
+                graphics_GraphicsDevice.DrawImage(game_prop.image, game_prop.getRectangle());
+
             }
 
         }

@@ -15,6 +15,7 @@ namespace KBS1.model
             : base(pos_x, pos_y, 50, 50, 0, 0, 0, 0, form)
         {
                 Type = ObjectType.WALL;
+            this.image = Properties.Resources.bush;
         }
             
 
