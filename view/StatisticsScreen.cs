@@ -21,6 +21,7 @@ namespace KBS1.view
         //Loops through all gameobjects and creates a panel for each object
         public void DrawPanel(List<GameObject> gameobjects)
         {
+            Controls.Clear();
             int x = 0;
             foreach (GameObject item in gameobjects)
             {
