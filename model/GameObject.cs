@@ -71,6 +71,7 @@ namespace KBS1.model
         protected int Damage;
         protected int Health;
 
+
         //An int to make sure an objects stops at the position of impact instead of moving throught another object
         private int speedCollisionDebuff_vertical;
         private int speedCollisionDebuff_horizontal;
@@ -90,7 +91,7 @@ namespace KBS1.model
         public ObjectType Type { get; set; }
 
         //Other???
-        protected Form game_Form;
+        protected Form1 game_Form;
 
 
         //All images
@@ -109,7 +110,7 @@ namespace KBS1.model
         public Image image { get; set; }
         public string description { get; set; }
 
-        protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form form)
+        protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form1 form)
         {
             Position_X = pos_x;
             Position_Y = pos_y;

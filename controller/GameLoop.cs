@@ -12,10 +12,9 @@ namespace KBS1.controller
     class GameLoop
     {
         //Important Properties
-        public Form game_Form;
+        public Form1 game_Form;
         public GameController game_Controller;
         private List<GameObject> game_objects = new List<GameObject>();
-        public Player player1;
         public XmlParser parser;
         private StatisticsScreen game_StatScreen;
 
@@ -39,7 +38,7 @@ namespace KBS1.controller
         private int properties_UpdateRate = 16; //60 FPS is the default
 
 
-        public GameLoop(Form form, FrameRate updateRate, StatisticsScreen statScreen)
+        public GameLoop(Form1 form, FrameRate updateRate, StatisticsScreen statScreen)
         {
             game_Form = form;
             game_Controller = new GameController(form, this);

@@ -177,6 +177,7 @@ namespace KBS1
                 Width = 800;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+
             }
             else if (sender == gameoverMenu.Get_Button_CloseGame())
             {
@@ -184,8 +185,20 @@ namespace KBS1
             }
             else if (sender == gameoverMenu.Get_Button_Restart())
             {
+                game_loop.Shutdown();
+                game_loop = null;
+                gameoverMenu.Visible = false;
+                gameoverMenu.Enabled = false;
                 StartGame("level1");
             }
+        }
+
+        //method to show the gameOverMenu
+        public void showGameOver()
+        {
+            game_loop.Set_Properties_Pause(true);
+            gameoverMenu.Visible = true;
+            gameoverMenu.Enabled = true;
         }
 
 

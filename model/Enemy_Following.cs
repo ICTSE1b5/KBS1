@@ -9,7 +9,7 @@ namespace KBS1.model
 {
     class Enemy_Following : Enemy
     {
-        public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form form)
+        public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form1 form)
             : base(pos_x, pos_y, 80, 80, 1, 1, 5, 10, props, form)
         {
             this.image = Properties.Resources.wolf_up;
@@ -76,7 +76,7 @@ namespace KBS1.model
                 switch (ob.Type)
                 {
                     case ObjectType.PLAYER:
-                        MessageBox.Show("GAMEOVER!!!!!");
+                        game_Form.showGameOver();
                         break;
                     default:
                         break;

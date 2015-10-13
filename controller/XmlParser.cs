@@ -16,6 +16,7 @@ namespace KBS1.controller
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
         public List<List<string>> data { get; }
         public Player player1;
+        public Finish finish1;
         public XmlParser()
         {
             this.data = new List<List<string>>();
@@ -100,7 +101,7 @@ namespace KBS1.controller
             }
         }
 
-        public void Handle(List<GameObject> game_objects, Form game_Form,string levelslug)
+        public void Handle(List<GameObject> game_objects, Form1 game_Form,string levelslug)
         {
             // gets an XML file from a specific directory
             this.Parse(levelslug);
@@ -119,9 +120,9 @@ namespace KBS1.controller
                 if (item[0] == "finish")
                 {
                     //create new object
-                    Finish finish = new Finish(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), game_Form);
+                    finish1 = new Finish(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), game_Form);
                     //Adds object to the list
-                    game_objects.Add(finish);
+                    game_objects.Add(finish1);
                 }
                 if (item[0] == "enemy")
                 {

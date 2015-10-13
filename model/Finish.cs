@@ -7,15 +7,16 @@ using System.Windows.Forms;
 
 namespace KBS1.model
 {
-    class Finish : GameObject
+    public class Finish : GameObject
     {
        
-       public Finish(int pos_x, int pos_y, int width, int height, Form form)
+       public Finish(int pos_x, int pos_y, int width, int height, Form1 form)
             : base(pos_x, pos_y, width, height, 0, 0, 0, 0, form)
         {
             Type = ObjectType.GOAL;
             this.image = Properties.Resources.loghouse;
             this.description = "When you reach the finish you complete the level";
+        
         }
 
         protected override void setupImages()
@@ -41,6 +42,7 @@ namespace KBS1.model
                 {
                     case ObjectType.PLAYER:
                         MessageBox.Show("YOU WIN!!!!");
+                        
                         break;
                     default:
                         break;

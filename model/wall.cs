@@ -9,7 +9,7 @@ namespace KBS1.model
 {
     class Wall : GameObject
     {
-        public Wall(int pos_x, int pos_y, Form form)
+        public Wall(int pos_x, int pos_y, Form1 form)
             : base(pos_x, pos_y, 50, 50, 0, 0, 0, 0, form)
         {
             Type = ObjectType.WALL;
