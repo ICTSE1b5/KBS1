@@ -57,6 +57,8 @@ namespace KBS1.model
         public ObjectDirection Direction = ObjectDirection.NONE;
         protected Form game_Form;
         public Image image { get; set; }
+        public string description { get; set; }
+
 
         protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form form)
         {

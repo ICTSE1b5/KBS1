@@ -56,7 +56,7 @@ namespace KBS1.view
             speedLabelData.AutoSize = true;
 
             descriptionLabel = new Label();
-            descriptionLabel.Text = "This is the player, you can move it with \n using the arrow keys on the keyboard";
+            descriptionLabel.Text = gameObject.description;
             descriptionLabel.Location = new Point(16, 69);
             descriptionLabel.Size = new Size(200, 41);
 

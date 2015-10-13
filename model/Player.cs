@@ -7,7 +7,6 @@ namespace KBS1.model
     public class Player : GameObject
     {
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
-        static String player_description = "The player is the character that needs to avoid being attacked by the wolves, solve puzzles and make it to the finish.";
         private bool direction_UP, direction_DOWN, direction_LEFT, direction_RIGHT;
 
 
@@ -15,6 +14,7 @@ namespace KBS1.model
         {
             Type = ObjectType.PLAYER;
             this.image = Properties.Resources.playerDOWN;
+            this.description = "This is the player, you can move it with using the arrow keys on the keyboard";
         }
 
 

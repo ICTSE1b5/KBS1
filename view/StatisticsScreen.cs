@@ -7,7 +7,8 @@ namespace KBS1.view
 {
     public partial class StatisticsScreen : UserControl
     {
-        List<StatisticPanel> panelList;
+        private List<StatisticPanel> panelList;
+        private bool wallAdded = false;
 
         public StatisticsScreen()
         {
@@ -23,37 +24,33 @@ namespace KBS1.view
             int x = 0;
             foreach (GameObject item in gameobjects)
             {
-                if (item.GetType() == typeof(Player))
+                StatisticPanel panel = new StatisticPanel(item);
+                panel.Location = new Point(0, x);
+                panel.Size = new Size(220, 100);
+
+                //This IF statement makes sure only 1 wall is added
+                if (item is Wall && !wallAdded)
                 {
-                    StatisticPanel panel = new StatisticPanel(item);
-                    panel.Location = new Point(0, x);
-                    panel.Size = new Size(220, 100);
-                    panel.Name = "Player";
+                    wallAdded = true;
                     panelList.Add(panel);
                     Controls.Add(panel);
-                    x += 100;
                 }
-                else if (item is Enemy)
+                else if(!(item is Wall))
                 {
-                    StatisticPanel panel = new StatisticPanel(item);
-                    panel.Location = new Point(0, x);
-                    panel.Size = new Size(220, 100);
-                    panel.Name = "Enemy";
                     panelList.Add(panel);
                     Controls.Add(panel);
-                    x += 100;
                 }
+                x += 100;
             }
         }
 
         //Loops through all gameobjects and updates each panel for each corresponding object
-        public void updatePanel()
+        public void UpdatePanel()
         {
-                foreach (StatisticPanel panel in panelList)
-                {
-                    panel.updatePanel();
-                }
-
+            foreach (StatisticPanel panel in panelList)
+            {
+                panel.updatePanel();
+            }
         }
     }
 }

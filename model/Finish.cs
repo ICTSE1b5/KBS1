@@ -15,7 +15,8 @@ namespace KBS1.model
         {
             Type = ObjectType.GOAL;
            this.image = Properties.Resources.loghouse;
-       }
+           this.description = "When you reach the finish you complete the level";
+        }
         
 
         public override void Move()
