@@ -26,11 +26,11 @@ namespace KBS1.view
             game_loop = loop;
         }
 
+
         public void DrawGame(Graphics graphics_GraphicsDevice)
         //public void DrawGame(ref Graphics graphics_GraphicsDevice)
         { 
-            //draw background?? or is this done at initialization
-            graphics_GraphicsDevice.FillRectangle(Brushes.Red, 0, 0, game_Form.Width, game_Form.Height);
+            
             //go through each object currently alive and draw them
 
             /*Test Block*/

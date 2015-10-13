@@ -92,6 +92,7 @@ namespace KBS1.model
         //Other???
         protected Form game_Form;
 
+
         //All images
         protected Image imageNorthWest = Properties.Resources.imagenotfound;
         protected Image imageNorth = Properties.Resources.imagenotfound;
@@ -104,8 +105,9 @@ namespace KBS1.model
         protected Image imageSouthWest = Properties.Resources.imagenotfound;
         protected Image imageSouth = Properties.Resources.imagenotfound;
         protected Image imageSouthEast = Properties.Resources.imagenotfound;
-
-
+        
+        public Image image { get; set; }
+        public string description { get; set; }
 
         protected GameObject( int pos_x, int pos_y, int width, int height, int speed_x, int speed_y, int damage, int health, Form form)
         {

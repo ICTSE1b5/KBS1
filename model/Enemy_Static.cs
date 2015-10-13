@@ -12,7 +12,8 @@ namespace KBS1.model
         public Enemy_Static(int pos_x, int pos_y, List<GameObject> props, Form form)
             : base(pos_x, pos_y, 50, 50, 0, 0, 5, 10, props, form)
         {
-            
+            this.image = Properties.Resources.wolf_right;
+            this.description = "This wolf doesn't move but when you hit him, you are dead";
         }
 
         protected override void setupImages()

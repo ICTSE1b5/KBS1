@@ -44,16 +44,6 @@ namespace KBS1.view
             return button_Main_Menu;
         }
 
-        public Button Get_Button_Load()
-        {
-            return button_Load;
-        }
-        public Button Get_Button_Save()
-        {
-            return button_Save;
-        }
-
-      
 
         public void CreateDynamicButton()
         {
@@ -62,49 +52,45 @@ namespace KBS1.view
             // sort the levels ascending
             Array.Sort(files, (a, b) => int.Parse(Regex.Replace(a, "[^0-9]", "")) - int.Parse(Regex.Replace(b, "[^0-9]", "")));
 
-            int i = 0;
-            int i3 = 0;
-            int i4 = 0;
+            int xPos = 25;
+            int yPos = 25;
 
             this.panel1.AutoScroll = true;
 
             // for each file in the directory, create a button with the name of the file
-            for (int i2 = 0; i2 < files.Length; i2++)
+            for (int i2 = 1; i2 <= files.Length; i2++)
             {
-                string path2 = files[i2];
+                string path2 = files[i2-1];
                 // get the file name
                 String result = Path.GetFileNameWithoutExtension(path2);
                 Button btn = new Button();
                 btn.Name = "btn1";
                 // text from the button is the file name
                 btn.Text = result;
-
+                //add event handler
                 btn.Click += new EventHandler(DynamicButton_Click);
                 // add the button to the form
                 this.panel1.Controls.Add(btn);
 
-                
-                if (i2 <= 4)
-                {
-                    i += 80;
-                    btn.Location = new Point(-55 + i, 25);  
-                }
 
-                if (i2 >4 && i2 <= 9)
-                {
-                    i3 += 80;
-                    btn.Location = new Point(-55 + i3, 75);
-                }
-                if (i2 > 9)
-                {
-                    i4 += 80;
-                    btn.Location = new Point(-55 + i4, 125);
-                }
+                // give the button location
+                 btn.Location = new Point(xPos, yPos);
+                // location of next button to the left
+                xPos += 80; // add 80 per button
 
+
+                int eachFive = 5;
+                // if the 5th button is added, new row
+                if (i2 %eachFive == 0)
+                {
+                    xPos = 25;
+                    yPos +=30;
+                    eachFive += 5;
+                }
             }
 
 
-           
+
         }
 
 

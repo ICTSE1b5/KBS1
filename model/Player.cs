@@ -7,13 +7,16 @@ namespace KBS1.model
     public class Player : GameObject
     {
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
-        static String player_description = "The player is the character that needs to avoid being attacked by the wolves, solve puzzles and make it to the finish.";
         private bool direction_UP, direction_DOWN, direction_LEFT, direction_RIGHT;
 
 
         public Player(int player_health,int player_speed, int pos_x, int pos_y, int player_width, int player_height, Form form) : base(pos_x, pos_y, player_width, player_height, player_speed, player_speed, player_health, player_health, form)
         {
             Type = ObjectType.PLAYER;
+
+            this.image = Properties.Resources.playerSOUTH;
+            this.description = "This is the player, you can move it with using the arrow keys on the keyboard";
+
         }
 
         protected override void setupImages()
@@ -30,34 +33,6 @@ namespace KBS1.model
             imageSouth = Properties.Resources.playerSOUTH;
             imageSouthEast = Properties.Resources.playerSOUTHEAST;
         }
-
-        //public override void Move()
-        //{
-        //    //Checks up
-        //    if(direction_UP && Position_Y >= (0 + Speed_Y))
-        //    {
-        //        Position_Y -= Speed_Y;
-        //    }
-        //    //Checks Down
-        //    else if(direction_DOWN && Position_Y < (game_Form.Height - (Speed_Y + Height + 35)))
-        //    {
-        //        Position_Y += Speed_Y;
-        //    }
-        //    //If none, don't move
-
-        //    //Checks left
-        //    if (direction_LEFT && Position_X >= (0 + Speed_Y))
-        //    {
-        //        Position_X -= Speed_X;
-        //    }
-        //    //Checks right
-        //    else if (direction_RIGHT && Position_X < (game_Form.Width - (Speed_X + Width + 14)))
-        //    {
-        //        Position_X += Speed_X;
-        //    }
-        //    //If none, don't move
-            
-        //}
 
 
         public void changeDirections(Keys dir, bool enabled)
