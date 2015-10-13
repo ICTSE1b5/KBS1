@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace KBS1.view
 {
-    class StatisticPanel : Panel
+    public class StatisticPanel : Panel
     {
         private Label xLabel;
         private Label xLabelData;
