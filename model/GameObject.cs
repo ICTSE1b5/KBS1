@@ -354,6 +354,7 @@ namespace KBS1.model
         }
 
         //Get the properties       
+        #region Object Properties Getter
         public int pos_x
         {
             get { return Position_X; }
@@ -386,7 +387,6 @@ namespace KBS1.model
         {
             get { return Health; }
         }
-
         public Image getObjectImage()
         {
             string vertical = "";
@@ -439,6 +439,7 @@ namespace KBS1.model
                     return imageIdle;
             }
         }
+        #endregion Object Properties Getter
 
         //A property to return a rectangle object of the GameObject and to give virutal rectangles that give back a rectangle that simulates movement
         public Rectangle ObjectRectangle
