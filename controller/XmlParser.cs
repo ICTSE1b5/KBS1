@@ -102,31 +102,39 @@ namespace KBS1.controller
 
         public void Handle(List<GameObject> game_objects, Form game_Form,string levelslug)
         {
+            // gets an XML file from a specific directory
             this.Parse(levelslug);
+            // parser fills the variable list data
 
-            // voor elke item in data
+            // for each item in var data
             foreach (List<string> item in data)
             {
                 if (item[0] == "player")
                 {
+                    //create new object
                     player1 = new Player(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), Int32.Parse(item[5]), Int32.Parse(item[6]), game_Form);
-                    //Adds the player to the List
+                    //Adds object to the list
                     game_objects.Add(player1);
                 }
                 if (item[0] == "finish")
                 {
+                    //create new object
                     Finish finish = new Finish(Int32.Parse(item[1]), Int32.Parse(item[2]), Int32.Parse(item[3]), Int32.Parse(item[4]), game_Form);
-                    //Adds the finish to the List
+                    //Adds object to the list
                     game_objects.Add(finish);
                 }
                 if (item[0] == "enemy")
                 {
+                    //create new object
                     Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    //Adds object to the list
                     game_objects.Add(enemy);
                 }
                 if (item[0] == "static")
                 {
+                    //create new object
                     Wall wall = new Wall(Int32.Parse(item[1]), Int32.Parse(item[2]), game_Form);
+                    //Adds object to the list
                     game_objects.Add(wall);
                 }
             }
