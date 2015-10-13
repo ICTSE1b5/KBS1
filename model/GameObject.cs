@@ -135,21 +135,21 @@ namespace KBS1.model
         }
 
         protected abstract void setupImages();
-        /*
-        imageNorthWest = ;
-        imageNorth = ;
-        imageNorthEast = ;
+        /* EXAMPLE
+        imageNorthWest = Properties.Resources.;
+        imageNorth = Properties.Resources.;
+        imageNorthEast = Properties.Resources.;
         
-        imageWest = ;
-        imageIdle = ;
-        imageEast = ;
+        imageWest = Properties.Resources.;
+        imageIdle = Properties.Resources.;
+        imageEast = Properties.Resources.;
         
-        imageSouthWest = ;
-        imageSouth = ;
-        imageSouthEast = ;
+        imageSouthWest = Properties.Resources.;
+        imageSouth = Properties.Resources.;
+        imageSouthEast = Properties.Resources.;
         */
-        
-        
+
+
 
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
@@ -233,6 +233,30 @@ namespace KBS1.model
             }
         }
         protected abstract void AI();
+        /* EXAMPLE
+        foreach(GameObject ob in currentCollisionObjectsList)
+            {
+                switch(ob.Type)
+                {
+                    case ObjectType.PLAYER:
+                        //DO STUFF
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        */
+        protected abstract bool CollisionAI(GameObject target); //Give an object to collide with, and return if the collision should stop that type of object. False means that it can pass through.
+        /* EXAMPLE
+        switch(target.Type)
+            {
+                case ObjectType.PLAYER:
+                    return true;
+                default:
+                    return true;
+            }
+        */
 
         //public Kill command, and abstract OnDeath command for sub classes to implement
         public void Kill()
@@ -489,12 +513,17 @@ namespace KBS1.model
         //Collision debuff        
         public void horizontalCollisionWithObject(GameObject target)
         {
-            int debuff = Speed_X - getHorizontalDistanceToObject(target);
+            int debuff = 0;
+            if(CollisionAI(target))       //TODO
+            {
+                debuff = Speed_X - getHorizontalDistanceToObject(target);
+            }
+            
+
             //checks to see if the debuff is greater than the current debuff and then applies it, and sets the target to the collision target for the AI
             if (speedCollisionDebuff_horizontal < debuff)
             {
                 speedCollisionDebuff_horizontal = debuff;
-                //currentHorizontalCollisionObject = target;
                 currentCollisionObjectsList.Add(target);
             }
             //makes sure that the debuff is not negative or more than the speed 
@@ -509,12 +538,18 @@ namespace KBS1.model
         }
         public void verticalCollisionWithObject(GameObject target)
         {
-            int debuff = Speed_Y - getVerticalDistanceToObject(target);
+            int debuff = 0;
+            if (CollisionAI(target))        //TODO
+            {
+                debuff = Speed_Y - getVerticalDistanceToObject(target);
+            }
+            
+            
+
             //checks to see if the debuff is greater than the current debuff and then applies it, and sets the target to the collision target for the AI
             if (speedCollisionDebuff_vertical < debuff)
             {
                 speedCollisionDebuff_vertical = debuff;
-                //currentVerticalCollisionObject = target;
                 currentCollisionObjectsList.Add(target);
             }
             //makes sure that the debuff is not negative or more than the speed 

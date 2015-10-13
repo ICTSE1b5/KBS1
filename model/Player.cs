@@ -70,5 +70,16 @@ namespace KBS1.model
         {
             //throw new NotImplementedException();
         }
+
+        protected override bool CollisionAI(GameObject target)
+        {
+            switch (target.Type)
+            {
+                case ObjectType.PLAYER:
+                    return true;
+                default:
+                    return true;
+            }
+        }
     }
 }

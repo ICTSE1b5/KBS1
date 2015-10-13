@@ -33,12 +33,25 @@ namespace KBS1.model
 
         protected override void AI()
         {
-            //Doesn't move because it is immobile
+            
         }
 
         protected override void OnDeath()
         {
-            throw new NotImplementedException();
+            
+        }
+
+        protected override bool CollisionAI(GameObject target)
+        {
+            
+            switch (target.Type)
+            {
+                case ObjectType.PLAYER:
+                    return true;
+                default:
+                    return true;
+            }
+        
         }
     }
 }

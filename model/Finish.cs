@@ -35,12 +35,37 @@ namespace KBS1.model
 
         protected override void AI()
         {
-            //throw new NotImplementedException();
+            foreach(GameObject ob in currentCollisionObjectsList)
+            {
+                switch(ob.Type)
+                {
+                    case ObjectType.PLAYER:
+                        //MessageBox.Show("YOU WIN!!!!! TEST STUFF");
+                        break;
+                    default:
+                        break;
+                }
+
+            }
         }
 
         protected override void OnDeath()
         {
-            //throw new NotImplementedException();
+            //TODO
+        }
+
+        protected override bool CollisionAI(GameObject target)
+        {
+            MessageBox.Show("Test");
+            switch (target.Type)
+            {
+                case ObjectType.PLAYER:
+                    MessageBox.Show("YOU WIN", "CONGRATULATIONS");
+                    target.Kill();
+                    return false;
+                default:
+                    return true;
+            }
         }
     }
 }
