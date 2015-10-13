@@ -69,7 +69,22 @@ namespace KBS1.view
 
             //Adds a Picture of the gameobject
             objectPicture = new PictureBox();
-            objectPicture.Image = gameObject.image;
+            if (gameObject is Player)
+            {
+                objectPicture.Image = Properties.Resources.playerRIGHT;
+            }
+            else if(gameObject is Enemy_Following)
+            {
+                objectPicture.Image = Properties.Resources.wolf_right;
+            }
+            else if (gameObject is Enemy_Static)
+            {
+                objectPicture.Image = Properties.Resources.wolf_right;
+            }
+            else
+            {
+                objectPicture.Image = gameObject.image;
+            }
             objectPicture.Location = new Point(16, 11);
             objectPicture.Size = new Size(73, 54);
             objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;

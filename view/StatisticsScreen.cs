@@ -23,7 +23,7 @@ namespace KBS1.view
         { 
             //Clears the controls so when a new level is started this list is clean
             Controls.Clear();
-
+            wallAdded = false;
             int x = 0;
             foreach (GameObject item in gameobjects)
             {
