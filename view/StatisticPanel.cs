@@ -19,7 +19,7 @@ namespace KBS1.view
         private Label speedLabelData;
         private Label descriptionLabel;
         private PictureBox objectPicture;
-        private GameObject gameObject;
+        public GameObject gameObject { get; }
 
         //Creates a Panel for each gameobject
         public StatisticPanel(GameObject gameObject, Image objectImage)
@@ -77,11 +77,11 @@ namespace KBS1.view
         }
 
         //Updates the info for each panel in the StatisticsScreen
-        public void updatePanel(GameObject gameObject)
+        public void updatePanel()
         {
-            xLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Position_X).ToString();
-            yLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Position_Y).ToString();
-            speedLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Speed_X).ToString();
+            xLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Position_X).ToString();
+            yLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Position_Y).ToString();
+            speedLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Speed_X).ToString();
         }
     }
 }

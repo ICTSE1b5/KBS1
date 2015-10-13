@@ -47,22 +47,12 @@ namespace KBS1.view
         }
 
         //Loops through all gameobjects and updates each panel for each corresponding object
-        public void updatePanel(List<GameObject> gameobjects)
+        public void updatePanel()
         {
-            foreach (GameObject item in gameobjects)
-            {
                 foreach (StatisticPanel panel in panelList)
                 {
-                    if (panel.Name == "Player" && item.GetType() == typeof(Player))
-                    {
-                        panel.updatePanel(item);
-                    }
-                    else if (panel.Name == "Enemy" && item is Enemy)
-                    {
-                        panel.updatePanel(item);
-                    }
+                    panel.updatePanel();
                 }
-            }
 
         }
     }

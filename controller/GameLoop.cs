@@ -68,7 +68,7 @@ namespace KBS1.controller
                     Application.DoEvents();
 
                     //Updates the info like X and Y position on the statisticsScreen
-                    game_StatScreen.updatePanel(GameEntities);
+                    game_StatScreen.updatePanel();
 
                     while (properties_Pause)
                     {
