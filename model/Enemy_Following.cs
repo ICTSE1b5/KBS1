@@ -76,7 +76,7 @@ namespace KBS1.model
                 switch (ob.Type)
                 {
                     case ObjectType.PLAYER:
-                        MessageBox.Show("GAMEOVER!!!!! TEST STUFF");
+                        //MessageBox.Show("GAMEOVER!!!!! TEST STUFF");
                         break;
                     default:
                         break;

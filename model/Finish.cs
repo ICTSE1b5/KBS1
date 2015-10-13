@@ -56,12 +56,9 @@ namespace KBS1.model
 
         protected override bool CollisionAI(GameObject target)
         {
-            MessageBox.Show("Test");
             switch (target.Type)
             {
                 case ObjectType.PLAYER:
-                    MessageBox.Show("YOU WIN", "CONGRATULATIONS");
-                    target.Kill();
                     return false;
                 default:
                     return true;

@@ -514,9 +514,13 @@ namespace KBS1.model
         public void horizontalCollisionWithObject(GameObject target)
         {
             int debuff = 0;
-            if(CollisionAI(target))       //TODO
+            if(CollisionAI(target) == false)       //TODO
             {
                 debuff = Speed_X - getHorizontalDistanceToObject(target);
+            }
+            else
+            {
+                //MessageBox.Show("YAY");
             }
             
 
