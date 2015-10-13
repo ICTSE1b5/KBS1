@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.button_Main_Menu = new System.Windows.Forms.Button();
-            this.button_Save = new System.Windows.Forms.Button();
-            this.button_Load = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Main_Menu
@@ -46,26 +44,6 @@
             this.button_Main_Menu.Text = "Main Menu";
             this.button_Main_Menu.UseVisualStyleBackColor = false;
             this.button_Main_Menu.Click += new System.EventHandler(this.Button_Main_Menu_Click);
-            // 
-            // button_Save
-            // 
-            this.button_Save.Location = new System.Drawing.Point(174, 501);
-            this.button_Save.Name = "button_Save";
-            this.button_Save.Size = new System.Drawing.Size(63, 29);
-            this.button_Save.TabIndex = 1;
-            this.button_Save.Text = "Save";
-            this.button_Save.UseVisualStyleBackColor = true;
-            this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
-            // 
-            // button_Load
-            // 
-            this.button_Load.Location = new System.Drawing.Point(243, 501);
-            this.button_Load.Name = "button_Load";
-            this.button_Load.Size = new System.Drawing.Size(67, 29);
-            this.button_Load.TabIndex = 2;
-            this.button_Load.Text = "Load";
-            this.button_Load.UseVisualStyleBackColor = true;
-            this.button_Load.Click += new System.EventHandler(this.Button_Load_Click);
             // 
             // LevelSelectScreen
             // 
