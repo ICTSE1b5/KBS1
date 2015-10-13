@@ -83,6 +83,11 @@
     <Compile Include="model\Wall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="view\GameView.cs" />
     <Compile Include="view\InGameMenu.cs">
       <SubType>UserControl</SubType>
@@ -122,14 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="view\InGameMenu.resx">
       <DependentUpon>InGameMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,8 +170,18 @@
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
     <Content Include="Images\backgroundgame.gif" />
     <Content Include="Images\bush.png" />
+    <None Include="Images\imagenotfound.gif" />
     <Content Include="Images\loghouse.png" />
+    <None Include="Images\playerEAST.gif" />
+    <None Include="Images\playerNORTH.gif" />
+    <None Include="Images\playerNORTHEAST.gif" />
+    <None Include="Images\playerNORTHWEST.gif" />
+    <None Include="Images\playerSOUTH.gif" />
+    <None Include="Images\playerSOUTHEAST.gif" />
+    <None Include="Images\playerSOUTHWEST.gif" />
+    <None Include="Images\playerIDLE.gif" />
     <Content Include="Images\playerUPreverse.gif" />
+    <None Include="Images\playerWEST.gif" />
     <Content Include="Images\selectlevel.gif" />
     <Content Include="Images\wolf-down-left.gif" />
     <Content Include="Images\wolf-down-right.gif" />
@@ -179,6 +189,7 @@
     <Content Include="Images\wolf-left.gif" />
     <Content Include="Images\wolf-right.gif" />
     <Content Include="Images\wolf-up-left.gif" />
+    <None Include="Images\wolf-up-right.gif" />
     <Content Include="Images\wolf-up.gif" />
     <None Include="Images\Gamebackground.gif" />
     <Content Include="Images\playerDOWN.gif" />

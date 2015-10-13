@@ -74,14 +74,9 @@ namespace KBS1.controller
                     {
                         Application.DoEvents();
                     }
-                    //Gives the command for the game to do its calculations
-                    game_Controller.Update();
-
-                    //Gives the command for the view to repaint the objects
-                    /*--> Might couse slowness if used to often, because it needs to redraw the whole screen, */
-                    /*--> Maybe needed to make a special view that only redraws the 4 surrounding backgrounds under the object and the object itself??*/
-                    game_Form.Invalidate();
-
+                    //Gives the command for the game to do its calculations, and move the objects
+                    //And the Game Controller will also update the form
+                    game_Controller.Update(game_objects);
                 }
 
                 //Frame Rate Update
@@ -93,6 +88,14 @@ namespace KBS1.controller
                     properties_FrameCount = 0;
                 }
             }
+
+
+            /*
+            
+                    TODO ANIMATION
+                    -HERE-
+            
+            */
 
             Game_End();
         }

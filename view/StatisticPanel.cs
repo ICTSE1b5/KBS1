@@ -31,7 +31,7 @@ namespace KBS1.view
             xLabel.AutoSize = true;
 
             xLabelData = new Label();
-            xLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Position_X).ToString();
+            xLabelData.Text = gameObject.pos_x.ToString();
             xLabelData.Location = new Point(118, 11);
             xLabelData.AutoSize = true;
 
@@ -41,7 +41,7 @@ namespace KBS1.view
             yLabel.AutoSize = true;
 
             yLabelData = new Label();
-            yLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Position_X).ToString();
+            yLabelData.Text = gameObject.pos_y.ToString();
             yLabelData.Location = new Point(118, 24);
             yLabelData.AutoSize = true;
 
@@ -51,7 +51,7 @@ namespace KBS1.view
             speedLabel.AutoSize = true;
 
             speedLabelData = new Label();
-            speedLabelData.Text = gameObject.GetProperty(GameObject.ObjectProperties.Speed_X).ToString();
+            speedLabelData.Text = gameObject.speed_X.ToString();
             speedLabelData.Location = new Point(141, 37);
             speedLabelData.AutoSize = true;
 
@@ -61,7 +61,7 @@ namespace KBS1.view
             descriptionLabel.Size = new Size(200, 41);
 
             objectPicture = new PictureBox();
-            objectPicture.Image = gameObject.image;
+            objectPicture.Image = gameObject.getObjectImage();
             objectPicture.Location = new Point(16, 11);
             objectPicture.Size = new Size(73, 54);
             objectPicture.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -79,9 +79,9 @@ namespace KBS1.view
         //Updates the info for each panel in the StatisticsScreen
         public void updatePanel()
         {
-            xLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Position_X).ToString();
-            yLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Position_Y).ToString();
-            speedLabelData.Text = this.gameObject.GetProperty(GameObject.ObjectProperties.Speed_X).ToString();
+            xLabelData.Text = this.gameObject.pos_x.ToString();
+            yLabelData.Text = this.gameObject.pos_y.ToString();
+            speedLabelData.Text = this.gameObject.speed_X.ToString();
         }
     }
 }

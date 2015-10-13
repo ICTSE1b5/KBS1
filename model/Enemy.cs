@@ -22,7 +22,5 @@ namespace KBS1.model
                 
             }
         }
-
-        public abstract void AI();  //Reserved for special effects that happen, this has nothing to do with movement
     }
 }

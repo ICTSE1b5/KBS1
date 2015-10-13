@@ -14,13 +14,31 @@ namespace KBS1.model
             : base(pos_x, pos_y, width, height, 0, 0, 0, 0, form)
         {
             Type = ObjectType.GOAL;
-           this.image = Properties.Resources.loghouse;
-       }
-        
+        }
 
-        public override void Move()
+        protected override void setupImages()
         {
-            //Doesn't move because it's immobile;
+            imageNorthWest = Properties.Resources.loghouse;
+            imageNorth = Properties.Resources.loghouse;
+            imageNorthEast = Properties.Resources.loghouse;
+
+            imageWest = Properties.Resources.loghouse;
+            imageIdle = Properties.Resources.loghouse;
+            imageEast = Properties.Resources.loghouse;
+
+            imageSouthWest = Properties.Resources.loghouse;
+            imageSouth = Properties.Resources.loghouse;
+            imageSouthEast = Properties.Resources.loghouse;
+        }
+
+        protected override void AI()
+        {
+            //throw new NotImplementedException();
+        }
+
+        protected override void OnDeath()
+        {
+            //throw new NotImplementedException();
         }
     }
 }

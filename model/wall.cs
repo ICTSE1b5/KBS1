@@ -15,14 +15,31 @@ namespace KBS1.model
             : base(pos_x, pos_y, 50, 50, 0, 0, 0, 0, form)
         {
                 Type = ObjectType.WALL;
-            this.image = Properties.Resources.bush;
         }
-            
 
-
-        public override void Move()
+        protected override void setupImages()
         {
-            //Doesn't move because it's immobile
+            imageNorthWest = Properties.Resources.bush;
+            imageNorth = Properties.Resources.bush;
+            imageNorthEast = Properties.Resources.bush;
+
+            imageWest = Properties.Resources.bush;
+            imageIdle = Properties.Resources.bush;
+            imageEast = Properties.Resources.bush;
+
+            imageSouthWest = Properties.Resources.bush;
+            imageSouth = Properties.Resources.bush;
+            imageSouthEast = Properties.Resources.bush;
+        }
+
+        protected override void AI()
+        {
+            //throw new NotImplementedException();
+        }
+
+        protected override void OnDeath()
+        {
+            //throw new NotImplementedException();
         }
     }
 }

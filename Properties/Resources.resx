@@ -121,20 +121,8 @@
   <data name="MainMenuMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Creepy_Ambient_Horror_Suspense_Music_(Instrumental_Scary_Music).wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="playerLEFT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\playerLEFT.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\background.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerDOWN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\playerDOWN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerUP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\playerUP.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="playerRIGHT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\playerRIGHT.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gamebackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Gamebackground.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +157,37 @@
   <data name="selectlevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\selectlevel.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="playerUPreverse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\playerUPreverse.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="playerEAST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerEAST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerNORTH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerNORTH.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerNORTHEAST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerNORTHEAST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerNORTHWEST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerNORTHWEST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerSOUTH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerSOUTH.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerSOUTHEAST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerSOUTHEAST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerSOUTHWEST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerSOUTHWEST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerWEST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerWEST.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wolf_up_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\wolf-up-right.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imagenotfound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\imagenotfound.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playerIDLE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\playerIDLE.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

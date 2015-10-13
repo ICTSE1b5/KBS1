@@ -93,6 +93,16 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imagenotfound {
+            get {
+                object obj = ResourceManager.GetObject("imagenotfound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loghouse {
             get {
                 object obj = ResourceManager.GetObject("loghouse", resourceCulture);
@@ -112,9 +122,9 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerDOWN {
+        internal static System.Drawing.Bitmap playerEAST {
             get {
-                object obj = ResourceManager.GetObject("playerDOWN", resourceCulture);
+                object obj = ResourceManager.GetObject("playerEAST", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -122,9 +132,9 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerLEFT {
+        internal static System.Drawing.Bitmap playerIDLE {
             get {
-                object obj = ResourceManager.GetObject("playerLEFT", resourceCulture);
+                object obj = ResourceManager.GetObject("playerIDLE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -132,9 +142,9 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerRIGHT {
+        internal static System.Drawing.Bitmap playerNORTH {
             get {
-                object obj = ResourceManager.GetObject("playerRIGHT", resourceCulture);
+                object obj = ResourceManager.GetObject("playerNORTH", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -142,9 +152,9 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerUP {
+        internal static System.Drawing.Bitmap playerNORTHEAST {
             get {
-                object obj = ResourceManager.GetObject("playerUP", resourceCulture);
+                object obj = ResourceManager.GetObject("playerNORTHEAST", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -152,9 +162,49 @@ namespace KBS1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap playerUPreverse {
+        internal static System.Drawing.Bitmap playerNORTHWEST {
             get {
-                object obj = ResourceManager.GetObject("playerUPreverse", resourceCulture);
+                object obj = ResourceManager.GetObject("playerNORTHWEST", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerSOUTH {
+            get {
+                object obj = ResourceManager.GetObject("playerSOUTH", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerSOUTHEAST {
+            get {
+                object obj = ResourceManager.GetObject("playerSOUTHEAST", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerSOUTHWEST {
+            get {
+                object obj = ResourceManager.GetObject("playerSOUTHWEST", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playerWEST {
+            get {
+                object obj = ResourceManager.GetObject("playerWEST", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -235,6 +285,16 @@ namespace KBS1.Properties {
         internal static System.Drawing.Bitmap wolf_up_left {
             get {
                 object obj = ResourceManager.GetObject("wolf_up_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wolf_up_right {
+            get {
+                object obj = ResourceManager.GetObject("wolf_up_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
