@@ -154,15 +154,37 @@ namespace KBS1
                 mainMenuScreen.Enabled = true;
             }
         }
+
+
         // the button handler for the game over screen
         public void GameOver_ButtonHandler(object sender, EventArgs e)
         {
             if (sender == gameoverMenu.Get_Button_selectLevel())
             {
-                levelSelectScreen.Visible = false;
-                levelSelectScreen.Enabled = false;
+                gameoverMenu.Visible = false;
+                gameoverMenu.Enabled = false;
+                levelSelectScreen.Visible = true;
+                levelSelectScreen.Enabled = true;
+                levelSelectScreen.CreateDynamicButton();
+            }
+            else if (sender == gameoverMenu.Get_Button_MainMenu())
+            {
+                game_loop.Shutdown();
+                game_loop = null;
+                gameoverMenu.Visible = false;
+                gameoverMenu.Enabled = false;
+                statisticsScreen1.Visible = false;
+                Width = 800;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+            }
+            else if (sender == gameoverMenu.Get_Button_CloseGame())
+            {
+                CloseGame();
+            }
+            else if (sender == gameoverMenu.Get_Button_Restart())
+            {
+                StartGame("level1");
             }
         }
 

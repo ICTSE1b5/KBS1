@@ -40,6 +40,7 @@
             // gameoverMenu
             // 
             this.gameoverMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gameoverMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameoverMenu.BackgroundImage")));
             this.gameoverMenu.Location = new System.Drawing.Point(291, 211);
             this.gameoverMenu.Name = "gameoverMenu";
             this.gameoverMenu.Size = new System.Drawing.Size(450, 250);
