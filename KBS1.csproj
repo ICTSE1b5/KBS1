@@ -88,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="view\gameOver.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\gameOver.Designer.cs">
+      <DependentUpon>gameOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\GameView.cs" />
     <Compile Include="view\InGameMenu.cs">
       <SubType>UserControl</SubType>
@@ -130,6 +136,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\gameOver.resx">
+      <DependentUpon>gameOver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\InGameMenu.resx">
       <DependentUpon>InGameMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,9 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
-    <Content Include="Images\backgroundgame.gif" />
     <Content Include="Images\bush.png" />
     <None Include="Images\imagenotfound.gif" />
+    <None Include="Images\gameover.gif" />
     <Content Include="Images\loghouse.png" />
     <None Include="Images\playerEAST.gif" />
     <None Include="Images\playerNORTH.gif" />
@@ -180,9 +189,9 @@
     <None Include="Images\playerSOUTHEAST.gif" />
     <None Include="Images\playerSOUTHWEST.gif" />
     <None Include="Images\playerIDLE.gif" />
-    <Content Include="Images\playerUPreverse.gif" />
     <None Include="Images\playerWEST.gif" />
     <Content Include="Images\selectlevel.gif" />
+    <None Include="Images\victory.gif" />
     <Content Include="Images\wolf-down-left.gif" />
     <Content Include="Images\wolf-down-right.gif" />
     <Content Include="Images\wolf-down.gif" />
@@ -192,10 +201,6 @@
     <None Include="Images\wolf-up-right.gif" />
     <Content Include="Images\wolf-up.gif" />
     <None Include="Images\Gamebackground.gif" />
-    <Content Include="Images\playerDOWN.gif" />
-    <Content Include="Images\playerLEFT.gif" />
-    <Content Include="Images\playerRIGHT.gif" />
-    <Content Include="Images\playerUP.gif" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

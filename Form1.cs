@@ -35,7 +35,9 @@ namespace KBS1
             levelSelectScreen.LevelSelectScreenClick += new EventHandler(LevelSelect_ButtonHandler);
             inGameMenu.InGameMenuScreenClick += new EventHandler(InGameMenu_ButtonHandler);
             optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
+            gameoverMenu.GameOverScreenClick += new EventHandler(GameOver_ButtonHandler);
             levelSelectScreen.AddForm(this);
+            
 
             this.SetStyle(
           ControlStyles.UserPaint |
@@ -141,6 +143,7 @@ namespace KBS1
             }
         }
 
+        // the button handler for the level select screen
         public void LevelSelect_ButtonHandler(object sender, EventArgs e)
         {
             if (sender == levelSelectScreen.Get_Button_Main_Click())
@@ -151,6 +154,18 @@ namespace KBS1
                 mainMenuScreen.Enabled = true;
             }
         }
+        // the button handler for the game over screen
+        public void GameOver_ButtonHandler(object sender, EventArgs e)
+        {
+            if (sender == gameoverMenu.Get_Button_selectLevel())
+            {
+                levelSelectScreen.Visible = false;
+                levelSelectScreen.Enabled = false;
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
+            }
+        }
+
 
         //The button handler for the in game menu
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)
