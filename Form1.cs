@@ -150,15 +150,6 @@ namespace KBS1
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
             }
-            else if (sender == levelSelectScreen.Get_Button_Load())
-            {
-                game_levels.LoadLevel("level1");
-            }
-            else if (sender == levelSelectScreen.Get_Button_Save())
-            {
-                game_levels.SaveLevel("level1");
-            }
-           
         }
 
         //The button handler for the in game menu
