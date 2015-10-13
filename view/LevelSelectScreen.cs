@@ -27,16 +27,6 @@ namespace KBS1.view
             InitializeComponent();
         }
 
-        private void button_Save_Click(object sender, EventArgs e)
-        {
-            LevelSelectScreenClick(sender, e);
-        }
-
-        private void Button_Load_Click(object sender, EventArgs e)
-        {
-            //Fires event to the EventHandler and then sends it to Form1
-            LevelSelectScreenClick(sender, e);
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
