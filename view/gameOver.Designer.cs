@@ -83,6 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::KBS1.Properties.Resources.gameover;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.CloseGame);
             this.Controls.Add(this.selectLevel);
             this.Controls.Add(this.MainMenu);
