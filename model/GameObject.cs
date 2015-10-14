@@ -22,10 +22,10 @@ namespace KBS1.model
         }
         public enum ObjectType
         {
+            BORDER,
             PLAYER,
             ENEMY,
             WALL,
-            HOME,
             GOAL
         }
         public enum ObjectProperties

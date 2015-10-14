@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="controller\GameController.cs" />
     <Compile Include="controller\GameLevels.cs" />
+    <Compile Include="model\Border.cs" />
     <Compile Include="model\Enemy.cs" />
     <Compile Include="model\Enemy_Following.cs" />
     <Compile Include="model\Enemy_Static.cs" />

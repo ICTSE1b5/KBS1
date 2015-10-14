@@ -386,6 +386,16 @@ namespace KBS1
 
             }
         }
+
+        public int getWidthOfGame()
+        {
+            return mainMenuScreen.Width;
+        }
+        public int getHeightOfGame()
+        {
+            return mainMenuScreen.Height;
+        }
+
         private void CloseGame()
         {
             try

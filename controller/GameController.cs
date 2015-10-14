@@ -272,15 +272,12 @@ namespace KBS1.controller
         //Faster but more prone to warping issues
         #region RectangleCalculation
 
-        //      TODO
+        //      This was done in one line at the IF statement above. Inside the second IF statement of the TestForCollision method.
 
         /*
         EASY MODE Collision detection with rectangles:
         BUT: If the speed is greater than the width or height, the object literly warps over the field and will warp 'through' other objects.
         This can be prevented with a more heavy method to calculate the path towards the target object instead of comparing the end location of an object.
-        MAYBE: With a boolean this can be switched??
-
-        https://msdn.microsoft.com/en-us/library/y10fyck0%28v=vs.110%29.aspx  
         */
         #endregion RectangleCalculation
 
