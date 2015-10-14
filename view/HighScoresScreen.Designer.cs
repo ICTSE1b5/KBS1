@@ -34,10 +34,11 @@
             // 
             // listBoxLevel
             // 
+            this.listBoxLevel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxLevel.FormattingEnabled = true;
             this.listBoxLevel.Location = new System.Drawing.Point(0, 0);
             this.listBoxLevel.Name = "listBoxLevel";
-            this.listBoxLevel.Size = new System.Drawing.Size(624, 251);
+            this.listBoxLevel.Size = new System.Drawing.Size(92, 260);
             this.listBoxLevel.TabIndex = 0;
             this.listBoxLevel.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -46,7 +47,7 @@
             this.panelHighscores.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelHighscores.Location = new System.Drawing.Point(92, 0);
             this.panelHighscores.Name = "panelHighscores";
-            this.panelHighscores.Size = new System.Drawing.Size(160, 250);
+            this.panelHighscores.Size = new System.Drawing.Size(163, 255);
             this.panelHighscores.TabIndex = 1;
             // 
             // HighScoresScreen
@@ -56,7 +57,7 @@
             this.Controls.Add(this.panelHighscores);
             this.Controls.Add(this.listBoxLevel);
             this.Name = "HighScoresScreen";
-            this.Size = new System.Drawing.Size(255, 253);
+            this.Size = new System.Drawing.Size(255, 255);
             this.ResumeLayout(false);
 
         }

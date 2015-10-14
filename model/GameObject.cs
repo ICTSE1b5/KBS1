@@ -22,10 +22,10 @@ namespace KBS1.model
         }
         public enum ObjectType
         {
+            BORDER,
             PLAYER,
             ENEMY,
             WALL,
-            HOME,
             GOAL
         }
         public enum ObjectProperties
@@ -155,7 +155,6 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            AI();
             MoveVerticaly();
             MoveHorizontaly();
         }
@@ -509,7 +508,39 @@ namespace KBS1.model
                 return new Rectangle(Position_X, Position_Y + virutalSpeed, Width, Height);
             }
         }
+        public Rectangle VirtualRectangle
+        {
+            get
+            {
+                int virutalSpeed_Y = 0;
+                int virutalSpeed_X = 0;
 
+                switch (verticalDirection)
+                {
+                    case Direction.SOUTH:
+                        virutalSpeed_Y += Speed_Y;
+                        break;
+                    case Direction.NORTH:
+                        virutalSpeed_Y -= Speed_Y;
+                        break;
+                    default:
+                        break;
+                }
+                switch (horizontalDirection)
+                {
+                    case Direction.EAST:
+                        virutalSpeed_X += Speed_X;
+                        break;
+                    case Direction.WEST:
+                        virutalSpeed_X -= Speed_X;
+                        break;
+                    default:
+                        break;
+                }
+
+                return new Rectangle(Position_X + virutalSpeed_X, Position_Y + virutalSpeed_Y, Width, Height);
+            }
+        }
 
         //Collision debuff        
         public void horizontalCollisionWithObject(GameObject target)

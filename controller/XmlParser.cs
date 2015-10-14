@@ -17,6 +17,7 @@ namespace KBS1.controller
         public List<List<string>> data { get; }
         public Player player1;
         public Finish finish1;
+
         public XmlParser()
         {
             this.data = new List<List<string>>();
@@ -27,6 +28,7 @@ namespace KBS1.controller
             //finding the directory of the XML file
             string file = @"\levels\" + name + ".xml";
             string directory = path + file;
+
             this.reader = new XmlTextReader(directory);
 
             // if the reader exists, start reading

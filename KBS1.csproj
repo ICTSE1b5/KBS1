@@ -4,6 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
+    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -64,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\HighscoreWriter.cs" />
     <Compile Include="controller\GameLoop.cs" />
     <Compile Include="controller\XmlParser.cs" />
     <Compile Include="Form1.cs">
@@ -74,6 +76,7 @@
     </Compile>
     <Compile Include="controller\GameController.cs" />
     <Compile Include="controller\GameLevels.cs" />
+    <Compile Include="model\Border.cs" />
     <Compile Include="model\Enemy.cs" />
     <Compile Include="model\Enemy_Following.cs" />
     <Compile Include="model\Enemy_Static.cs" />
@@ -134,6 +137,12 @@
     <Compile Include="view\StatisticsScreen.Designer.cs">
       <DependentUpon>StatisticsScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\VictoryMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\VictoryMenu.Designer.cs">
+      <DependentUpon>VictoryMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\StatisticsScreen.resx">
       <DependentUpon>StatisticsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\VictoryMenu.resx">
+      <DependentUpon>VictoryMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />

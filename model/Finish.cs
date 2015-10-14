@@ -41,7 +41,7 @@ namespace KBS1.model
                 switch(ob.Type)
                 {
                     case ObjectType.PLAYER:
-                        MessageBox.Show("YOU WIN!!!!");
+                        game_Form.showVictoryMenu();
                         game_Form.QuitGameLoop();
                         break;
                     default:

@@ -16,10 +16,11 @@ namespace KBS1.controller
         private List<GameObject> game_ObjectList;
         public enum CollisionCalculationMethod
         {
+            ANY,
             RECTANGLE_CALCULATION,
             OBJECT_PATH_CALCULATION
         }
-        private CollisionCalculationMethod method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+        private CollisionCalculationMethod method = CollisionCalculationMethod.ANY;
 
         public GameController(Form form, GameLoop loop)
         {
@@ -82,17 +83,25 @@ namespace KBS1.controller
         //Tests if an object is about to collide with another object and acts on that
         private void TestForCollision(GameObject subject, GameObject target)
         {
+            //If the speed is greater than that the objects size, calculate with the Object Path otherwise, if the object has a low speed, calculate with the Rectangle Calculation
+            if (subject.speed_X > subject.width || subject.speed_Y > subject.height)
+            {
+                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+            }
+            else
+            {
+                method = CollisionCalculationMethod.RECTANGLE_CALCULATION;
+            }
+
+
             //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
             if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
             {
-                //do rectangle calculation (easy mode)
-                /*
-                
-                        TODO
-                        
-                        TODO
-            
-                */
+                if(subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    CollidesWith(subject, target, true);
+                    CollidesWith(subject, target, false);
+                }
             }
             else if (method == CollisionCalculationMethod.OBJECT_PATH_CALCULATION)
             {
@@ -263,15 +272,12 @@ namespace KBS1.controller
         //Faster but more prone to warping issues
         #region RectangleCalculation
 
-        //      TODO
+        //      This was done in one line at the IF statement above. Inside the second IF statement of the TestForCollision method.
 
         /*
         EASY MODE Collision detection with rectangles:
         BUT: If the speed is greater than the width or height, the object literly warps over the field and will warp 'through' other objects.
         This can be prevented with a more heavy method to calculate the path towards the target object instead of comparing the end location of an object.
-        MAYBE: With a boolean this can be switched??
-
-        https://msdn.microsoft.com/en-us/library/y10fyck0%28v=vs.110%29.aspx  
         */
         #endregion RectangleCalculation
 

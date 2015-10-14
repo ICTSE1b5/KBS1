@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,12 @@ namespace KBS1
         private GameLevels game_levels;
         private SoundPlayer player;
         private bool mainOptions;
-
+        public int currentlevel = 1;
 
         public Form1()
         {
             InitializeComponent();
-
+            this.Text = "spelletje";
             player = new System.Media.SoundPlayer();
             player.Stream = Properties.Resources.MainMenuMusic;
 
@@ -36,6 +37,7 @@ namespace KBS1
             inGameMenu.InGameMenuScreenClick += new EventHandler(InGameMenu_ButtonHandler);
             optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
             gameoverMenu.GameOverScreenClick += new EventHandler(GameOver_ButtonHandler);
+            victoryMenu.VictoryMenuClick += new EventHandler(VictoryMenu_ButtonHandler);
             levelSelectScreen.AddForm(this);
             
 
@@ -80,7 +82,7 @@ namespace KBS1
                     }
                 }
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_DOWN)
             {
             }
 
@@ -94,7 +96,7 @@ namespace KBS1
             {
                 game_loop.parser.player1.changeDirections(e.KeyCode, false);
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_UP)
             {
             }
         }
@@ -127,9 +129,12 @@ namespace KBS1
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
             {
+                this.Text = "level" + currentlevel;
+                this.Update();
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
-                StartGame("level1");
+                StartGame("level" + currentlevel);
+                
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
@@ -160,6 +165,8 @@ namespace KBS1
                 levelSelectScreen.Enabled = false;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+                
+                
             }
         }
 
@@ -196,7 +203,7 @@ namespace KBS1
                 game_loop.Shutdown();
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
-                StartGame("level1");
+                StartGame("level" + currentlevel);
             }
         }
 
@@ -208,6 +215,61 @@ namespace KBS1
             gameoverMenu.Enabled = true;
         }
 
+        //the button handler for the victory menu
+        public void VictoryMenu_ButtonHandler(object sender, EventArgs e)
+        {
+            if(sender == victoryMenu.Get_Button_Exit_Game())
+            {
+                Close();
+            }
+            else if(sender == victoryMenu.Get_Button_Main_Menu())
+            {
+                game_loop.Shutdown();
+
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                statisticsScreen1.Visible = false;
+                Width = 800;
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
+            }
+            else if(sender == victoryMenu.Get_Button_Next_Level())
+            {
+                game_loop.Shutdown();
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                try
+                {
+                    currentlevel++;
+                    this.Text = "level" + currentlevel;
+                    this.Update();
+                    StartGame("level" + currentlevel);
+                }
+                catch(FileNotFoundException x)
+                {
+                    currentlevel--;
+                    this.Text = "level" + currentlevel;
+                    this.Update();
+                    StartGame("level" + currentlevel);
+                } 
+            }
+            else if (sender == victoryMenu.Get_Button_Restart_Level())
+            {
+                game_loop.Shutdown();
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                StartGame("level" + currentlevel);
+            }
+        }
+
+        //method to show the victory menu
+        public void showVictoryMenu()
+        {
+            game_loop.Set_Properties_Pause(true);
+            victoryMenu.Visible = true;
+            victoryMenu.Enabled = true;
+        }
+        
         //The button handler for the in game menu
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)
         {
@@ -283,6 +345,8 @@ namespace KBS1
             }
         }
 
+        
+
         private void playMusic()
         {
             if (optionsMenu.Get_CheckBox_Music().Checked)
@@ -324,18 +388,28 @@ namespace KBS1
             {
                 game_loop.Shutdown();
             }
-            catch(NullReferenceException EX_qgl)
+            catch(NullReferenceException EX_QGL)
             {
 
             }
         }
+
+        public int getWidthOfGame()
+        {
+            return mainMenuScreen.Width;
+        }
+        public int getHeightOfGame()
+        {
+            return mainMenuScreen.Height;
+        }
+
         private void CloseGame()
         {
             try
             {
                 game_loop.Shutdown();
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_CG)
             {
 
             }

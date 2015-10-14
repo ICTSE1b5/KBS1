@@ -20,6 +20,8 @@ namespace KBS1.view
         Form game_Form;
         GameLoop game_loop;
 
+        public bool showHitBox = true;
+
         public GameView(Form form, GameLoop loop)
         {
             game_Form = form;
@@ -29,14 +31,19 @@ namespace KBS1.view
 
         public void DrawGame(Graphics graphics_GraphicsDevice)
         //public void DrawGame(ref Graphics graphics_GraphicsDevice)
-        { 
-            
+        {
+
             //go through each object currently alive and draw them
 
             /*Test Block*/
             //graphics_GraphicsDevice.FillRectangle(Brushes.Blue, 50, 50, 20, 20);
             game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawImage(obj.getObjectImage(), obj.ObjectRectangle));
-            
+
+            if(showHitBox)
+            { 
+                game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawRectangle(new Pen(Brushes.Black), obj.ObjectRectangle));
+            }
+
 
         }
 
