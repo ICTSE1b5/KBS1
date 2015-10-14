@@ -18,7 +18,8 @@ namespace KBS1.view
     {
         public List<Button> listOfButtons = new List<Button>();
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-      
+        
+
         public event EventHandler LevelSelectScreenClick;
         public Form1 form;
 
@@ -97,12 +98,15 @@ namespace KBS1.view
         private void DynamicButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
-
             string XMLfile = path + @"\levels\" + button.Text + "*.xml";
+            form.currentlevel = int.Parse(button.Text.Trim(new Char[] { 'l', 'e', 'v' }));
 
             this.Visible = false;
             this.Enabled = false;
+            form.Text = "level" + form.currentlevel;
+            form.Update();
             form.StartGame(button.Text);
+            
         }
 
         public void AddForm(Form1 form)

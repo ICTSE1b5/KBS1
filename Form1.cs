@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,12 @@ namespace KBS1
         private GameLevels game_levels;
         private SoundPlayer player;
         private bool mainOptions;
-
+        public int currentlevel = 1;
 
         public Form1()
         {
             InitializeComponent();
-
+            this.Text = "spelletje";
             player = new System.Media.SoundPlayer();
             player.Stream = Properties.Resources.MainMenuMusic;
 
@@ -127,9 +128,12 @@ namespace KBS1
             }
             else if (sender == mainMenuScreen.Get_Button_New_Game())
             {
+                this.Text = "level" + currentlevel;
+                this.Update();
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
-                StartGame("level1");
+                StartGame("level" + currentlevel);
+                
             }
             else if (sender == mainMenuScreen.Get_Button_Options())
             {
@@ -153,6 +157,8 @@ namespace KBS1
                 levelSelectScreen.Enabled = false;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
+                
+                
             }
         }
 
@@ -189,7 +195,7 @@ namespace KBS1
                 game_loop.Shutdown();
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
-                StartGame("level1");
+                StartGame("level" + currentlevel);
             }
         }
 
@@ -201,6 +207,7 @@ namespace KBS1
             gameoverMenu.Enabled = true;
         }
 
+        //the button handler for the victory menu
         public void VictoryMenu_ButtonHandler(object sender, EventArgs e)
         {
             if(sender == victoryMenu.Get_Button_Exit_Game())
@@ -223,18 +230,31 @@ namespace KBS1
                 game_loop.Shutdown();
                 victoryMenu.Visible = false;
                 victoryMenu.Enabled = false;
-                StartGame("level1");
+                try
+                {
+                    currentlevel++;
+                    this.Text = "level" + currentlevel;
+                    this.Update();
+                    StartGame("level" + currentlevel);
+                }
+                catch(FileNotFoundException x)
+                {
+                    currentlevel--;
+                    this.Text = "level" + currentlevel;
+                    this.Update();
+                    StartGame("level" + currentlevel);
+                } 
             }
             else if (sender == victoryMenu.Get_Button_Restart_Level())
             {
                 game_loop.Shutdown();
                 victoryMenu.Visible = false;
                 victoryMenu.Enabled = false;
-                StartGame("level1");
+                StartGame("level" + currentlevel);
             }
         }
 
-        //method to show the victorymenu
+        //method to show the victory menu
         public void showVictoryMenu()
         {
             game_loop.Set_Properties_Pause(true);
