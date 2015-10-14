@@ -155,7 +155,6 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            AI();
             MoveVerticaly();
             MoveHorizontaly();
         }
