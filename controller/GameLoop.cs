@@ -75,7 +75,11 @@ namespace KBS1.controller
                     }
                     //Gives the command for the game to do its calculations, and move the objects
                     //And the Game Controller will also update the form
-                    game_Controller.Update(game_objects);
+                    //Added if statement to check if the game is still running, if not, it will not update again.
+                    if(!properties_Gameover)
+                    {
+                        game_Controller.Update(game_objects);
+                    }
                 }
 
                 //Frame Rate Update

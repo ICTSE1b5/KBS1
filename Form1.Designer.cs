@@ -29,25 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.gameoverMenu = new KBS1.view.gameOver();
             this.statisticsScreen1 = new KBS1.view.StatisticsScreen();
             this.mainMenuScreen = new KBS1.view.MainMenuScreen();
             this.levelSelectScreen = new KBS1.view.LevelSelectScreen();
             this.inGameMenu = new KBS1.view.InGameMenu();
             this.optionsMenu = new KBS1.view.OptionsMenu();
+            this.gameoverMenu = new KBS1.view.gameOver();
             this.SuspendLayout();
-            // 
-            // gameoverMenu
-            // 
-            this.gameoverMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gameoverMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameoverMenu.BackgroundImage")));
-            this.gameoverMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gameoverMenu.Location = new System.Drawing.Point(218, 171);
-            this.gameoverMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gameoverMenu.Name = "gameoverMenu";
-            this.gameoverMenu.Size = new System.Drawing.Size(338, 203);
-            this.gameoverMenu.TabIndex = 5;
-            this.gameoverMenu.Visible = false;
             // 
             // statisticsScreen1
             // 
@@ -55,7 +43,7 @@
             this.statisticsScreen1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.statisticsScreen1.Enabled = false;
             this.statisticsScreen1.Location = new System.Drawing.Point(784, 0);
-            this.statisticsScreen1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statisticsScreen1.Margin = new System.Windows.Forms.Padding(4);
             this.statisticsScreen1.Name = "statisticsScreen1";
             this.statisticsScreen1.Size = new System.Drawing.Size(240, 561);
             this.statisticsScreen1.TabIndex = 4;
@@ -66,7 +54,7 @@
             this.mainMenuScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainMenuScreen.BackgroundImage")));
             this.mainMenuScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainMenuScreen.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mainMenuScreen.Margin = new System.Windows.Forms.Padding(4);
             this.mainMenuScreen.Name = "mainMenuScreen";
             this.mainMenuScreen.Size = new System.Drawing.Size(784, 561);
             this.mainMenuScreen.TabIndex = 0;
@@ -76,7 +64,7 @@
             this.levelSelectScreen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelSelectScreen.BackgroundImage")));
             this.levelSelectScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.levelSelectScreen.Location = new System.Drawing.Point(0, 0);
-            this.levelSelectScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levelSelectScreen.Margin = new System.Windows.Forms.Padding(4);
             this.levelSelectScreen.Name = "levelSelectScreen";
             this.levelSelectScreen.Size = new System.Drawing.Size(784, 561);
             this.levelSelectScreen.TabIndex = 1;
@@ -87,7 +75,7 @@
             this.inGameMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.inGameMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inGameMenu.Location = new System.Drawing.Point(289, 144);
-            this.inGameMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inGameMenu.Margin = new System.Windows.Forms.Padding(4);
             this.inGameMenu.Name = "inGameMenu";
             this.inGameMenu.Size = new System.Drawing.Size(199, 250);
             this.inGameMenu.TabIndex = 2;
@@ -98,11 +86,23 @@
             this.optionsMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.optionsMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.optionsMenu.Location = new System.Drawing.Point(195, 144);
-            this.optionsMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.optionsMenu.Margin = new System.Windows.Forms.Padding(4);
             this.optionsMenu.Name = "optionsMenu";
             this.optionsMenu.Size = new System.Drawing.Size(440, 231);
             this.optionsMenu.TabIndex = 3;
             this.optionsMenu.Visible = false;
+            // 
+            // gameoverMenu
+            // 
+            this.gameoverMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gameoverMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameoverMenu.BackgroundImage")));
+            this.gameoverMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gameoverMenu.Location = new System.Drawing.Point(248, 226);
+            this.gameoverMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gameoverMenu.Name = "gameoverMenu";
+            this.gameoverMenu.Size = new System.Drawing.Size(338, 203);
+            this.gameoverMenu.TabIndex = 5;
+            this.gameoverMenu.Visible = false;
             // 
             // Form1
             // 
@@ -110,12 +110,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.gameoverMenu);
             this.Controls.Add(this.statisticsScreen1);
             this.Controls.Add(this.mainMenuScreen);
             this.Controls.Add(this.levelSelectScreen);
             this.Controls.Add(this.inGameMenu);
             this.Controls.Add(this.optionsMenu);
-            this.Controls.Add(this.gameoverMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

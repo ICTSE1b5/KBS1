@@ -170,6 +170,7 @@ namespace KBS1
             else if (sender == gameoverMenu.Get_Button_MainMenu())
             {
                 game_loop.Shutdown();
+                
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
                 statisticsScreen1.Visible = false;
