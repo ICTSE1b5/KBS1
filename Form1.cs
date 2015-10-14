@@ -113,6 +113,7 @@ namespace KBS1
             game_view.DrawGame(e.Graphics);
         }
 
+        // the button handler for the main menu
         public void MainMenu_ButtonHandler(object sender, EventArgs e)
         {
             //Check what button is pressed.
@@ -136,6 +137,13 @@ namespace KBS1
                 optionsMenu.Enabled = true;
                 optionsMenu.BringToFront();
                 mainOptions = true;
+            }
+            else if (sender == mainMenuScreen.Get_Button_Highscores())
+            {
+                highScoresScreen.Visible = true;
+                highScoresScreen.Enabled = true;
+                highScoresScreen.BringToFront();
+                highScoresScreen.AddItemsToListBox();
             }
             else if (sender == mainMenuScreen.Get_Button_Close())
             {
@@ -199,7 +207,6 @@ namespace KBS1
             gameoverMenu.Visible = true;
             gameoverMenu.Enabled = true;
         }
-
 
         //The button handler for the in game menu
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)

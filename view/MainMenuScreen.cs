@@ -43,6 +43,12 @@ namespace KBS1.view
             MainMenuScreenClick(sender, e);
         }
 
+        private void button_Highscores_Click(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            MainMenuScreenClick(sender, e);
+        }
+
         public Button Get_Button_Select_Level()
         {
             return button_Select_Level;
@@ -62,5 +68,12 @@ namespace KBS1.view
         {
             return button_Options;
         }
+
+        public Button Get_Button_Highscores()
+        {
+            return button_Highscores;
+        }
+
+        
     }
 }

@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{258E62D0-2B79-4C90-965B-4C7CE8D1EBEB}</ProjectGuid>
+    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -95,6 +95,12 @@
       <DependentUpon>gameOver.cs</DependentUpon>
     </Compile>
     <Compile Include="view\GameView.cs" />
+    <Compile Include="view\HighScoresScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\HighScoresScreen.Designer.cs">
+      <DependentUpon>HighScoresScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\InGameMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\gameOver.resx">
       <DependentUpon>gameOver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\HighScoresScreen.resx">
+      <DependentUpon>HighScoresScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\InGameMenu.resx">
       <DependentUpon>InGameMenu.cs</DependentUpon>

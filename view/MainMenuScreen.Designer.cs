@@ -73,6 +73,7 @@
             this.button_Highscores.TabIndex = 3;
             this.button_Highscores.Text = "Highscores";
             this.button_Highscores.UseVisualStyleBackColor = true;
+            this.button_Highscores.Click += new System.EventHandler(this.button_Highscores_Click);
             // 
             // button_Close
             // 

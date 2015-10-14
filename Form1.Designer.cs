@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.highScoresScreen = new KBS1.view.HighScoresScreen();
             this.statisticsScreen1 = new KBS1.view.StatisticsScreen();
             this.mainMenuScreen = new KBS1.view.MainMenuScreen();
             this.levelSelectScreen = new KBS1.view.LevelSelectScreen();
@@ -36,6 +37,14 @@
             this.optionsMenu = new KBS1.view.OptionsMenu();
             this.gameoverMenu = new KBS1.view.gameOver();
             this.SuspendLayout();
+            // 
+            // highScoresScreen
+            // 
+            this.highScoresScreen.Location = new System.Drawing.Point(280, 144);
+            this.highScoresScreen.Name = "highScoresScreen";
+            this.highScoresScreen.Size = new System.Drawing.Size(255, 253);
+            this.highScoresScreen.TabIndex = 6;
+            this.highScoresScreen.Visible = false;
             // 
             // statisticsScreen1
             // 
@@ -110,12 +119,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.gameoverMenu);
+            this.Controls.Add(this.highScoresScreen);
             this.Controls.Add(this.statisticsScreen1);
             this.Controls.Add(this.mainMenuScreen);
             this.Controls.Add(this.levelSelectScreen);
             this.Controls.Add(this.inGameMenu);
             this.Controls.Add(this.optionsMenu);
+            this.Controls.Add(this.gameoverMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -136,6 +146,7 @@
         private view.OptionsMenu optionsMenu;
         private view.StatisticsScreen statisticsScreen1;
         private view.gameOver gameoverMenu;
+        private view.HighScoresScreen highScoresScreen;
     }
 }
 
