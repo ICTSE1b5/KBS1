@@ -12,27 +12,6 @@
     y="0"
     width="50"
     height="50"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="500"
-    y="500"
-    width="3"
-    height="9"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="50"
-    y="300"
-    width="3"
-    height="9"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="300"
-    y="50"
-    width="3"
-    height="9"/>
   <!-- 
   Aura objects give the player a certain effect based on the value of the speed attribute.
   It can be negative, which would mean that the player would be slowed down.
@@ -46,36 +25,6 @@
     width="2"
     height="2"/>
   <!-- Static objects are things like walls -->
-  <static
-    x="100"
-    y="100"
-    width="50"
-    height="50"
-    />
-  <static
-    x="200"
-    y="200"
-    width="50"
-    height="50"
-    />
-  <static
-    x="50"
-    y="300"
-    width="50"
-    height="50"
-    />
-      <static
-    x="400"
-    y="50"
-    width="50"
-    height="50"
-    />
-  <static
-    x="400"
-    y="400"
-    width="50"
-    height="50"
-    />
   <static
     x="600"
     y="350"

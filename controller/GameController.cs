@@ -16,10 +16,11 @@ namespace KBS1.controller
         private List<GameObject> game_ObjectList;
         public enum CollisionCalculationMethod
         {
+            ANY,
             RECTANGLE_CALCULATION,
             OBJECT_PATH_CALCULATION
         }
-        private CollisionCalculationMethod method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+        private CollisionCalculationMethod method = CollisionCalculationMethod.ANY;
 
         public GameController(Form form, GameLoop loop)
         {
@@ -82,6 +83,17 @@ namespace KBS1.controller
         //Tests if an object is about to collide with another object and acts on that
         private void TestForCollision(GameObject subject, GameObject target)
         {
+            //If the speed is greater than that the objects size, calculate with the Object Path otherwise, if the object has a low speed, calculate with the Rectangle Calculation
+            if (subject.speed_X > subject.width || subject.speed_Y > subject.height)
+            {
+                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+            }
+            else
+            {
+                method = CollisionCalculationMethod.RECTANGLE_CALCULATION;
+            }
+
+
             //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
             if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
             {
@@ -93,6 +105,16 @@ namespace KBS1.controller
                         TODO
             
                 */
+                if(subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    //MessageBox.Show("Test");
+                    CollidesWith(subject, target, true);
+                    CollidesWith(subject, target, false);
+                }
+
+
+
+
             }
             else if (method == CollisionCalculationMethod.OBJECT_PATH_CALCULATION)
             {

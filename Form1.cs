@@ -80,7 +80,7 @@ namespace KBS1
                     }
                 }
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_DOWN)
             {
             }
 
@@ -94,7 +94,7 @@ namespace KBS1
             {
                 game_loop.parser.player1.changeDirections(e.KeyCode, false);
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_UP)
             {
             }
         }
@@ -317,7 +317,7 @@ namespace KBS1
             {
                 game_loop.Shutdown();
             }
-            catch(NullReferenceException EX_qgl)
+            catch(NullReferenceException EX_QGL)
             {
 
             }
@@ -328,7 +328,7 @@ namespace KBS1
             {
                 game_loop.Shutdown();
             }
-            catch (NullReferenceException d)
+            catch (NullReferenceException EX_CG)
             {
 
             }

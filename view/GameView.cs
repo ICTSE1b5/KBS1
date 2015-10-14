@@ -36,7 +36,8 @@ namespace KBS1.view
             /*Test Block*/
             //graphics_GraphicsDevice.FillRectangle(Brushes.Blue, 50, 50, 20, 20);
             game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawImage(obj.getObjectImage(), obj.ObjectRectangle));
-            
+            game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawRectangle(new Pen(Brushes.Black), obj.ObjectRectangle));
+
 
         }
 
