@@ -97,24 +97,11 @@ namespace KBS1.controller
             //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
             if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
             {
-                //do rectangle calculation (easy mode)
-                /*
-                
-                        TODO
-                        
-                        TODO
-            
-                */
                 if(subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
                 {
-                    //MessageBox.Show("Test");
                     CollidesWith(subject, target, true);
                     CollidesWith(subject, target, false);
                 }
-
-
-
-
             }
             else if (method == CollisionCalculationMethod.OBJECT_PATH_CALCULATION)
             {
