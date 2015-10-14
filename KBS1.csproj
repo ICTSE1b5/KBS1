@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{258E62D0-2B79-4C90-965B-4C7CE8D1EBEB}</ProjectGuid>
+    <ProjectGuid>{AC26DAB8-4A40-4E08-A06D-7F547130C4FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -128,6 +128,12 @@
     <Compile Include="view\StatisticsScreen.Designer.cs">
       <DependentUpon>StatisticsScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\VictoryMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\VictoryMenu.Designer.cs">
+      <DependentUpon>VictoryMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\StatisticsScreen.resx">
       <DependentUpon>StatisticsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\VictoryMenu.resx">
+      <DependentUpon>VictoryMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />

@@ -35,6 +35,7 @@
             this.inGameMenu = new KBS1.view.InGameMenu();
             this.optionsMenu = new KBS1.view.OptionsMenu();
             this.gameoverMenu = new KBS1.view.gameOver();
+            this.victoryMenu = new KBS1.view.VictoryMenu();
             this.SuspendLayout();
             // 
             // statisticsScreen1
@@ -97,12 +98,21 @@
             this.gameoverMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gameoverMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gameoverMenu.BackgroundImage")));
             this.gameoverMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gameoverMenu.Location = new System.Drawing.Point(248, 226);
-            this.gameoverMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gameoverMenu.Location = new System.Drawing.Point(195, 144);
+            this.gameoverMenu.Margin = new System.Windows.Forms.Padding(2);
             this.gameoverMenu.Name = "gameoverMenu";
-            this.gameoverMenu.Size = new System.Drawing.Size(338, 203);
+            this.gameoverMenu.Size = new System.Drawing.Size(450, 250);
             this.gameoverMenu.TabIndex = 5;
             this.gameoverMenu.Visible = false;
+            // 
+            // victoryMenu
+            // 
+            this.victoryMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("victoryMenu.BackgroundImage")));
+            this.victoryMenu.Location = new System.Drawing.Point(195, 144);
+            this.victoryMenu.Name = "victoryMenu";
+            this.victoryMenu.Size = new System.Drawing.Size(450, 250);
+            this.victoryMenu.TabIndex = 6;
+            this.victoryMenu.Visible = false;
             // 
             // Form1
             // 
@@ -110,6 +120,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.victoryMenu);
             this.Controls.Add(this.gameoverMenu);
             this.Controls.Add(this.statisticsScreen1);
             this.Controls.Add(this.mainMenuScreen);
@@ -136,6 +147,7 @@
         private view.OptionsMenu optionsMenu;
         private view.StatisticsScreen statisticsScreen1;
         private view.gameOver gameoverMenu;
+        private view.VictoryMenu victoryMenu;
     }
 }
 

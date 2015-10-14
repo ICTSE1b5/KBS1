@@ -36,6 +36,7 @@ namespace KBS1
             inGameMenu.InGameMenuScreenClick += new EventHandler(InGameMenu_ButtonHandler);
             optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
             gameoverMenu.GameOverScreenClick += new EventHandler(GameOver_ButtonHandler);
+            victoryMenu.VictoryMenuClick += new EventHandler(VictoryMenu_ButtonHandler);
             levelSelectScreen.AddForm(this);
             
 
@@ -200,6 +201,47 @@ namespace KBS1
             gameoverMenu.Enabled = true;
         }
 
+        public void VictoryMenu_ButtonHandler(object sender, EventArgs e)
+        {
+            if(sender == victoryMenu.Get_Button_Exit_Game())
+            {
+                Close();
+            }
+            else if(sender == victoryMenu.Get_Button_Main_Menu())
+            {
+                game_loop.Shutdown();
+
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                statisticsScreen1.Visible = false;
+                Width = 800;
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
+            }
+            else if(sender == victoryMenu.Get_Button_Next_Level())
+            {
+                game_loop.Shutdown();
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                StartGame("level1");
+            }
+            else if (sender == victoryMenu.Get_Button_Restart_Level())
+            {
+                game_loop.Shutdown();
+                victoryMenu.Visible = false;
+                victoryMenu.Enabled = false;
+                StartGame("level1");
+            }
+        }
+
+        //method to show the victorymenu
+        public void showVictoryMenu()
+        {
+            game_loop.Set_Properties_Pause(true);
+            victoryMenu.Visible = true;
+            victoryMenu.Enabled = true;
+        }
+        
 
         //The button handler for the in game menu
         public void InGameMenu_ButtonHandler(object sender, EventArgs e)
@@ -275,6 +317,8 @@ namespace KBS1
                 }
             }
         }
+
+        
 
         private void playMusic()
         {
