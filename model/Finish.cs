@@ -56,9 +56,9 @@ namespace KBS1.model
             //TODO
         }
 
-        protected override bool CollisionAI(GameObject target)
+        protected override bool CollisionAI(GameObject target_object)
         {
-            switch (target.Type)
+            switch (target_object.Type)
             {
                 case ObjectType.PLAYER:
                     return false;

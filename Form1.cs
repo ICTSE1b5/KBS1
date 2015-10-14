@@ -170,7 +170,6 @@ namespace KBS1
             else if (sender == gameoverMenu.Get_Button_MainMenu())
             {
                 game_loop.Shutdown();
-                game_loop = null;
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
                 statisticsScreen1.Visible = false;
@@ -186,7 +185,6 @@ namespace KBS1
             else if (sender == gameoverMenu.Get_Button_Restart())
             {
                 game_loop.Shutdown();
-                game_loop = null;
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
                 StartGame("level1");
@@ -208,7 +206,6 @@ namespace KBS1
             if (sender == inGameMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
-                game_loop = null;
                 inGameMenu.Visible = false;
                 inGameMenu.Enabled = false;
                 statisticsScreen1.Visible = false;
