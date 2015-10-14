@@ -311,6 +311,17 @@ namespace KBS1
 
         }
 
+        public void QuitGameLoop()
+        {
+            try
+            {
+                game_loop.Shutdown();
+            }
+            catch(NullReferenceException EX_qgl)
+            {
+
+            }
+        }
         private void CloseGame()
         {
             try
