@@ -81,6 +81,15 @@ namespace KBS1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DoorSoundeffect {
+            get {
+                return ResourceManager.GetStream("DoorSoundeffect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Gamebackground {
@@ -316,6 +325,15 @@ namespace KBS1.Properties {
             get {
                 object obj = ResourceManager.GetObject("wolf_up_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream wolfSoundeffect {
+            get {
+                return ResourceManager.GetStream("wolfSoundeffect", resourceCulture);
             }
         }
     }

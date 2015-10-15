@@ -41,10 +41,9 @@ namespace KBS1
             this.gameoverMenu = new KBS1.view.gameOver();
             this.victoryMenu = new KBS1.view.VictoryMenu();
             this.levelEditor = new KBS1.view.LevelEditor();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
-
-
-            this.levelEditor.Visible = false;
             // 
             // highScoresScreen
             // 
@@ -130,15 +129,33 @@ namespace KBS1
             this.victoryMenu.TabIndex = 6;
             this.victoryMenu.Visible = false;
             // 
+            // levelEditor
+            // 
+            this.levelEditor.Location = new System.Drawing.Point(0, 0);
+            this.levelEditor.Name = "levelEditor";
+            this.levelEditor.Size = new System.Drawing.Size(1040, 561);
+            this.levelEditor.TabIndex = 7;
+            this.levelEditor.Visible = false;
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(46, 25);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(65, 23);
+            this.axWindowsMediaPlayer1.TabIndex = 8;
+            this.axWindowsMediaPlayer1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.Gamebackground;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.highScoresScreen);
             this.Controls.Add(this.victoryMenu);
-            this.Controls.Add(this.gameoverMenu);
             this.Controls.Add(this.statisticsScreen1);
             this.Controls.Add(this.mainMenuScreen);
             this.Controls.Add(this.levelSelectScreen);
@@ -154,6 +171,7 @@ namespace KBS1
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -169,6 +187,7 @@ namespace KBS1
         private view.HighScoresScreen highScoresScreen;
         private view.VictoryMenu victoryMenu;
         private view.LevelEditor levelEditor;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
 

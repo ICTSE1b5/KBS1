@@ -23,6 +23,7 @@ namespace KBS1
         private SoundPlayer player;
         private bool mainOptions;
         public int currentlevel = 1;
+        WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
 
         public Form1()
         {
@@ -374,14 +375,16 @@ namespace KBS1
         {
             if (optionsMenu.Get_CheckBox_Music().Checked)
             {
-                player.Play();
-                player.PlayLooping();
+                string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                wmp.URL = path + @"\SoundEffects\MainMenuMusic.wav";
+                wmp.settings.setMode("loop", true);
+                wmp.controls.play();
                 optionsMenu.Enabled = false;
                 optionsMenu.Enabled = true;
             }
             else
             {
-                player.Stop();
+                wmp.controls.stop();
                 optionsMenu.Enabled = false;
                 optionsMenu.Enabled = true;
             }

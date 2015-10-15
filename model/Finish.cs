@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace KBS1.model
 {
     public class Finish : GameObject
     {
-       
-       public Finish(int pos_x, int pos_y, int width, int height, Form1 form)
+        WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
+        public Finish(int pos_x, int pos_y, int width, int height, Form1 form)
             : base(pos_x, pos_y, width, height, 0, 0, 0, 0, form)
         {
             Type = ObjectType.GOAL;
@@ -43,6 +44,9 @@ namespace KBS1.model
                     case ObjectType.PLAYER:
                         game_Form.showVictoryMenu();
                         game_Form.QuitGameLoop();
+                        string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                        wmp.URL = path + @"\SoundEffects\DoorSoundeffect.wav";
+                        wmp.controls.play();
                         break;
                     default:
                         break;
