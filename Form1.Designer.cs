@@ -1,4 +1,7 @@
-﻿namespace KBS1
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace KBS1
 {
     partial class Form1
     {
@@ -37,7 +40,11 @@
             this.optionsMenu = new KBS1.view.OptionsMenu();
             this.gameoverMenu = new KBS1.view.gameOver();
             this.victoryMenu = new KBS1.view.VictoryMenu();
+            this.levelEditor = new KBS1.view.LevelEditor();
             this.SuspendLayout();
+
+
+            this.levelEditor.Visible = false;
             // 
             // highScoresScreen
             // 
@@ -138,6 +145,7 @@
             this.Controls.Add(this.inGameMenu);
             this.Controls.Add(this.optionsMenu);
             this.Controls.Add(this.gameoverMenu);
+            this.Controls.Add(this.levelEditor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -160,6 +168,7 @@
         private view.gameOver gameoverMenu;
         private view.HighScoresScreen highScoresScreen;
         private view.VictoryMenu victoryMenu;
+        private view.LevelEditor levelEditor;
     }
 }
 

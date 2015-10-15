@@ -1,4 +1,6 @@
-﻿namespace KBS1.view
+﻿using System;
+
+namespace KBS1.view
 {
     partial class MainMenuScreen
     {
@@ -64,6 +66,7 @@
             this.button_Level_Editor.TabIndex = 2;
             this.button_Level_Editor.Text = "Level editor";
             this.button_Level_Editor.UseVisualStyleBackColor = true;
+            this.button_Level_Editor.Click += new EventHandler(this.button_LevelEditor_Click);
             // 
             // button_Highscores
             // 

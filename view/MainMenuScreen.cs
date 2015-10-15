@@ -49,6 +49,10 @@ namespace KBS1.view
             MainMenuScreenClick(sender, e);
         }
 
+        private void button_LevelEditor_Click(object sender, EventArgs e) {
+            MainMenuScreenClick(sender, e);
+        }
+
         public Button Get_Button_Select_Level()
         {
             return button_Select_Level;
@@ -72,6 +76,10 @@ namespace KBS1.view
         public Button Get_Button_Highscores()
         {
             return button_Highscores;
+        }
+
+        public Button Get_Button_LevelEditor() {
+            return button_Level_Editor;
         }
 
         

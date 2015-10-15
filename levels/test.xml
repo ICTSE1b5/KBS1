@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<level>
+  <player x="393" y="132" speed="1" />
+  <static x="490" y="323" speed="1" />
+</level>

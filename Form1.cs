@@ -38,6 +38,7 @@ namespace KBS1
             optionsMenu.OptionsMenuClick += new EventHandler(OptionMenu_ButtonHandler);
             gameoverMenu.GameOverScreenClick += new EventHandler(GameOver_ButtonHandler);
             victoryMenu.VictoryMenuClick += new EventHandler(VictoryMenu_ButtonHandler);
+            levelEditor.LevelEditorButtonClick += new EventHandler(LevelEditor_ButtonHandler);
             levelSelectScreen.AddForm(this);
             
 
@@ -150,6 +151,15 @@ namespace KBS1
                 highScoresScreen.BringToFront();
                 highScoresScreen.AddItemsToListBox();
             }
+            else if (sender == mainMenuScreen.Get_Button_LevelEditor()) {
+
+                this.levelEditor.Init(this.GetResources());
+                Width = 1040;
+                mainMenuScreen.Visible = false;
+                mainMenuScreen.Enabled = false;
+                levelEditor.Visible = true;
+                levelEditor.Enabled = true;
+            }
             else if (sender == mainMenuScreen.Get_Button_Close())
             {
                 CloseGame();
@@ -165,8 +175,21 @@ namespace KBS1
                 levelSelectScreen.Enabled = false;
                 mainMenuScreen.Visible = true;
                 mainMenuScreen.Enabled = true;
-                
-                
+            }
+        }
+
+        public void LevelEditor_ButtonHandler(object sender, EventArgs e) {
+            if (sender == levelEditor.Get_Button_Cancel()) {
+                Width = 800;
+                levelEditor.Destruct();
+                mainMenuScreen.Visible = true;
+                mainMenuScreen.Enabled = true;
+            } else if (sender == levelEditor.Get_Button_Save()) {
+                Console.WriteLine("PRESSED SAVE");
+                // DO SAVE ACTION
+                XMLWriter writer = new XMLWriter();
+                // TODO: Get name to save the new level
+                writer.SaveLevel("test", levelEditor.GetAddedObjects());
             }
         }
 
@@ -423,5 +446,14 @@ namespace KBS1
         {
             CloseGame();
         }
+
+        public  Dictionary<string, Image> GetResources() {
+            Dictionary<string, Image> data = new Dictionary<string, Image>();
+            data.Add("player", Properties.Resources.playerIDLE);
+            data.Add("enemy", Properties.Resources.wolf_up);
+            data.Add("finish", Properties.Resources.loghouse);
+            data.Add("static", Properties.Resources.bush);
+            return data;
+        } 
     }
 }

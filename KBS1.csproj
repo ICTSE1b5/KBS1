@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
-    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
+    <ProjectGuid>{0ADC8E98-AC68-4E50-9D34-AB409088854F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -68,6 +68,13 @@
     <Compile Include="controller\HighscoreWriter.cs" />
     <Compile Include="controller\GameLoop.cs" />
     <Compile Include="controller\XmlParser.cs" />
+    <Compile Include="controller\XMLWriter.cs" />
+    <Compile Include="Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog.Designer.cs">
+      <DependentUpon>Dialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +117,12 @@
     <Compile Include="view\InGameMenu.Designer.cs">
       <DependentUpon>InGameMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\LevelEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\LevelEditor.Designer.cs">
+      <DependentUpon>LevelEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\LevelSelectScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +156,9 @@
     <Compile Include="view\VictoryMenu.Designer.cs">
       <DependentUpon>VictoryMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog.resx">
+      <DependentUpon>Dialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\InGameMenu.resx">
       <DependentUpon>InGameMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\LevelEditor.resx">
+      <DependentUpon>LevelEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\LevelSelectScreen.resx">
       <DependentUpon>LevelSelectScreen.cs</DependentUpon>
