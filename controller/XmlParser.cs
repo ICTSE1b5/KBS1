@@ -14,6 +14,7 @@ namespace KBS1.controller
     {
         private XmlTextReader reader;
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+        private string directory;
         public List<List<string>> data { get; }
         public Player player1;
         public Finish finish1;
@@ -21,6 +22,7 @@ namespace KBS1.controller
         public XmlParser()
         {
             this.data = new List<List<string>>();
+            this.directory = path + @"\levels\";
         }
         //dumps the data from the level xml file specified above in a List<List<string>>
         public void Parse(string name)
@@ -143,7 +145,46 @@ namespace KBS1.controller
             }
         }
 
-            
+        public string SaveLevel( Dictionary<string, Dictionary<string, int>> levelData ) {
+            if( !Directory.Exists(this.directory) )
+                Directory.CreateDirectory(this.directory);
+            string filename = this.GetNextLevelName() + ".xml";
+            string finalPath = this.directory + filename;
+            if( !File.Exists(finalPath) ) {
+                XmlTextWriter writer = new XmlTextWriter(finalPath, System.Text.Encoding.UTF8);
+                writer.WriteStartDocument();
+                writer.Formatting = Formatting.Indented;
+                writer.Indentation = 2;
+                writer.WriteStartElement("level");
+                foreach( KeyValuePair<string, Dictionary<string, int>> pair in levelData ) {
+                    this.Write(writer, pair.Key, pair.Value);
+                }
+                writer.WriteEndDocument();
+                writer.Close();
+                return filename;
+            }
+            return "ERROR!";
+        }
+
         
+        public string GetPath() {
+            return this.path;
+        }
+
+        private void Write( XmlTextWriter writer, string name, Dictionary<string, int> objectData ) {
+            writer.WriteStartElement(name);
+            foreach( KeyValuePair<string, int> pair in objectData ) {
+                writer.WriteAttributeString(pair.Key, pair.Value.ToString());
+            }
+            writer.WriteEndElement();
+        }
+
+        private string GetNextLevelName() {
+            int amount = Directory.GetFiles(this.directory).Length;
+            return "level" + ( amount + 1 );
+        }
+
+
+
     }
 }

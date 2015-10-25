@@ -78,7 +78,6 @@ namespace KBS1.view {
         }
 
         private void MouseClicked( object sender, MouseEventArgs e ) {
-            Console.WriteLine("Clicked at: x={0} y={1}", e.X, e.Y);
             if( listView1.SelectedItems.Count > 0 ) {
                 string selectedItemName = listView1.SelectedItems[ 0 ].Text.ToLower();
                 Image i = this.items[ selectedItemName ];
@@ -89,19 +88,21 @@ namespace KBS1.view {
                     this.Invalidate();
                 }
                 using( Dialog d = new Dialog() ) {
-                    DialogResult result = d.ShowDialog(this);
-                    if( result == DialogResult.OK ) {
+                    if (selectedItemName == "enemy") {
+                        DialogResult result = d.ShowDialog(this);
+                        if (result == DialogResult.OK) {
+                            this.AddObjectToMap(selectedItemName, e.X, e.Y, d.GetValue());
+                        }
+                    }
+                    else {
                         if( selectedItemName == "player" && !this.addedObjects.ContainsKey("player") )
-                            this.AddObjectToMap(selectedItemName, e.X, e.Y, d.GetValue());
+                            this.AddObjectToMap(selectedItemName, e.X, e.Y, 5);
                         else if( selectedItemName == "finish" && !this.addedObjects.ContainsKey("finish") )
-                            this.AddObjectToMap(selectedItemName, e.X, e.Y, d.GetValue());
+                            this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
                         else
-                            this.AddObjectToMap(selectedItemName, e.X, e.Y, d.GetValue());
+                            this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
                     }
                 }
-                Console.WriteLine("Want to place {0} at x={1} y={2}", listView1.SelectedItems[ 0 ].Text, e.X, e.Y);
-            } else {
-                Console.WriteLine("You did not select an item");
             }
         }
 

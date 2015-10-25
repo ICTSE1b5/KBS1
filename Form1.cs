@@ -188,9 +188,9 @@ namespace KBS1
             } else if (sender == levelEditor.Get_Button_Save()) {
                 Console.WriteLine("PRESSED SAVE");
                 // DO SAVE ACTION
-                XMLWriter writer = new XMLWriter();
-                // TODO: Get name to save the new level
-                writer.SaveLevel("test", levelEditor.GetAddedObjects());
+                XmlParser writer = new XmlParser();
+                string savedname = writer.SaveLevel(levelEditor.GetAddedObjects());
+                MessageBox.Show("Saved level as " + savedname + ".xml");
             }
         }
 
@@ -450,7 +450,7 @@ namespace KBS1
             CloseGame();
         }
 
-        public  Dictionary<string, Image> GetResources() {
+        public Dictionary<string, Image> GetResources() {
             Dictionary<string, Image> data = new Dictionary<string, Image>();
             data.Add("player", Properties.Resources.playerIDLE);
             data.Add("enemy", Properties.Resources.wolf_up);
