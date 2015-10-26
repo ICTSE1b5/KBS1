@@ -17,6 +17,7 @@ namespace KBS1.controller
         private List<GameObject> game_objects = new List<GameObject>();
         public XmlParser parser;
         private StatisticsScreen game_StatScreen;
+        public int score = 5000;
 
         public enum FrameRate : int
         {
@@ -68,6 +69,7 @@ namespace KBS1.controller
 
                     //Updates the info like X and Y position on the statisticsScreen
                     game_StatScreen.UpdatePanel();
+                    score--;
 
                     while (properties_Pause)
                     {
@@ -156,6 +158,10 @@ namespace KBS1.controller
         public bool Get_Properties_Pause()
         {
             return properties_Pause;
+        }
+        public String Get_score()
+        {
+            return ""+score;
         }
     }
 }
