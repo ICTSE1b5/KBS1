@@ -3,12 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-<<<<<<< HEAD
-    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
-    <ProjectGuid>{258E62D0-2B79-4C90-965B-4C7CE8D1EBEB}</ProjectGuid>
-=======
     <ProjectGuid>{AC26DAB8-4A40-4E08-A06D-7F547130C4FF}</ProjectGuid>
->>>>>>> origin/master
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
