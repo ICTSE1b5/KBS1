@@ -24,7 +24,9 @@ namespace KBS1
         private XmlParser xml_parser;
         private bool mainOptions;
         public int currentlevel = 1;
-        WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
+        public WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
+        public WMPLib.WindowsMediaPlayer GameOver = new WMPLib.WindowsMediaPlayerClass();
+        public WMPLib.WindowsMediaPlayer LevelWon = new WMPLib.WindowsMediaPlayerClass();
 
         public Form1()
         {
@@ -201,6 +203,7 @@ namespace KBS1
         {
             if (sender == gameoverMenu.Get_Button_selectLevel())
             {
+                GameOver.controls.stop();
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
                 levelSelectScreen.Visible = true;
@@ -210,7 +213,7 @@ namespace KBS1
             else if (sender == gameoverMenu.Get_Button_MainMenu())
             {
                 game_loop.Shutdown();
-                
+                GameOver.controls.stop();
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
                 statisticsScreen1.Visible = false;
@@ -225,6 +228,7 @@ namespace KBS1
             }
             else if (sender == gameoverMenu.Get_Button_Restart())
             {
+                GameOver.controls.stop();
                 game_loop.Shutdown();
                 gameoverMenu.Visible = false;
                 gameoverMenu.Enabled = false;
@@ -246,17 +250,19 @@ namespace KBS1
             if(sender == victoryMenu.Get_Button_Exit_Game())
             {
                 Close();
+                LevelWon.controls.stop();
             }
             else if (sender == victoryMenu.Get_Button_Submit_Score())
             {
                 string scorename = victoryMenu.Get_Submit_Score_Name().Text;
                 xml_parser.SubmitScore(scorename, game_loop.Get_score() , currentlevel);
+                LevelWon.controls.stop();
 
             }
             else if(sender == victoryMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
-
+                LevelWon.controls.stop();
                 victoryMenu.Visible = false;
                 victoryMenu.Enabled = false;
                 statisticsScreen1.Visible = false;
@@ -266,6 +272,7 @@ namespace KBS1
             }
             else if(sender == victoryMenu.Get_Button_Next_Level())
             {
+                LevelWon.controls.stop();
                 game_loop.Shutdown();
                 victoryMenu.Visible = false;
                 victoryMenu.Enabled = false;
@@ -286,6 +293,7 @@ namespace KBS1
             }
             else if (sender == victoryMenu.Get_Button_Restart_Level())
             {
+                LevelWon.controls.stop();
                 game_loop.Shutdown();
                 victoryMenu.Visible = false;
                 victoryMenu.Enabled = false;
@@ -404,6 +412,35 @@ namespace KBS1
                 optionsMenu.Enabled = false;
                 optionsMenu.Enabled = true;
             }
+        }
+
+        public void playSoundEffectDead()
+        {
+            if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
+            {
+                string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                GameOver.URL = path + @"\SoundEffects\wolfSoundeffect.wav";
+                GameOver.controls.play();
+            }
+            else
+            {
+
+            }
+        }
+
+        public void playSoundEffectVictory()
+        {
+            if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
+            {
+                string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                LevelWon.URL = path + @"\SoundEffects\DoorSoundeffect.wav";
+                LevelWon.controls.play();
+            }
+            else
+            {
+
+            }
+
         }
 
         public void StartGame(string level)

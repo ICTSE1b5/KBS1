@@ -10,7 +10,6 @@ namespace KBS1.model
 {
     class Enemy_Following : Enemy
     {
-        public WMPLib.WindowsMediaPlayer GameOver = new WMPLib.WindowsMediaPlayerClass();
         public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form1 form)
             : base(pos_x, pos_y, 80, 80, 1, 1, 5, 10, props, form)
         {
@@ -79,9 +78,7 @@ namespace KBS1.model
                 {
                     case ObjectType.PLAYER:
                         game_Form.showGameOver();
-                        string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                        GameOver.URL = path + @"\SoundEffects\wolfSoundeffect.wav";
-                        GameOver.controls.play();
+                        game_Form.playSoundEffectDead();
                         break;
                     default:
                         break;

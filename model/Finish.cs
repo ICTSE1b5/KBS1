@@ -44,9 +44,7 @@ namespace KBS1.model
                     case ObjectType.PLAYER:
                         game_Form.showVictoryMenu();
                         game_Form.QuitGameLoop();
-                        string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                        wmp.URL = path + @"\SoundEffects\DoorSoundeffect.wav";
-                        wmp.controls.play();
+                        game_Form.playSoundEffectVictory();
                         break;
                     default:
                         break;
