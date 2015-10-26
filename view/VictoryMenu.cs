@@ -41,6 +41,7 @@ namespace KBS1.view
 
         private void button_SubmitScore_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = false;
             VictoryMenuClick(sender, e);
         }
 
