@@ -21,7 +21,6 @@ namespace KBS1
         private GameView game_view;
         private GameLevels game_levels;
         private SoundPlayer player;
-        private XmlParser xml_parser;
         private bool mainOptions;
         public int currentlevel = 1;
         WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
@@ -249,8 +248,8 @@ namespace KBS1
             }
             else if (sender == victoryMenu.Get_Button_Submit_Score())
             {
-                string scorename = victoryMenu.Get_Submit_Score_Name().Text;
-                xml_parser.SubmitScore(scorename, game_loop.Get_score() , currentlevel);
+            XmlParser xml_parser = new XmlParser();
+            xml_parser.SubmitScore(victoryMenu.Get_Submit_Score_Name().Text, game_loop.Get_score() , currentlevel);
 
             }
             else if(sender == victoryMenu.Get_Button_Main_Menu())
@@ -296,6 +295,7 @@ namespace KBS1
         //method to show the victory menu
         public void showVictoryMenu()
         {
+            victoryMenu.Get_Your_Score().Text = "Your score: " + game_loop.Get_score();
             game_loop.Set_Properties_Pause(true);
             victoryMenu.Get_Submit_Score_Name().MaxLength = 3;
             victoryMenu.Visible = true;
