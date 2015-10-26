@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
-    <ProjectGuid>{AC26DAB8-4A40-4E08-A06D-7F547130C4FF}</ProjectGuid>
+    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -68,6 +68,7 @@
     <Compile Include="controller\HighscoreWriter.cs" />
     <Compile Include="controller\GameLoop.cs" />
     <Compile Include="controller\XmlParser.cs" />
+    <Compile Include="controller\XmlParserHighscores.cs" />
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
