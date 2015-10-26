@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KBS1.model
 {
-    class Puddle : EffectGiver
+    class SpeedPort : EffectGiver
     {
-        public Puddle(int pos_x, int pos_y, List<GameObject> props, Form1 form)
-            : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 0, props, form)
+        public SpeedPort(int pos_x, int pos_y, List<GameObject> props, Form1 form)
+            : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 50, props, form)
         {
             this.image = Properties.Resources.pool;
-            this.description = "This puddle will cause you to slow down then you are near it. You don't want to slip and fall, do you?";
+            this.description = "This thunder bolt will give you a speed boost if you're in the area of its effect";
 
             isSolid = false;
         }
@@ -32,14 +31,13 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.pool;
         }
 
-
         protected override void AI()
         {
             foreach (GameObject ob in allObjects)
             {
-                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
+                if (ob.Type == ObjectType.PLAYER && ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
                 {
-                    ob.giveSpeedEffect(SpeedEffects.SLOW_2);
+                    ob.giveSpeedEffect(SpeedEffects.FAST_2);
                 }
             }
         }
@@ -51,9 +49,9 @@ namespace KBS1.model
 
         protected override void OnDeath()
         {
-            //The puddle dries up
+            //The thunder has subsided
         }
 
-
+        
     }
 }

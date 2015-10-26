@@ -14,10 +14,10 @@ namespace KBS1.model
     {
         public enum SpeedEffects
         {
-            SLOW_1 = -1,
-            SLOW_2 = -2,
-            FAST_1 = 1,
-            FAST_2 = 2
+            SLOW_1 = -2,
+            SLOW_2 = -4,
+            FAST_1 = 2,
+            FAST_2 = 4
         }
         public enum ObjectType
         {
@@ -70,6 +70,8 @@ namespace KBS1.model
 
         protected int Damage;
         protected int Health;
+
+        protected bool isSolid;
 
 
         //An int to make sure an objects stops at the position of impact instead of moving throught another object
@@ -136,6 +138,8 @@ namespace KBS1.model
             verticalDirection = Direction.NONE;
 
             alive = true;
+            isSolid = true;
+
             currentCollisionObjectsList = new List<GameObject>();
             currentSpeedEffectList = new List<SpeedEffects>();
             setupImages();
@@ -161,11 +165,7 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            foreach(SpeedEffects currentEffect in currentSpeedEffectList)
-            {
-                speedEffectNumber += (int)currentEffect;
-                //MessageBox.Show("Test");
-            }
+            speedEffectNumber = getSpeedBuffNumber();
 
             MoveVerticaly();
             MoveHorizontaly();
@@ -402,6 +402,10 @@ namespace KBS1.model
         {
             get { return alive; }
         }
+        public bool isSolidious()
+        {
+            return isSolid;
+        }
         public int getObjectSide(ObjectSide side)
         {
             switch (side)
@@ -516,14 +520,20 @@ namespace KBS1.model
         {
             get
             {
+                int speedBuffX = getSpeedBuffNumber();
+                if (Speed_X + speedBuffX < 0)
+                {
+                    speedBuffX = Speed_X * -1;
+                }
+
                 int virutalSpeed = 0;
                 switch (horizontalDirection)
                 {
                     case Direction.EAST:
-                        virutalSpeed += Speed_X;
+                        virutalSpeed += Speed_X + speedBuffX;
                         break;
                     case Direction.WEST:
-                        virutalSpeed -= Speed_X;
+                        virutalSpeed -= Speed_X + speedBuffX;
                         break;
                     default:
                         break;
@@ -535,14 +545,20 @@ namespace KBS1.model
         {
             get
             {
+                int speedBuffY = getSpeedBuffNumber();
+                if (Speed_Y + speedBuffY < 0)
+                {
+                    speedBuffY = Speed_Y * -1;
+                }
+
                 int virutalSpeed = 0;
                 switch (verticalDirection)
                 {
                     case Direction.SOUTH:
-                        virutalSpeed += Speed_Y;
+                        virutalSpeed += Speed_Y + speedBuffY;
                         break;
                     case Direction.NORTH:
-                        virutalSpeed -= Speed_Y;
+                        virutalSpeed -= Speed_Y + speedBuffY;
                         break;
                     default:
                         break;
@@ -554,16 +570,27 @@ namespace KBS1.model
         {
             get
             {
+                int speedBuffX = getSpeedBuffNumber(); 
+                int speedBuffY = getSpeedBuffNumber();
+                if (Speed_X + speedBuffX < 0)
+                {
+                    speedBuffX = Speed_X*-1;
+                }
+                if (Speed_Y + speedBuffY < 0)
+                {
+                    speedBuffY = Speed_Y * -1;
+                }
+
                 int virutalSpeed_Y = 0;
                 int virutalSpeed_X = 0;
 
                 switch (verticalDirection)
                 {
                     case Direction.SOUTH:
-                        virutalSpeed_Y += Speed_Y;
+                        virutalSpeed_Y += Speed_Y + speedBuffY;
                         break;
                     case Direction.NORTH:
-                        virutalSpeed_Y -= Speed_Y;
+                        virutalSpeed_Y -= Speed_Y + speedBuffY;
                         break;
                     default:
                         break;
@@ -571,10 +598,10 @@ namespace KBS1.model
                 switch (horizontalDirection)
                 {
                     case Direction.EAST:
-                        virutalSpeed_X += Speed_X;
+                        virutalSpeed_X += Speed_X + speedBuffX;
                         break;
                     case Direction.WEST:
-                        virutalSpeed_X -= Speed_X;
+                        virutalSpeed_X -= Speed_X + speedBuffX;
                         break;
                     default:
                         break;
@@ -646,7 +673,50 @@ namespace KBS1.model
         {
             currentSpeedEffectList.Add(effect);
         }
+        private int getSpeedBuffNumber()
+        {
+            int speedBuff = 0;
+            int lowest = 0;
+            int highest = 0;
+            List<int> buffList = new List<int>();
 
+            //Goes through each effect in the list to add get the speed (de)buff number
+            foreach (SpeedEffects currentEffect in currentSpeedEffectList)
+            {
+                //Get the lowest(negative) and highest(positive)
+                buffList.Add((int)currentEffect);
+            }
+
+            //If the list has 2 or more items, calculate the numbers
+            if(buffList.Count >= 2)
+            {
+                //Tries to get the lowest negative number
+                if ((int)buffList.Min() < 0)
+                {
+                    lowest = buffList.Min();
+                }
+            
+                //Tries to get the highest positive number
+                if ((int)buffList.Max() > 0)
+                {
+                    highest = buffList.Max();
+                }
+            }
+            else if(buffList.Count == 1)
+            {
+                return buffList[0];
+            }
+            else
+            {
+                return 0;
+            }
+
+
+            //Adds the negative with the positive and return the end result
+            speedBuff = highest + lowest;
+            //And return the number
+            return speedBuff;
+        }
 
 
     }

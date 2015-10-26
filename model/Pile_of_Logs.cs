@@ -14,6 +14,8 @@ namespace KBS1.model
         {
             this.image = Properties.Resources.log;
             this.description = "This pile of logs will cause you to slow down so you don't trip on them.";
+
+            isSolid = false;
         }
         protected override void setupImages()
         {

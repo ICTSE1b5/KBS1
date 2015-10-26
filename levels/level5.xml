@@ -18,12 +18,45 @@
   -->
   <water
     hp="10"
-    speed="2"
+    speed="0"
     x="250"
     y="100"
-    range="2"
-    width="2"
-    height="2"/>
+    range="50"
+    width="20"
+    height="20"/>
+  <water
+    hp="10"
+    speed="0"
+    x="230"
+    y="100"
+    range="50"
+    width="20"
+    height="20"/>
+  <water
+    hp="10"
+    speed="0"
+    x="250"
+    y="120"
+    range="50"
+    width="20"
+    height="20"/>
+  <logs
+	hp="10"
+	speed="0"
+	x="100"
+	y="250"
+	range="100"
+	width="20"
+	height="20"/>
+  <logs
+	hp="10"
+	speed="0"
+	x="230"
+	y="120"
+	range="100"
+	width="20"
+	height="20"/>
+	
   <!-- Static objects are things like walls -->
   <static
     x="600"

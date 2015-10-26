@@ -53,7 +53,7 @@ namespace KBS1.controller
                     foreach (GameObject ob2 in game_ObjectList)
                     {
                         //Tests if the current object is not the target object (that would cuase problems)
-                        if (!ob.Equals(ob2))
+                        if (!ob.Equals(ob2) && ob.isSolidious() && ob2.isSolidious())
                         {
                             //Test for a collision, if there is a collision, call the collide method  
                             TestForCollision(ob, ob2);
