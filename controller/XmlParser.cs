@@ -91,6 +91,32 @@ namespace KBS1.controller
                                 this.data.Add(temp);
                             }
 
+                            if (reader.Name != "level" && reader.Name == "water")
+                            {
+                                string hp = reader.GetAttribute("hp");
+                                string speed = reader.GetAttribute("speed");
+                                string x = reader.GetAttribute("x");
+                                string y = reader.GetAttribute("y");
+                                string range = reader.GetAttribute("range");
+                                string width = reader.GetAttribute("width");
+                                string height = reader.GetAttribute("height");
+                                List<string> temp = new List<string> { reader.Name, hp, speed, x, y, range, width, height };
+                                this.data.Add(temp);
+                            }
+
+                            if (reader.Name != "level" && reader.Name == "logs")
+                            {
+                                string hp = reader.GetAttribute("hp");
+                                string speed = reader.GetAttribute("speed");
+                                string x = reader.GetAttribute("x");
+                                string y = reader.GetAttribute("y");
+                                string range = reader.GetAttribute("range");
+                                string width = reader.GetAttribute("width");
+                                string height = reader.GetAttribute("height");
+                                List<string> temp = new List<string> { reader.Name, hp, speed, x, y, range, width, height };
+                                this.data.Add(temp);
+                            }
+
                             if (reader.Name != "level" && reader.Name == "static")
                             {
                                 string x = reader.GetAttribute("x");
@@ -136,6 +162,20 @@ namespace KBS1.controller
                     //Adds object to the list
                     game_objects.Add(enemy);
                 }
+                if (item[0] == "water")
+                {
+                    //create new object
+                    Puddle water = new Puddle(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    //Adds object to the list
+                    game_objects.Add(water);
+                }
+                if (item[0] == "logs")
+                {
+                    //create new object
+                    Pile_of_Logs logs = new Pile_of_Logs(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    //Adds object to the list
+                    game_objects.Add(logs);
+                }
                 if (item[0] == "static")
                 {
                     //create new object
@@ -143,6 +183,7 @@ namespace KBS1.controller
                     //Adds object to the list
                     game_objects.Add(wall);
                 }
+
             }
         }
 

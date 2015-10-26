@@ -31,6 +31,7 @@
             this.checkBox_Statistics = new System.Windows.Forms.CheckBox();
             this.checkBox_Music = new System.Windows.Forms.CheckBox();
             this.button_Return = new System.Windows.Forms.Button();
+            this.soundeffects = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBox_Statistics
@@ -65,12 +66,23 @@
             this.button_Return.UseVisualStyleBackColor = true;
             this.button_Return.Click += new System.EventHandler(this.button_Return_Click);
             // 
+            // soundeffects
+            // 
+            this.soundeffects.AutoSize = true;
+            this.soundeffects.Location = new System.Drawing.Point(36, 83);
+            this.soundeffects.Name = "soundeffects";
+            this.soundeffects.Size = new System.Drawing.Size(89, 17);
+            this.soundeffects.TabIndex = 3;
+            this.soundeffects.Text = "Soundeffects";
+            this.soundeffects.UseVisualStyleBackColor = true;
+            // 
             // OptionsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.soundeffects);
             this.Controls.Add(this.button_Return);
             this.Controls.Add(this.checkBox_Music);
             this.Controls.Add(this.checkBox_Statistics);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.CheckBox checkBox_Statistics;
         private System.Windows.Forms.CheckBox checkBox_Music;
         private System.Windows.Forms.Button button_Return;
+        private System.Windows.Forms.CheckBox soundeffects;
     }
 }

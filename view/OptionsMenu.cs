@@ -31,6 +31,12 @@ namespace KBS1.view
             OptionsMenuClick(sender, e);
         }
 
+        private void soundeffects_CheckedChanged(object sender, EventArgs e)
+        {
+            //Fires event to the EventHandler and then sends it to Form1
+            OptionsMenuClick(sender, e);
+        }
+
         private void button_Return_Click(object sender, EventArgs e)
         {
             //Fires event to the EventHandler and then sends it to Form1
@@ -52,9 +58,19 @@ namespace KBS1.view
             return button_Return;
         }
 
+        public CheckBox Get_CheckBox_Soundeffects()
+        {
+            return soundeffects;
+        }
+
         public void Set_CheckBox_Music(bool boolean)
         {
             checkBox_Music.Checked = boolean;
+        }
+
+        public void Set_CheckBox_Soundeffects(bool boolean)
+        {
+            soundeffects.Checked = boolean;
         }
     }
 }

@@ -29,14 +29,15 @@ namespace KBS1.model
             imageSouth = Properties.Resources.pool;
             imageSouthEast = Properties.Resources.pool;
         }
-        
+
 
         protected override void AI()
         {
-            foreach(GameObject ob in allObjects)
+            foreach (GameObject ob in allObjects)
             {
-                if(ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
+                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
                 {
+                    //System.Windows.Forms.MessageBox.Show("Puddle Collide!");
                     ob.giveSpeedEffect(SpeedEffects.SLOW_2);
                 }
             }
@@ -52,6 +53,6 @@ namespace KBS1.model
             //The puddle dries up
         }
 
-        
+
     }
 }

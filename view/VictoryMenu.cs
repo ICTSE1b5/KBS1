@@ -21,32 +21,42 @@ namespace KBS1.view
 
         private void button_RestartLevel_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_NextLevel_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_MainMenu_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_ExitGame_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_SubmitScore_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = false;
             VictoryMenuClick(sender, e);
         }
 
         private void textBox_SubmitScore_TextChanged(object sender, EventArgs e)
         {
             VictoryMenuClick(sender, e);
+        }
+
+        private void label_Score_Click(object sender, EventArgs e)
+        {
+
         }
 
         public Button Get_Button_Restart_Level()
@@ -77,6 +87,11 @@ namespace KBS1.view
         public TextBox Get_Submit_Score_Name()
         {
             return textBox_SubmitScore;
+        }
+
+        public Label Get_Your_Score()
+        {
+            return label_Score;
         }
     }
 }

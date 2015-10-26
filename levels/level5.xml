@@ -16,11 +16,11 @@
   Aura objects give the player a certain effect based on the value of the speed attribute.
   It can be negative, which would mean that the player would be slowed down.
   -->
-  <aura
+  <water
     hp="10"
     speed="2"
-    x="5"
-    y="5"
+    x="250"
+    y="100"
     range="2"
     width="2"
     height="2"/>
