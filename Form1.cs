@@ -154,8 +154,8 @@ namespace KBS1
                 highScoresScreen.BringToFront();
             }
             else if (sender == mainMenuScreen.Get_Button_LevelEditor()) {
-
-                this.levelEditor.Init(this.GetResources());
+                this.levelEditor.SetItems(this.GetResources());
+                this.levelEditor.Init();
                 Width = 1040;
                 mainMenuScreen.Visible = false;
                 mainMenuScreen.Enabled = false;
@@ -191,7 +191,7 @@ namespace KBS1
                 // DO SAVE ACTION
                 XmlParser writer = new XmlParser();
                 string savedname = writer.SaveLevel(levelEditor.GetAddedObjects());
-                MessageBox.Show("Saved level as " + savedname + ".xml");
+                MessageBox.Show("Saved level as " + savedname);
             }
         }
 

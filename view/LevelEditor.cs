@@ -21,8 +21,11 @@ namespace KBS1.view {
             InitializeComponent();
         }
 
-        public void Init( Dictionary<string, Image> d ) {
-            this.items = d;
+        public void SetItems(Dictionary<string, Image> items) {
+            this.items = items;
+        }
+
+        public void Init( ) {
             this.CreateList();
             this.addedObjects = new Dictionary<string, Dictionary<string, int>>();
             this.MouseClick += this.MouseClicked;
@@ -31,12 +34,9 @@ namespace KBS1.view {
             listView1.VirtualListSize = items.Count;
             listView1.Size = new Size(240, this.ClientSize.Height);
             listView1.Location = new Point(this.ClientSize.Width - this.listView1.Width, 0);
-
-            // Overwrite ImageList image size
-            this.imageList1.ImageSize = new Size(50, 50);
-
+            
             // Set background image for form
-            this.BackgroundImage = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+            this.BackgroundImage = new Bitmap(Properties.Resources.Gamebackground);
 
             // Overwrite button properties
             int btnX = this.ClientSize.Width - this.button1.Width - 40;
@@ -69,12 +69,23 @@ namespace KBS1.view {
         }
 
         private void CreateList() {
-            foreach( KeyValuePair<string, Image> item in this.items ) {
-                this.imageList1.Images.Add(item.Key, item.Value);
-                ListViewItem temp = listView1.Items.Add(item.Key);
-                temp.ImageKey = item.Key;
+            this.AddToImageList();
+
+            this.listView1.View = View.LargeIcon;
+            this.imageList1.ImageSize = new Size(50, 50);
+            this.listView1.LargeImageList = this.imageList1;
+
+            foreach (KeyValuePair<string, Image> pair in this.items) {
+                ListViewItem t = new ListViewItem(pair.Key);
+                t.ImageKey = pair.Key;
+                this.listView1.Items.Add(t);
             }
-            listView1.LargeImageList = imageList1;
+        }
+
+        private void AddToImageList() {
+            foreach (KeyValuePair<string, Image> pair in this.items) {
+                this.imageList1.Images.Add(pair.Key, pair.Value);
+            }
         }
 
         private void MouseClicked( object sender, MouseEventArgs e ) {
@@ -83,7 +94,13 @@ namespace KBS1.view {
                 Image i = this.items[ selectedItemName ];
                 Bitmap b = ( Bitmap ) this.BackgroundImage;
                 using( Graphics g = Graphics.FromImage(b) ) {
-                    g.DrawImage(i, e.X, e.Y, 50, 50);
+
+                    if (selectedItemName == "player" && !this.addedObjects.ContainsKey("player"))
+                        g.DrawImage(i, e.X, e.Y, 50, 50);
+                    else if (selectedItemName == "finish" && !this.addedObjects.ContainsKey("finish"))
+                        g.DrawImage(i, e.X, e.Y, 50, 50);
+                    else if (selectedItemName == "enemy" || selectedItemName == "static")
+                        g.DrawImage(i, e.X, e.Y, 50, 50);
 
                     this.Invalidate();
                 }
@@ -97,9 +114,7 @@ namespace KBS1.view {
                     else {
                         if( selectedItemName == "player" && !this.addedObjects.ContainsKey("player") )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 5);
-                        else if( selectedItemName == "finish" && !this.addedObjects.ContainsKey("finish") )
-                            this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
-                        else
+                        else if( (selectedItemName == "finish" && !this.addedObjects.ContainsKey("finish")) || selectedItemName == "static" )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
                     }
                 }
