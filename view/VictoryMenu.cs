@@ -49,6 +49,11 @@ namespace KBS1.view
             VictoryMenuClick(sender, e);
         }
 
+        private void label_Score_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public Button Get_Button_Restart_Level()
         {
             return button_RestartLevel;
@@ -77,6 +82,11 @@ namespace KBS1.view
         public TextBox Get_Submit_Score_Name()
         {
             return textBox_SubmitScore;
+        }
+
+        public Label Get_Your_Score()
+        {
+            return label_Score;
         }
     }
 }
