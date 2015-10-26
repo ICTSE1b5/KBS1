@@ -21,11 +21,18 @@ namespace KBS1.model
             allObjects = props;
 
             EffectRadius = effectRadius;
+
+            updateRectangleOfEffect();
         }
 
         protected void updateRectangleOfEffect()
         {
             RectangleOfEffect = new Rectangle(pos_x - EffectRadius, pos_y - EffectRadius, Width + EffectRadius * 2, Height + EffectRadius * 2);
+        }
+
+        public Rectangle EffectSquare
+        {
+            get { return RectangleOfEffect; }
         }
     }
 }

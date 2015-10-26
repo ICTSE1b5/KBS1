@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
-    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
+    <ProjectGuid>{258E62D0-2B79-4C90-965B-4C7CE8D1EBEB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>
@@ -84,12 +84,15 @@
     <Compile Include="controller\GameController.cs" />
     <Compile Include="controller\GameLevels.cs" />
     <Compile Include="model\Border.cs" />
+    <Compile Include="model\EffectGiver.cs" />
     <Compile Include="model\Enemy.cs" />
     <Compile Include="model\Enemy_Following.cs" />
     <Compile Include="model\Enemy_Static.cs" />
     <Compile Include="model\Finish.cs" />
     <Compile Include="model\GameObject.cs" />
+    <Compile Include="model\Pile_of_Logs.cs" />
     <Compile Include="model\Player.cs" />
+    <Compile Include="model\Puddle.cs" />
     <Compile Include="model\Wall.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -137,6 +137,7 @@ namespace KBS1.model
 
             alive = true;
             currentCollisionObjectsList = new List<GameObject>();
+            currentSpeedEffectList = new List<SpeedEffects>();
             setupImages();
         }
 
@@ -160,7 +161,11 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            currentSpeedEffectList.ForEach(currentEffect => speedEffectNumber += (int) currentEffect);
+            foreach(SpeedEffects currentEffect in currentSpeedEffectList)
+            {
+                speedEffectNumber += (int)currentEffect;
+                //MessageBox.Show("Test");
+            }
 
             MoveVerticaly();
             MoveHorizontaly();
