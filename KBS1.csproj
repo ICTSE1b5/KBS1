@@ -4,7 +4,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
-    <ProjectGuid>{F2F502DC-7AE4-4944-9927-26598983354E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KBS1</RootNamespace>

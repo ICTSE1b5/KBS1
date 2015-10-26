@@ -16,28 +16,28 @@ namespace KBS1.controller
 
         private string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
-        public void SubmitScore(string name, string score, string currentLevel)
+        public void SubmitScore(string name, string score, int currentLevel)
         {
-
-            string file = @"\scores\" + currentLevel + ".xml";
+            //file location
+            string file = @"\scores\level" + currentLevel + ".xml";
             string ScoreRegistry = path + file;
 
             if (File.Exists(ScoreRegistry))
             {
                 var xDoc = XElement.Load(ScoreRegistry);
-
+                //write the score into an existing xml file
                 var myNewElement = new XElement("Score", 
                    new XAttribute("name", name),
                    new XAttribute("score", score)
                 );
                 xDoc.Add(myNewElement);
                 xDoc.Save(ScoreRegistry);
-                MessageBox.Show("Gefeliciteerd, uw score Toegevoegd! pad: " + ScoreRegistry);
+                MessageBox.Show("Uw score is toegevoegd. pad: " + ScoreRegistry);
 
             }
             else if (!File.Exists(ScoreRegistry))
             { 
-            // write the XML file
+            // write the XML file and add a new score
             XmlTextWriter writer = new XmlTextWriter(ScoreRegistry, System.Text.Encoding.UTF8);
             writer.WriteStartDocument(true);
             writer.Formatting = Formatting.Indented;
@@ -49,20 +49,10 @@ namespace KBS1.controller
             writer.WriteEndElement();
             writer.WriteEndDocument();
             writer.Close();
-            MessageBox.Show("Gefeliciteerd, uw score is geregistreerd! pad: " + ScoreRegistry);
-        }
-        }
+            MessageBox.Show("Uw score is geregistreerd. pad: " + ScoreRegistry);
+            }
+        }           
 
-            private void WriteScore(string name, String score, XmlTextWriter writer)
-        {
-            writer.WriteStartElement("Score");
-            writer.WriteAttributeString("naam", name);
-            writer.WriteAttributeString("score", score);
-            writer.WriteEndElement();
-        }
-
-            
-
-        }
     }
+}
 

@@ -21,6 +21,7 @@ namespace KBS1
         private GameView game_view;
         private GameLevels game_levels;
         private SoundPlayer player;
+        private HighscoreWriter highscore_writer = new HighscoreWriter();
         private bool mainOptions;
         public int currentlevel = 1;
         WMPLib.WindowsMediaPlayer wmp = new WMPLib.WindowsMediaPlayerClass();
@@ -249,6 +250,7 @@ namespace KBS1
             else if (sender == victoryMenu.Get_Button_Submit_Score())
             {
                 string scorename = victoryMenu.Get_Submit_Score_Name().Text;
+                highscore_writer.SubmitScore(scorename, game_loop.Get_score() , currentlevel);
 
             }
             else if(sender == victoryMenu.Get_Button_Main_Menu())
