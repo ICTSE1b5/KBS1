@@ -34,6 +34,7 @@
             this.button_ExitGame = new System.Windows.Forms.Button();
             this.button_SubmitScore = new System.Windows.Forms.Button();
             this.textBox_SubmitScore = new System.Windows.Forms.TextBox();
+            this.label_Score = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_RestartLevel
@@ -95,11 +96,24 @@
             this.textBox_SubmitScore.TabIndex = 5;
             this.textBox_SubmitScore.TextChanged += new System.EventHandler(this.textBox_SubmitScore_TextChanged);
             // 
+            // label_Score
+            // 
+            this.label_Score.AutoSize = true;
+            this.label_Score.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label_Score.ForeColor = System.Drawing.Color.Black;
+            this.label_Score.Location = new System.Drawing.Point(145, 75);
+            this.label_Score.Name = "label_Score";
+            this.label_Score.Size = new System.Drawing.Size(117, 25);
+            this.label_Score.TabIndex = 6;
+            this.label_Score.Text = "Your score: ";
+            this.label_Score.Click += new System.EventHandler(this.label_Score_Click);
+            // 
             // VictoryMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KBS1.Properties.Resources.victory;
+            this.Controls.Add(this.label_Score);
             this.Controls.Add(this.textBox_SubmitScore);
             this.Controls.Add(this.button_SubmitScore);
             this.Controls.Add(this.button_ExitGame);
@@ -121,5 +135,6 @@
         private System.Windows.Forms.Button button_ExitGame;
         private System.Windows.Forms.Button button_SubmitScore;
         private System.Windows.Forms.TextBox textBox_SubmitScore;
+        private System.Windows.Forms.Label label_Score;
     }
 }
