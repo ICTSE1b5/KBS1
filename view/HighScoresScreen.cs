@@ -71,10 +71,10 @@ namespace KBS1.view
             y = 0;
             ranking = 1;
 
-            //Sorts the list with highscores ascending
+            //Sorts the list with highscores descending
             var highscoresSorted =
                 from h in parser.data
-                orderby int.Parse(h[0])
+                orderby int.Parse(h[0]) descending
                 select h;
 
             foreach (List<string> highscore in highscoresSorted)

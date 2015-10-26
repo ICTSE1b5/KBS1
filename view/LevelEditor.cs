@@ -99,13 +99,13 @@ namespace KBS1.view {
                         g.DrawImage(i, e.X, e.Y, 50, 50);
                     else if (selectedItemName == "finish" && !this.addedObjects.ContainsKey("finish"))
                         g.DrawImage(i, e.X, e.Y, 50, 50);
-                    else if (selectedItemName == "enemy" || selectedItemName == "static")
+                    else if (selectedItemName == "enemy" || selectedItemName == "static" || selectedItemName == "aura")
                         g.DrawImage(i, e.X, e.Y, 50, 50);
 
                     this.Invalidate();
                 }
                 using( Dialog d = new Dialog() ) {
-                    if (selectedItemName == "enemy") {
+                    if (selectedItemName == "enemy" || selectedItemName == "aura") {
                         DialogResult result = d.ShowDialog(this);
                         if (result == DialogResult.OK) {
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, d.GetValue());

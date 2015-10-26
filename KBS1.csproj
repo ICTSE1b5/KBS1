@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="controller\GameController.cs" />
     <Compile Include="controller\GameLevels.cs" />
+    <Compile Include="model\Bolt.cs" />
     <Compile Include="model\Border.cs" />
     <Compile Include="model\EffectGiver.cs" />
     <Compile Include="model\Enemy.cs" />
@@ -212,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="levels\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="background.gif" />
@@ -220,6 +220,7 @@
   <ItemGroup>
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
     <Content Include="Images\bush.png" />
+    <None Include="Resources\bolt.gif" />
     <Content Include="SoundEffects\DoorSoundeffect.wav" />
     <Content Include="SoundEffects\MainMenuMusic.wav" />
     <Content Include="SoundEffects\wolfSoundeffect.wav" />
