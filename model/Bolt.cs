@@ -9,7 +9,7 @@ namespace KBS1.model
     class Bolt : EffectGiver
     {
         public Bolt(int pos_x, int pos_y, List<GameObject> props, Form1 form)
-            : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 50, props, form)
+            : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 20, props, form)
         {
             this.image = Properties.Resources.bolt;
             this.description = "This thunder bolt will give you a speed boost if you're in the area of its effect";

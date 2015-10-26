@@ -173,6 +173,26 @@ namespace KBS1.model
             //Remove all the movement effects currently active so that after the object moved, the stats return to normal and the object will move the same speed again.
             currentSpeedEffectList.RemoveAll(ob => true);
             speedEffectNumber = 0;
+
+
+            //Failsave if the player moves out of bounds
+            if(pos_y < 0) //Top
+            {
+                Position_Y = 0;
+            }
+            if (pos_y > game_Form.getHeightOfGame() - Height) //Bottom
+            {
+                Position_Y = game_Form.getHeightOfGame() - Height;
+            }
+            if (pos_x < 0) //Left
+            {
+                Position_X = 0;
+            }
+            if (pos_y > game_Form.getWidthOfGame() - Width) //Right
+            {
+                Position_X = game_Form.getWidthOfGame() - Width;
+            }
+
         }
         protected virtual void MoveVerticaly()
         {            

@@ -64,6 +64,14 @@
     range="50"
     width="20"
     height="20"/>
+	<water
+    hp="10"
+    speed="0"
+    x="600"
+    y="500"
+    range="50"
+    width="20"
+    height="20"/>
   <logs
 	hp="10"
 	speed="0"
