@@ -246,6 +246,11 @@ namespace KBS1
             {
                 Close();
             }
+            else if (sender == victoryMenu.Get_Button_Submit_Score())
+            {
+                string scorename = victoryMenu.Get_Submit_Score_Name().Text;
+
+            }
             else if(sender == victoryMenu.Get_Button_Main_Menu())
             {
                 game_loop.Shutdown();
@@ -290,6 +295,7 @@ namespace KBS1
         public void showVictoryMenu()
         {
             game_loop.Set_Properties_Pause(true);
+            victoryMenu.Get_Submit_Score_Name().MaxLength = 3;
             victoryMenu.Visible = true;
             victoryMenu.Enabled = true;
         }

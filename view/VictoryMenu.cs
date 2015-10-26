@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace KBS1.view
 {
@@ -38,6 +39,16 @@ namespace KBS1.view
             VictoryMenuClick(sender, e);
         }
 
+        private void button_SubmitScore_Click(object sender, EventArgs e)
+        {
+            VictoryMenuClick(sender, e);
+        }
+
+        private void textBox_SubmitScore_TextChanged(object sender, EventArgs e)
+        {
+            VictoryMenuClick(sender, e);
+        }
+
         public Button Get_Button_Restart_Level()
         {
             return button_RestartLevel;
@@ -56,6 +67,16 @@ namespace KBS1.view
         public Button Get_Button_Exit_Game()
         {
             return button_ExitGame;
+        }
+
+        public Button Get_Button_Submit_Score()
+        {
+            return button_SubmitScore;
+        }
+
+        public TextBox Get_Submit_Score_Name()
+        {
+            return textBox_SubmitScore;
         }
     }
 }
