@@ -21,21 +21,25 @@ namespace KBS1.view
 
         private void button_RestartLevel_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_NextLevel_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_MainMenu_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
         private void button_ExitGame_Click(object sender, EventArgs e)
         {
+            this.button_SubmitScore.Enabled = true;
             VictoryMenuClick(sender, e);
         }
 
