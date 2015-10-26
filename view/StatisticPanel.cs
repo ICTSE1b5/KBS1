@@ -105,9 +105,11 @@ namespace KBS1.view
         //Updates the info for each panel in the StatisticsScreen
         public void updatePanel()
         {
+            int speedbuff = gameObject.getSpeedBuffNumber();
+            int playerspeed = gameObject.speed_X;
             xLabelData.Text = this.gameObject.pos_x.ToString();
             yLabelData.Text = this.gameObject.pos_y.ToString();
-            speedLabelData.Text = this.gameObject.speed_X.ToString();
+            speedLabelData.Text = (playerspeed + speedbuff).ToString();
         }
     }
 }

@@ -693,7 +693,7 @@ namespace KBS1.model
         {
             currentSpeedEffectList.Add(effect);
         }
-        private int getSpeedBuffNumber()
+        public int getSpeedBuffNumber()
         {
             int speedBuff = 0;
             int lowest = 0;
