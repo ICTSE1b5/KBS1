@@ -12,13 +12,12 @@ namespace KBS1.model
 
     public abstract class GameObject
     {
-        public enum Effects
+        public enum SpeedEffects
         {
-            NONE = 0,
-            SLOW_1 = 1,
-            SLOW_2 = 2,
-            SPEED_1 = 3,
-            SPEED_2 = 4
+            SLOW_1 = -1,
+            SLOW_2 = -2,
+            FAST_1 = 1,
+            FAST_2 = 2
         }
         public enum ObjectType
         {
@@ -26,7 +25,8 @@ namespace KBS1.model
             PLAYER,
             ENEMY,
             WALL,
-            GOAL
+            GOAL,
+            EFFECT
         }
         public enum ObjectProperties
         {
@@ -73,11 +73,16 @@ namespace KBS1.model
 
 
         //An int to make sure an objects stops at the position of impact instead of moving throught another object
-        private int speedCollisionDebuff_vertical;
-        private int speedCollisionDebuff_horizontal;
+        private int speedCollisionDebuff_vertical = 0;
+        private int speedCollisionDebuff_horizontal = 0;
 
         //Holds all the objects that this object has a collision with
         public List<GameObject> currentCollisionObjectsList;
+
+        //Holds all the Effects currently active
+        private List<SpeedEffects> currentSpeedEffectList;
+        //Uses this number to effect the speed of the object
+        private int speedEffectNumber;
 
         //Holds the horizontal and vertical direction
         protected Direction horizontalDirection;
@@ -155,8 +160,14 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
+            currentSpeedEffectList.ForEach(currentEffect => speedEffectNumber += (int) currentEffect);
+
             MoveVerticaly();
             MoveHorizontaly();
+
+            //Remove all the movement effects currently active so that after the object moved, the stats return to normal and the object will move the same speed again.
+            currentSpeedEffectList.RemoveAll(ob => true);
+            speedEffectNumber = 0;
         }
         protected virtual void MoveVerticaly()
         {            
@@ -189,23 +200,49 @@ namespace KBS1.model
         #region moveUpDownLeftRight
         private void moveUp()
         {
-            Position_Y -= Speed_Y - speedCollisionDebuff_vertical;
+            //PROBLEM : NEEDS FIX --> MOVEMENT ALSO NEEDS TO BE IMPLEMENTED IN THE 'COLLISION DETECTION OF OBJECT PATH' AND 'GET VITUAL RECTANGLE OF VIRTUAL MOVEMENT'!!
+            //CAN BE FIXED EASILY BY DISABLEING PATH COLLISION AND ALWAYS USING RECTANGLE COLLISION, AND JUST FIXING THE VIRTUAL RECTANGLES
+            int movement = Speed_Y - speedCollisionDebuff_vertical;
+            if(!((movement + speedEffectNumber) < 0))
+            {
+                movement += speedEffectNumber;
+            }
+
+            Position_Y -= movement;
             speedCollisionDebuff_vertical = 0;
             
         }
         private void moveDown()
         {
-            Position_Y += Speed_Y - speedCollisionDebuff_vertical;
+            int movement = Speed_Y - speedCollisionDebuff_vertical;
+            if (!((movement + speedEffectNumber) < 0))
+            {
+                movement += speedEffectNumber;
+            }
+
+            Position_Y += movement;
             speedCollisionDebuff_vertical = 0;
         }
         private void moveLeft()
         {
-            Position_X -= Speed_X - speedCollisionDebuff_horizontal;
+            int movement = Speed_X - speedCollisionDebuff_horizontal;
+            if (!((movement + speedEffectNumber) < 0))
+            {
+                movement += speedEffectNumber;
+            }
+
+            Position_X -= movement;
             speedCollisionDebuff_horizontal = 0;
         }
         private void moveRight()
         {
-            Position_X += Speed_X - speedCollisionDebuff_horizontal;
+            int movement = Speed_X - speedCollisionDebuff_horizontal;
+            if (!((movement + speedEffectNumber) < 0))
+            {
+                movement += speedEffectNumber;
+            }
+
+            Position_X += movement;
             speedCollisionDebuff_horizontal = 0;
         }
         #endregion
@@ -598,6 +635,14 @@ namespace KBS1.model
                 speedCollisionDebuff_vertical = Speed_Y;
             }
         }
+
+        //Effect Giving
+        public void giveSpeedEffect(SpeedEffects effect)
+        {
+            currentSpeedEffectList.Add(effect);
+        }
+
+
 
     }
 }

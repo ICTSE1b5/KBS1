@@ -9,7 +9,8 @@ namespace KBS1.model
         //needs direction enum (up, down, left, right) for the GameController to do its calculations
 
 
-        public Player(int player_health,int player_speed, int pos_x, int pos_y, int player_width, int player_height, Form1 form) : base(pos_x, pos_y, player_width, player_height, player_speed, player_speed, player_health, player_health, form)
+        public Player(int player_health,int player_speed, int pos_x, int pos_y, int player_width, int player_height, Form1 form) 
+            : base(pos_x, pos_y, player_width, player_height, player_speed, player_speed, player_health, player_health, form)
         {
             Type = ObjectType.PLAYER;
 

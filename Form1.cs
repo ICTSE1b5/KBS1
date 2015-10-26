@@ -41,6 +41,7 @@ namespace KBS1
             gameoverMenu.GameOverScreenClick += new EventHandler(GameOver_ButtonHandler);
             victoryMenu.VictoryMenuClick += new EventHandler(VictoryMenu_ButtonHandler);
             levelEditor.LevelEditorButtonClick += new EventHandler(LevelEditor_ButtonHandler);
+            highScoresScreen.HighscoresScreenClick += new EventHandler(Highscores_ButtonHandler);
             levelSelectScreen.AddForm(this);
             
 
@@ -151,7 +152,6 @@ namespace KBS1
                 highScoresScreen.Visible = true;
                 highScoresScreen.Enabled = true;
                 highScoresScreen.BringToFront();
-                highScoresScreen.AddItemsToListBox();
             }
             else if (sender == mainMenuScreen.Get_Button_LevelEditor()) {
 
@@ -377,7 +377,15 @@ namespace KBS1
             }
         }
 
-        
+        //The button handler for the highscores screen
+        public void Highscores_ButtonHandler(object sender, EventArgs e)
+        {
+            if (sender == highScoresScreen.Get_Button_Return())
+            {
+                highScoresScreen.Visible = false;
+                highScoresScreen.Enabled = false;
+            }
+        }
 
         private void playMusic()
         {
