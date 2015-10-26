@@ -215,8 +215,20 @@ namespace KBS1.controller
 
         private void Write( XmlTextWriter writer, string name, Dictionary<string, int> objectData ) {
             writer.WriteStartElement(name);
+            if(name == "player" || name == "enemy")
+                writer.WriteAttributeString("hp", "1");
             foreach( KeyValuePair<string, int> pair in objectData ) {
                 writer.WriteAttributeString(pair.Key, pair.Value.ToString());
+            }
+            if (name == "player" || name == "finish" || name == "static") {
+                writer.WriteAttributeString("width", "50");
+                writer.WriteAttributeString("height", "50");
+            } else if (name == "enemy") {
+                writer.WriteAttributeString("width", "3");
+                writer.WriteAttributeString("height", "9");
+            } else if (name == "aura") {
+                writer.WriteAttributeString("width", "2");
+                writer.WriteAttributeString("height", "2");
             }
             writer.WriteEndElement();
         }
