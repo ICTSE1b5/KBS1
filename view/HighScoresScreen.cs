@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using KBS1.controller;
 using System.Drawing;
+using System.Linq;
 
 namespace KBS1.view
 {
@@ -66,10 +67,17 @@ namespace KBS1.view
             parser.data.Clear();
 
             parser.Parse(level);
+            
             y = 0;
             ranking = 1;
 
-            foreach (List<string> highscore in parser.data)
+            //Sorts the list with highscores ascending
+            var highscoresSorted =
+                from h in parser.data
+                orderby int.Parse(h[0])
+                select h;
+
+            foreach (List<string> highscore in highscoresSorted)
             {
                 if(ranking <= 15)
                 AddHighscores(highscore);
