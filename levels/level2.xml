@@ -3,83 +3,184 @@
   <player
     hp="1"
     speed="5"
-    x="720"
-    y="500"
+    x="400"
+    y="0"
     width="50"
     height="50"/>
   <finish
-    x="0"
+    x="720"
     y="0"
     width="50"
     height="50"/>
   <enemy
     hp="1"
     speed="3"
-    x="500"
-    y="500"
+    x="0"
+    y="0"
     width="3"
     height="9"/>
   <enemy
     hp="1"
     speed="3"
-    x="50"
+    x="400"
     y="300"
     width="3"
     height="9"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="300"
-    y="50"
-    width="3"
-    height="9"/>
+
   <!-- 
   Aura objects give the player a certain effect based on the value of the speed attribute.
   It can be negative, which would mean that the player would be slowed down.
   -->
-  <aura
+     <bolt
     hp="10"
-    speed="2"
-    x="5"
-    y="5"
-    range="2"
-    width="2"
-    height="2"/>
-  <!-- Static objects are things like walls -->
-  <static
-    x="100"
-    y="100"
-    width="50"
-    height="50"
-    />
-  <static
+    speed="0"
     x="200"
-    y="200"
-    width="50"
-    height="50"
-    />
+    y="170"
+    range="50"
+    width="20"
+    height="20"/>
+    <logs
+	hp="10"
+	speed="0"
+	x="25"
+	y="250"
+	range="100"
+	width="20"
+	height="20"/>
+    <logs
+	hp="10"
+	speed="0"
+	x="75"
+	y="250"
+	range="100"
+	width="20"
+	height="20"/>
+        <logs
+	hp="10"
+	speed="0"
+	x="720"
+	y="100"
+	range="100"
+	width="20"
+	height="20"/>
+            <logs
+	hp="10"
+	speed="0"
+	x="615"
+	y="200"
+	range="100"
+	width="20"
+	height="20"/>
+  <!-- Static objects are things like walls -->
+ 
   <static
-    x="50"
-    y="300"
+    x="550"
+    y="0"
     width="50"
     height="50"
     />
       <static
-    x="400"
+    x="550"
     y="50"
     width="50"
     height="50"
     />
-  <static
+    <static
+    x="550"
+    y="100"
+    width="50"
+    height="50"
+    />
+    <static
+    x="550"
+    y="150"
+    width="50"
+    height="50"
+    />
+    <static
+    x="550"
+    y="200"
+    width="50"
+    height="50"
+    />
+    <static
+    x="550"
+    y="250"
+    width="50"
+    height="50"
+    />
+    <static
+    x="550"
+    y="300"
+    width="50"
+    height="50"
+    />
+    <static
+    x="500"
+    y="250"
+    width="50"
+    height="50"
+    />
+    <static
+    x="450"
+    y="250"
+    width="50"
+    height="50"
+    />
+ <static
     x="400"
-    y="400"
+    y="250"
     width="50"
     height="50"
     />
-  <static
-    x="600"
-    y="350"
+     <static
+    x="350"
+    y="250"
     width="50"
     height="50"
     />
+     <static
+    x="300"
+    y="250"
+    width="50"
+    height="50"
+    />
+     <static
+    x="250"
+    y="250"
+    width="50"
+    height="50"
+    />
+     <static
+    x="200"
+    y="250"
+    width="50"
+    height="50"
+    />
+     <static
+    x="150"
+    y="250"
+    width="50"
+    height="50"
+    />
+         <static
+    x="200"
+    y="100"
+    width="50"
+    height="50"
+    />
+             <static
+    x="200"
+    y="50"
+    width="50"
+    height="50"
+    />
+                 <static
+    x="200"
+    y="0"
+    width="50"
+    height="50"
+    />
+    
+
 </level>
