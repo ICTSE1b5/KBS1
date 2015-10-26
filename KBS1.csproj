@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\HighscoreWriter.cs" />
     <Compile Include="controller\GameLoop.cs" />
     <Compile Include="controller\XmlParser.cs" />
     <Compile Include="controller\XmlParserHighscores.cs" />
