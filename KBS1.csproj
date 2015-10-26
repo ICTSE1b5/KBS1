@@ -68,7 +68,6 @@
     <Compile Include="controller\HighscoreWriter.cs" />
     <Compile Include="controller\GameLoop.cs" />
     <Compile Include="controller\XmlParser.cs" />
-    <Compile Include="controller\XMLWriter.cs" />
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
