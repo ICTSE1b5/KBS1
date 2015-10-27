@@ -187,7 +187,7 @@ namespace KBS1.controller
             }
         }
 
-        public string SaveLevel( Dictionary<string, Dictionary<string, int>> levelData ) {
+        public string SaveLevel( Dictionary<int, Tuple<string, Dictionary<string, int>>> levelData ) {
             if( !Directory.Exists(this.directory) )
                 Directory.CreateDirectory(this.directory);
             string filename = this.GetNextLevelName() + ".xml";
@@ -198,8 +198,8 @@ namespace KBS1.controller
                 writer.Formatting = Formatting.Indented;
                 writer.Indentation = 2;
                 writer.WriteStartElement("level");
-                foreach( KeyValuePair<string, Dictionary<string, int>> pair in levelData ) {
-                    this.Write(writer, pair.Key, pair.Value);
+                foreach (KeyValuePair<int, Tuple<string, Dictionary<string, int>>> pair in levelData) {
+                    this.Write(writer, pair.Value.Item1, pair.Value.Item2);
                 }
                 writer.WriteEndDocument();
                 writer.Close();
