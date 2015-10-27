@@ -93,7 +93,9 @@ namespace KBS1.view {
         }
 
         private void MouseClicked( object sender, MouseEventArgs e ) {
-            if( listView1.SelectedItems.Count > 0 ) {
+            if( listView1.SelectedItems.Count > 0  
+                && (e.X > 25 && e.X < (this.Width-this.listView1.Width)-75) 
+                && (e.Y > 25 && e.Y < (this.Height-50))) {
                 string selectedItemName = listView1.SelectedItems[ 0 ].Text.ToLower();
                 Image i = this.items[ selectedItemName ];
                 Bitmap b = ( Bitmap ) this.BackgroundImage;
