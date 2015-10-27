@@ -158,7 +158,7 @@ namespace KBS1.controller
                 if (item[0] == "enemy")
                 {
                     //create new object
-                    Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), Int32.Parse(item[2]), game_objects, game_Form);
                     //Adds object to the list
                     game_objects.Add(enemy);
                 }

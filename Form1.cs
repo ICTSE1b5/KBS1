@@ -501,6 +501,10 @@ namespace KBS1
             CloseGame();
         }
 
+        /// <summary>
+        /// This method returns the name and image used in the level editor
+        /// </summary>
+        /// <returns>Dictionary</returns>
         public Dictionary<string, Image> GetResources() {
             Dictionary<string, Image> data = new Dictionary<string, Image>();
             data.Add("player", Properties.Resources.playerIDLE);

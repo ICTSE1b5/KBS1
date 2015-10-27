@@ -28,7 +28,9 @@ namespace KBS1.view {
         }
 
         public void Init() {
+            // Create our listview and imagelist
             this.CreateList();
+
             this.addedObjects = new Dictionary<int, Tuple<string, Dictionary<string, int>>>();
             this.MouseClick += this.MouseClicked;
 
@@ -96,7 +98,8 @@ namespace KBS1.view {
                 Image i = this.items[ selectedItemName ];
                 Bitmap b = ( Bitmap ) this.BackgroundImage;
                 using( Graphics g = Graphics.FromImage(b) ) {
-
+                    // Check if the unique objects are already on the field (player and finish)
+                    // if so, we shouldn't add any more of those.
                     if( selectedItemName == "player" && !Contains(this.addedObjects, "player") )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
                     else if( selectedItemName == "finish" && !Contains(this.addedObjects, "finish") )
@@ -109,6 +112,7 @@ namespace KBS1.view {
                     this.Invalidate();
                 }
                 using( Dialog d = new Dialog() ) {
+                    // Make the speed dialog open when we want to add an enemy
                     if( selectedItemName == "enemy" || selectedItemName == "aura" ) {
                         DialogResult result = d.ShowDialog(this);
                         if( result == DialogResult.OK ) {
