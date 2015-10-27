@@ -740,6 +740,35 @@ namespace KBS1.model
                 speedCollisionDebuff_vertical = Speed_Y;
             }
         }
+        public bool hasCollidedVertically
+        {
+            get
+            {
+                if (speedCollisionDebuff_vertical == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        public bool hasCollidedHorizontally
+        {
+            get
+            {
+                if (speedCollisionDebuff_horizontal == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
 
         //Effect Giving
         public void giveSpeedEffect(SpeedEffects effect)
