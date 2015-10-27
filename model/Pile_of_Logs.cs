@@ -13,7 +13,7 @@ namespace KBS1.model
             : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 10, props, form)
         {
             this.image = Properties.Resources.log;
-            this.description = "This pile of logs will cause you to slow down so you don't trip on them.";
+            this.description = "This pile of logs will cause you to slow down.";
 
             isSolid = false;
         }
