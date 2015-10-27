@@ -512,8 +512,8 @@ namespace KBS1.model
         public Rectangle ObjectRectangle
         {
             get { return new Rectangle(Position_X, Position_Y, Width, Height); }
-        }
-        public Rectangle VirutalHorizontalRectangle
+        }       // The B (Begin)
+        public Rectangle VirtualHorizontalRectangle     // The VH (Virtual Horizontal)
         {
             get
             {
@@ -532,7 +532,16 @@ namespace KBS1.model
                 return new Rectangle(Position_X + virutalSpeed, Position_Y, Width, Height);
             }
         }
-        public Rectangle VirutalVerticalRectangle
+        public Rectangle VirtualHorizontalCollidedRectangle(GameObject target)     //The VHC(Virtual Horizontal Collided)
+        {
+            int distance = getHorizontalDistanceToObject(target);
+            if (distance < Speed_X)
+            {
+                return new Rectangle(Position_X + distance, Position_Y + Speed_Y, Width, Height);
+            }
+            return VirtualRectangle;
+        }
+        public Rectangle VirtualVerticalRectangle       // The VV (Virtual Vertical)
         {
             get
             {
@@ -551,7 +560,16 @@ namespace KBS1.model
                 return new Rectangle(Position_X, Position_Y + virutalSpeed, Width, Height);
             }
         }
-        public Rectangle VirtualRectangle
+        public Rectangle VirtualVerticalCollidedRectangle(GameObject target)     //The VVC(Virtual Vertical Collided)
+        {
+            int distance = getVerticalDistanceToObject(target);
+            if (distance < Speed_Y)
+            {
+                return new Rectangle(Position_X + Speed_X, Position_Y + distance, Width, Height);
+    }
+            return VirtualRectangle;
+        }
+        public Rectangle VirtualRectangle   // The V (Virtual)
         {
             get
             {
@@ -584,6 +602,91 @@ namespace KBS1.model
                 return new Rectangle(Position_X + virutalSpeed_X, Position_Y + virutalSpeed_Y, Width, Height);
             }
         }
+
+
+
+        //Radar Rectangles
+        /// <summary>
+        /// North Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NORTH
+        {
+            get
+            {
+                return new Rectangle(Position_X,    Position_Y - Speed_Y,   Width,  Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SOUTH
+        {
+            get
+            {
+                return new Rectangle(Position_X,    Position_Y + Height + Speed_Y,  Width,  Speed_Y);
+            }
+        }
+        /// <summary>
+        /// East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_EAST
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width + Speed_X,  Position_Y,     Speed_X,    Height);
+            }
+        }
+        /// <summary>
+        /// West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_WEST
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X,  Position_Y,     Speed_X,    Height);
+            }
+        }
+        /// <summary>
+        /// North West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NW
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X,  Position_Y - Speed_Y, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// North East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NE
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width, Position_Y - Speed_X, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SW
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X, Position_Y + Height, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SE
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width, Position_Y + Height, Speed_X, Speed_Y);
+            }
+        }
+
 
         //Collision debuff        
         public void horizontalCollisionWithObject(GameObject target)
@@ -688,12 +791,7 @@ namespace KBS1.model
             return speedBuff;
         }
 
-
-
-
-
-
-
+        //Edited Speed_X to accomidate for the Speed Effects
         protected int Speed_X
         {
             get { return BaseSpeed_X + getSpeedBuffNumber(); }
