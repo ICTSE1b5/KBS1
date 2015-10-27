@@ -91,6 +91,18 @@
 	
   <!-- Static objects are things like walls -->
   <static
+    x="100"
+    y="300"
+    width="50"
+    height="50"
+    />
+  <static
+    x="450"
+    y="300"
+    width="50"
+    height="50"
+    />
+  <static
     x="600"
     y="350"
     width="50"

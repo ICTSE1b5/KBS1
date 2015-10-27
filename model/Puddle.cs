@@ -37,7 +37,7 @@ namespace KBS1.model
         {
             foreach (GameObject ob in allObjects)
             {
-                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
+                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect) && (ob.Type == ObjectType.PLAYER))
                 {
                     ob.giveSpeedEffect(SpeedEffects.SLOW_2);
                 }

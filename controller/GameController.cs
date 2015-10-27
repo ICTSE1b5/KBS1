@@ -93,11 +93,46 @@ namespace KBS1.controller
                 method = CollisionCalculationMethod.RECTANGLE_CALCULATION;
             }
 
+            if(subject.Type == GameObject.ObjectType.ENEMY)
+            {
+                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+            }
+            
+
+
+
+
+            /*
+
+
+
+                    NOTICE:
+                    Object Path Calculation will cause smooth running allong the edges of walls, but you are able to go through them when going diagonal
+                    Rectangle Calculation will cause no diagonal phasing, but you will get stuck at the edge of a row of walls       
+
+
+
+
+
+            */
+
 
             //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
             if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
             {
-                if(subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                if (subject.getHorizontalDirection() != GameObject.Direction.NONE || subject.getVerticalDirection() != GameObject.Direction.NONE)
+                {
+                    if (subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirutalHorizontalRectangle.IntersectsWith(target.ObjectRectangle))
+                    {
+                        CollidesWith(subject, target, false);
+                    }
+                    if (subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirutalVerticalRectangle.IntersectsWith(target.ObjectRectangle))
+                    {
+                        CollidesWith(subject, target, true);
+                    }
+                }
+                //The virtual test if no horizontal or vertical collision happens
+                if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
                 {
                     CollidesWith(subject, target, true);
                     CollidesWith(subject, target, false);
