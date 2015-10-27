@@ -121,10 +121,10 @@ namespace KBS1.controller
             //Add borders to the game
             int game_Width = game_Form.getWidthOfGame();
             int game_Height = game_Form.getHeightOfGame();
-            game_objects.Add(new Border(0,          0,              game_Width,     0,              game_Form)); //Top
-            game_objects.Add(new Border(0,          game_Height,    game_Width,     0,              game_Form)); //Bottom
-            game_objects.Add(new Border(0,          0,              0,              game_Height,    game_Form)); //Left
-            game_objects.Add(new Border(game_Width, 0,              0,              game_Height,    game_Form)); //Right
+            game_objects.Add(new Border(0, 0, game_Width, 0, game_Form)); //Top
+            game_objects.Add(new Border(0, game_Height, game_Width, 0, game_Form)); //Bottom
+            game_objects.Add(new Border(0, 0, 0, game_Height, game_Form)); //Left
+            game_objects.Add(new Border(game_Width, 0, 0, game_Height, game_Form)); //Right
 
             game_objects.Reverse();
         }
