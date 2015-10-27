@@ -17,8 +17,9 @@ namespace KBS1.controller
         public enum CollisionCalculationMethod
         {
             ANY,
+            DIRECTION_RADAR,
             RECTANGLE_CALCULATION,
-            OBJECT_PATH_CALCULATION
+            OBJECT_PATH
         }
         private CollisionCalculationMethod method = CollisionCalculationMethod.ANY;
 
@@ -86,19 +87,21 @@ namespace KBS1.controller
             //If the speed is greater than that the objects size, calculate with the Object Path otherwise, if the object has a low speed, calculate with the Rectangle Calculation
             if (subject.speed_X > subject.width || subject.speed_Y > subject.height)
             {
-                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+                method = CollisionCalculationMethod.OBJECT_PATH;
             }
             else
             {
                 method = CollisionCalculationMethod.RECTANGLE_CALCULATION;
             }
 
+            //method = CollisionCalculationMethod.RECTANGLE_TO_PATH_CALCULATION;
+
             if(subject.Type == GameObject.ObjectType.ENEMY)
             {
-                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+                method = CollisionCalculationMethod.OBJECT_PATH;
             }
-            
 
+            
 
 
 
@@ -116,29 +119,66 @@ namespace KBS1.controller
 
             */
 
+            //A mix of the Rectangle Calculation and the Object Path Calculation
+            //It creates a mix of both positives and ignores the negatives. This should be the main Collision Detection Algorithm
+            if(method == CollisionCalculationMethod.DIRECTION_RADAR)
+            {
+                //Check Horizontal Radar
+                if(subject.getHorizontalDirection() != GameObject.Direction.NONE)
+                {
+
+                }
+
+                //Check Vertical Radar
+                if(subject.getVerticalDirection() != GameObject.Direction.NONE)
+                {
+
+                }
+
+                //Check Diagonal Radar (only if horizontal and vertical are both not NONE)
+                if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.getVerticalDirection() != GameObject.Direction.NONE)
+                {
+
+                }
+
+
+
+
+
+
+
+            }
 
             //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
-            if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
+            else if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
             {
-                if (subject.getHorizontalDirection() != GameObject.Direction.NONE || subject.getVerticalDirection() != GameObject.Direction.NONE)
+                //Horizontal-Collision-Test
+                if (subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirtualHorizontalRectangle.IntersectsWith(target.ObjectRectangle))
                 {
-                    if (subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirutalHorizontalRectangle.IntersectsWith(target.ObjectRectangle))
-                    {
-                        CollidesWith(subject, target, false);
-                    }
-                    if (subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirutalVerticalRectangle.IntersectsWith(target.ObjectRectangle))
-                    {
-                        CollidesWith(subject, target, true);
-                    }
-                }
-                //The virtual test if no horizontal or vertical collision happens
-                if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
-                {
-                    CollidesWith(subject, target, true);
+                    //MessageBox.Show("Test");
                     CollidesWith(subject, target, false);
                 }
+                //Virtual-Horizontal-Rectangle does Vertical-Collision-Test Test
+                else if(subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    CollidesWith(subject, target, true);
+                }
+
+
+
+                //Vertical-Collision-Test
+                if (subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualVerticalRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    CollidesWith(subject, target, true);
+                }
+                //Virtual-Vertical-Rectangle does Horizontal-Collision-Test Test
+                else if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    //MessageBox.Show("Test2");
+                    //CollidesWith(subject, target, false);
+                }
             }
-            else if (method == CollisionCalculationMethod.OBJECT_PATH_CALCULATION)
+            else if (method == CollisionCalculationMethod.OBJECT_PATH)
             {
                 //Tests on horizontaly and verticaly beside the subject
                 bool Vertical = TestVerticalCollision(subject, target, false);
@@ -224,7 +264,7 @@ namespace KBS1.controller
             Rectangle targetRectangle = target.ObjectRectangle;
             if (isVirtual)
             {
-                subjectRectangle = subject.VirutalHorizontalRectangle;
+                subjectRectangle = subject.VirtualHorizontalRectangle;
             }
             else
             {
@@ -274,7 +314,7 @@ namespace KBS1.controller
             Rectangle targetRectangle = target.ObjectRectangle;
             if (isVirtual)
             {
-                subjectRectangle = subject.VirutalVerticalRectangle;
+                subjectRectangle = subject.VirtualVerticalRectangle;
             }
             else
             {

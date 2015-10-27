@@ -30,7 +30,7 @@ namespace KBS1
         public Form1()
         {
             InitializeComponent();
-            this.Text = "spelletje";
+            this.Text = "Wolf Escape";
             player = new System.Media.SoundPlayer();
             player.Stream = Properties.Resources.MainMenuMusic;
 
