@@ -28,7 +28,9 @@ namespace KBS1.view {
         }
 
         public void Init() {
+            // Create our listview and imagelist
             this.CreateList();
+
             this.addedObjects = new Dictionary<int, Tuple<string, Dictionary<string, int>>>();
             this.MouseClick += this.MouseClicked;
 
@@ -91,22 +93,28 @@ namespace KBS1.view {
         }
 
         private void MouseClicked( object sender, MouseEventArgs e ) {
-            if( listView1.SelectedItems.Count > 0 ) {
+            if( listView1.SelectedItems.Count > 0  
+                && (e.X > 25 && e.X < (this.Width-this.listView1.Width)-75) 
+                && (e.Y > 25 && e.Y < (this.Height-50))) {
                 string selectedItemName = listView1.SelectedItems[ 0 ].Text.ToLower();
                 Image i = this.items[ selectedItemName ];
                 Bitmap b = ( Bitmap ) this.BackgroundImage;
                 using( Graphics g = Graphics.FromImage(b) ) {
-
+                    // Check if the unique objects are already on the field (player and finish)
+                    // if so, we shouldn't add any more of those.
                     if( selectedItemName == "player" && !Contains(this.addedObjects, "player") )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
                     else if( selectedItemName == "finish" && !Contains(this.addedObjects, "finish") )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
-                    else if( selectedItemName == "enemy" || selectedItemName == "static" || selectedItemName == "aura" )
+                    else if( selectedItemName == "enemy" || selectedItemName == "static" ||
+                        selectedItemName == "aura" || selectedItemName == "water" ||
+                        selectedItemName == "logs" || selectedItemName == "bolt" )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
 
                     this.Invalidate();
                 }
                 using( Dialog d = new Dialog() ) {
+                    // Make the speed dialog open when we want to add an enemy
                     if( selectedItemName == "enemy" || selectedItemName == "aura" ) {
                         DialogResult result = d.ShowDialog(this);
                         if( result == DialogResult.OK ) {
@@ -117,7 +125,9 @@ namespace KBS1.view {
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 5);
                         else if( selectedItemName == "finish" && !Contains(this.addedObjects, "finish") )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
-                        else
+                        else if( selectedItemName == "enemy" || selectedItemName == "static" ||
+                            selectedItemName == "aura" || selectedItemName == "water" ||
+                            selectedItemName == "logs" || selectedItemName == "bolt" )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
                     }
                 }

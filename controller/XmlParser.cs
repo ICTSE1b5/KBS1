@@ -158,7 +158,7 @@ namespace KBS1.controller
                 if (item[0] == "enemy")
                 {
                     //create new object
-                    Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), Int32.Parse(item[2]), game_objects, game_Form);
                     //Adds object to the list
                     game_objects.Add(enemy);
                 }
@@ -224,6 +224,8 @@ namespace KBS1.controller
             writer.WriteStartElement(name);
             if(name == "player" || name == "enemy")
                 writer.WriteAttributeString("hp", "1");
+            else if (name == "bolt" || name == "water" || name == "logs")
+                writer.WriteAttributeString("hp", "10");
             foreach( KeyValuePair<string, int> pair in objectData ) {
                 writer.WriteAttributeString(pair.Key, pair.Value.ToString());
             }
@@ -233,9 +235,14 @@ namespace KBS1.controller
             } else if (name == "enemy") {
                 writer.WriteAttributeString("width", "3");
                 writer.WriteAttributeString("height", "9");
-            } else if (name == "aura") {
-                writer.WriteAttributeString("width", "2");
-                writer.WriteAttributeString("height", "2");
+            } else if (name == "water" || name == "bolt") {
+                writer.WriteAttributeString("range", "50");
+                writer.WriteAttributeString("width", "20");
+                writer.WriteAttributeString("height", "20");
+            } else if (name == "logs") {
+                writer.WriteAttributeString("range", "100");
+                writer.WriteAttributeString("width", "20");
+                writer.WriteAttributeString("height", "20");
             }
             writer.WriteEndElement();
         }
