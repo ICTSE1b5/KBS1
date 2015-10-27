@@ -14,10 +14,10 @@ namespace KBS1.model
     {
         public enum SpeedEffects
         {
-            SLOW_1 = -1,
-            SLOW_2 = -2,
-            FAST_1 = 1,
-            FAST_2 = 2
+            SLOW_1 = -2,
+            SLOW_2 = -4,
+            FAST_1 = 2,
+            FAST_2 = 4
         }
         public enum ObjectType
         {
@@ -65,11 +65,13 @@ namespace KBS1.model
         protected int Width;
         protected int Height;
 
-        protected int Speed_X;
-        protected int Speed_Y;
+        protected int BaseSpeed_X;
+        protected int BaseSpeed_Y;
 
         protected int Damage;
         protected int Health;
+
+        protected bool isSolid;
 
 
         //An int to make sure an objects stops at the position of impact instead of moving throught another object
@@ -81,8 +83,6 @@ namespace KBS1.model
 
         //Holds all the Effects currently active
         private List<SpeedEffects> currentSpeedEffectList;
-        //Uses this number to effect the speed of the object
-        private int speedEffectNumber;
 
         //Holds the horizontal and vertical direction
         protected Direction horizontalDirection;
@@ -123,8 +123,8 @@ namespace KBS1.model
             Width = width;
             Height = height;
 
-            Speed_X = speed_x;
-            Speed_Y = speed_y;
+            BaseSpeed_X = speed_x;
+            BaseSpeed_Y = speed_y;
 
             Damage = damage;
             Health = health;
@@ -136,6 +136,8 @@ namespace KBS1.model
             verticalDirection = Direction.NONE;
 
             alive = true;
+            isSolid = true;
+
             currentCollisionObjectsList = new List<GameObject>();
             currentSpeedEffectList = new List<SpeedEffects>();
             setupImages();
@@ -161,18 +163,31 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            foreach(SpeedEffects currentEffect in currentSpeedEffectList)
-            {
-                speedEffectNumber += (int)currentEffect;
-                //MessageBox.Show("Test");
-            }
-
             MoveVerticaly();
             MoveHorizontaly();
 
             //Remove all the movement effects currently active so that after the object moved, the stats return to normal and the object will move the same speed again.
             currentSpeedEffectList.RemoveAll(ob => true);
-            speedEffectNumber = 0;
+
+
+            //Failsave if the player moves out of bounds
+            if(pos_y < 0) //Top
+            {
+                Position_Y = 0;
+            }
+            if (pos_y > game_Form.getHeightOfGame() - Height) //Bottom
+            {
+                Position_Y = game_Form.getHeightOfGame() - Height;
+            }
+            if (pos_x < 0) //Left
+            {
+                Position_X = 0;
+            }
+            if (pos_y > game_Form.getWidthOfGame() - Width) //Right
+            {
+                Position_X = game_Form.getWidthOfGame() - Width;
+            }
+
         }
         protected virtual void MoveVerticaly()
         {            
@@ -205,13 +220,7 @@ namespace KBS1.model
         #region moveUpDownLeftRight
         private void moveUp()
         {
-            //PROBLEM : NEEDS FIX --> MOVEMENT ALSO NEEDS TO BE IMPLEMENTED IN THE 'COLLISION DETECTION OF OBJECT PATH' AND 'GET VITUAL RECTANGLE OF VIRTUAL MOVEMENT'!!
-            //CAN BE FIXED EASILY BY DISABLEING PATH COLLISION AND ALWAYS USING RECTANGLE COLLISION, AND JUST FIXING THE VIRTUAL RECTANGLES
             int movement = Speed_Y - speedCollisionDebuff_vertical;
-            if(!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_Y -= movement;
             speedCollisionDebuff_vertical = 0;
@@ -220,10 +229,6 @@ namespace KBS1.model
         private void moveDown()
         {
             int movement = Speed_Y - speedCollisionDebuff_vertical;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_Y += movement;
             speedCollisionDebuff_vertical = 0;
@@ -231,10 +236,6 @@ namespace KBS1.model
         private void moveLeft()
         {
             int movement = Speed_X - speedCollisionDebuff_horizontal;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_X -= movement;
             speedCollisionDebuff_horizontal = 0;
@@ -242,10 +243,6 @@ namespace KBS1.model
         private void moveRight()
         {
             int movement = Speed_X - speedCollisionDebuff_horizontal;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_X += movement;
             speedCollisionDebuff_horizontal = 0;
@@ -401,6 +398,10 @@ namespace KBS1.model
         public bool isAlive
         {
             get { return alive; }
+        }
+        public bool isSolidious()
+        {
+            return isSolid;
         }
         public int getObjectSide(ObjectSide side)
         {
@@ -592,10 +593,6 @@ namespace KBS1.model
             {
                 debuff = Speed_X - getHorizontalDistanceToObject(target);
             }
-            else
-            {
-                //MessageBox.Show("YAY");
-            }
             
 
             //checks to see if the debuff is greater than the current debuff and then applies it, and sets the target to the collision target for the AI
@@ -646,8 +643,64 @@ namespace KBS1.model
         {
             currentSpeedEffectList.Add(effect);
         }
+        public int getSpeedBuffNumber()
+        {
+            int speedBuff = 0;
+            int lowest = 0;
+            int highest = 0;
+            List<int> buffList = new List<int>();
+
+            //Goes through each effect in the list to add get the speed (de)buff number
+            foreach (SpeedEffects currentEffect in currentSpeedEffectList)
+            {
+                //Get the lowest(negative) and highest(positive)
+                buffList.Add((int)currentEffect);
+            }
+
+            //If the list has 2 or more items, calculate the numbers
+            if(buffList.Count >= 2)
+            {
+                //Tries to get the lowest negative number
+                if ((int)buffList.Min() < 0)
+                {
+                    lowest = buffList.Min();
+                }
+            
+                //Tries to get the highest positive number
+                if ((int)buffList.Max() > 0)
+                {
+                    highest = buffList.Max();
+                }
+            }
+            else if(buffList.Count == 1)
+            {
+                return buffList[0];
+            }
+            else
+            {
+                return 0;
+            }
+
+
+            //Adds the negative with the positive and return the end result
+            speedBuff = highest + lowest;
+            //And return the number
+            return speedBuff;
+        }
 
 
 
+
+
+
+
+        protected int Speed_X
+        {
+            get { return BaseSpeed_X + getSpeedBuffNumber(); }
+        }
+        protected int Speed_Y
+        {
+            get { return BaseSpeed_Y + getSpeedBuffNumber(); }
+        }
     }
 }

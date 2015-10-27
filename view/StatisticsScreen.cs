@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using KBS1.model;
 
@@ -8,7 +9,6 @@ namespace KBS1.view
     public partial class StatisticsScreen : UserControl
     {
         private List<StatisticPanel> panelList;
-        private bool wallAdded = false;
 
         public StatisticsScreen()
         {
@@ -20,31 +20,30 @@ namespace KBS1.view
 
         //Loops through all gameobjects and creates a panel for each object
         public void DrawPanel(List<GameObject> gameobjects)
-        { 
+        {
             //Clears the controls so when a new level is started this list is clean
             Controls.Clear();
-            wallAdded = false;
             int x = 0;
-            foreach (GameObject item in gameobjects)
+
+            //Distinct select on gameobjects, so only one of each object will be shown
+            var distinctGameOjbect = gameobjects
+                .GroupBy(p => p.Type)
+                .Select(g => g.First())
+                .ToList();
+
+            foreach (GameObject item in distinctGameOjbect)
             {
                 StatisticPanel panel = new StatisticPanel(item);
                 panel.Location = new Point(0, x);
                 panel.Size = new Size(220, 100);
 
-                //This IF statement makes sure only 1 wall is added
-                if (item is Wall && !wallAdded)
-                {
-                    wallAdded = true;
-                    panelList.Add(panel);
-                    Controls.Add(panel);
-                }
-                else if(!(item is Wall))
+                if (!(item is Border))
                 {
                     panelList.Add(panel);
                     Controls.Add(panel);
+                    //Adds 100 to the X position of the Panel
+                    x += 100;
                 }
-                //Adds 100 to the X position of the Panel
-                x += 100;
             }
         }
 

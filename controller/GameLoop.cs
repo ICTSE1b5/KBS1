@@ -125,6 +125,8 @@ namespace KBS1.controller
             game_objects.Add(new Border(0,          game_Height,    game_Width,     0,              game_Form)); //Bottom
             game_objects.Add(new Border(0,          0,              0,              game_Height,    game_Form)); //Left
             game_objects.Add(new Border(game_Width, 0,              0,              game_Height,    game_Form)); //Right
+
+            game_objects.Reverse();
         }
 
         private void Game_End()

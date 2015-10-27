@@ -32,18 +32,39 @@ namespace KBS1.view
         public void DrawGame(Graphics graphics_GraphicsDevice)
         //public void DrawGame(ref Graphics graphics_GraphicsDevice)
         {
+            //LINQ statement to select the player
+            var getPlayerStatement =
+                from play in game_loop.GameEntities
+                where play.Type == GameObject.ObjectType.PLAYER
+                select play;
+
+            //LINQ statement to select the Effect Givers to get their AOE
+            var getEffectGiversStatement =
+                from effect in game_loop.GameEntities
+                where effect.Type == GameObject.ObjectType.EFFECT
+                select effect;
 
             //go through each object currently alive and draw them
+            game_loop.GameEntities.ForEach(obj1 => graphics_GraphicsDevice.DrawImage(obj1.getObjectImage(), obj1.ObjectRectangle));
 
-            /*Test Block*/
-            //graphics_GraphicsDevice.FillRectangle(Brushes.Blue, 50, 50, 20, 20);
-            game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawImage(obj.getObjectImage(), obj.ObjectRectangle));
-
+            //Draw the hitboxes if requested
             if(showHitBox)
             { 
-                game_loop.GameEntities.ForEach(obj => graphics_GraphicsDevice.DrawRectangle(new Pen(Brushes.Black), obj.ObjectRectangle));
-            }
+                //AOE Hitbox
+                foreach(EffectGiver obj2 in getEffectGiversStatement)
+                {
+                    graphics_GraphicsDevice.DrawRectangle(new Pen(Brushes.Red), obj2.EffectSquare);
+                }
 
+                //Collision Hitbox
+                game_loop.GameEntities.ForEach(obj3 => graphics_GraphicsDevice.DrawRectangle(new Pen(Brushes.Black), obj3.ObjectRectangle));
+            }
+            
+            //Draw the player object ALWAYS above all other object
+            foreach(GameObject obj4 in getPlayerStatement)
+            {
+                graphics_GraphicsDevice.DrawImage(obj4.getObjectImage(), obj4.ObjectRectangle);
+            }
 
         }
 

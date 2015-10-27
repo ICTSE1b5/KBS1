@@ -78,7 +78,7 @@ namespace KBS1.controller
                                 this.data.Add(temp);
                             }
 
-                            if (reader.Name != "level" && reader.Name == "aura")
+                            if (reader.Name != "level" && reader.Name == "bolt")
                             {
                                 string hp = reader.GetAttribute("hp");
                                 string speed = reader.GetAttribute("speed");
@@ -161,6 +161,13 @@ namespace KBS1.controller
                     Enemy_Following enemy = new Enemy_Following(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
                     //Adds object to the list
                     game_objects.Add(enemy);
+                }
+                if (item[0] == "bolt")
+                {
+                    //create new object
+                    Bolt bolt = new Bolt(Int32.Parse(item[3]), Int32.Parse(item[4]), game_objects, game_Form);
+                    //Adds object to the list
+                    game_objects.Add(bolt);
                 }
                 if (item[0] == "water")
                 {

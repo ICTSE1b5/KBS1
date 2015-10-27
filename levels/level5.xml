@@ -16,15 +16,92 @@
   Aura objects give the player a certain effect based on the value of the speed attribute.
   It can be negative, which would mean that the player would be slowed down.
   -->
+  <bolt
+    hp="10"
+    speed="0"
+    x="350"
+    y="300"
+    range="50"
+    width="20"
+    height="20"/>
+	<bolt
+    hp="10"
+    speed="0"
+    x="550"
+    y="100"
+    range="50"
+    width="20"
+    height="20"/>
+   <bolt
+    hp="10"
+    speed="0"
+    x="230"
+    y="120"
+    range="50"
+    width="20"
+    height="20"/>
   <water
     hp="10"
-    speed="2"
+    speed="0"
     x="250"
     y="100"
-    range="2"
-    width="2"
-    height="2"/>
+    range="50"
+    width="20"
+    height="20"/>
+  <water
+    hp="10"
+    speed="0"
+    x="230"
+    y="100"
+    range="50"
+    width="20"
+    height="20"/>
+  <water
+    hp="10"
+    speed="0"
+    x="250"
+    y="120"
+    range="50"
+    width="20"
+    height="20"/>
+	<water
+    hp="10"
+    speed="0"
+    x="600"
+    y="500"
+    range="50"
+    width="20"
+    height="20"/>
+  <logs
+	hp="10"
+	speed="0"
+	x="100"
+	y="250"
+	range="100"
+	width="20"
+	height="20"/>
+  <logs
+	hp="10"
+	speed="0"
+	x="550"
+	y="120"
+	range="100"
+	width="20"
+	height="20"/>
+	
   <!-- Static objects are things like walls -->
+  <static
+    x="100"
+    y="300"
+    width="50"
+    height="50"
+    />
+  <static
+    x="450"
+    y="300"
+    width="50"
+    height="50"
+    />
   <static
     x="600"
     y="350"
