@@ -4,7 +4,7 @@
     hp="1"
     speed="5"
     x="0"
-    y="100"
+    y="0"
     width="50"
     height="50"/>
   <finish
@@ -12,72 +12,89 @@
     y="500"
     width="50"
     height="50"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="500"
-    y="500"
-    width="3"
-    height="9"/>
-  <enemy
-    hp="1"
-    speed="3"
-    x="50"
-    y="300"
-    width="3"
-    height="9"/>
-  <enemy
+    <enemy
     hp="1"
     speed="3"
     x="300"
-    y="50"
+    y="200"
     width="3"
     height="9"/>
   <!-- 
   Aura objects give the player a certain effect based on the value of the speed attribute.
   It can be negative, which would mean that the player would be slowed down.
   -->
-  <aura
+	<water
     hp="10"
-    speed="2"
-    x="5"
-    y="5"
-    range="2"
-    width="2"
-    height="2"/>
+    speed="0"
+    x="650"
+    y="500"
+    range="50"
+    width="20"
+    height="20"/>
+	
   <!-- Static objects are things like walls -->
   <static
-    x="100"
-    y="100"
+    x="150"
+    y="0"
     width="50"
     height="50"
     />
-  <static
-    x="200"
-    y="200"
-    width="50"
-    height="50"
-    />
-  <static
-    x="50"
-    y="300"
-    width="50"
-    height="50"
-    />
-      <static
-    x="400"
+    <static
+    x="150"
     y="50"
     width="50"
     height="50"
     />
-  <static
-    x="400"
+    <static
+    x="150"
+    y="100"
+    width="50"
+    height="50"
+    />
+    <static
+    x="150"
+    y="150"
+    width="50"
+    height="50"
+    />
+    <static
+    x="720"
     y="400"
     width="50"
     height="50"
     />
-  <static
-    x="600"
+    <static
+    x="670"
+    y="400"
+    width="50"
+    height="50"
+    />
+    <static
+    x="620"
+    y="400"
+    width="50"
+    height="50"
+    />
+      <static
+    x="350"
+    y="500"
+    width="50"
+    height="50"
+    />
+    <static
+    x="350"
+    y="450"
+    width="50"
+    height="50"
+    />
+    <static
+    x="350"
+    y="400"
+    width="50"
+    height="50"
+    />
+    <static
+    x="350"
     y="350"
     width="50"
     height="50"

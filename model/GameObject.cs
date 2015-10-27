@@ -65,8 +65,8 @@ namespace KBS1.model
         protected int Width;
         protected int Height;
 
-        protected int Speed_X;
-        protected int Speed_Y;
+        protected int BaseSpeed_X;
+        protected int BaseSpeed_Y;
 
         protected int Damage;
         protected int Health;
@@ -83,8 +83,6 @@ namespace KBS1.model
 
         //Holds all the Effects currently active
         private List<SpeedEffects> currentSpeedEffectList;
-        //Uses this number to effect the speed of the object
-        private int speedEffectNumber;
 
         //Holds the horizontal and vertical direction
         protected Direction horizontalDirection;
@@ -125,8 +123,8 @@ namespace KBS1.model
             Width = width;
             Height = height;
 
-            Speed_X = speed_x;
-            Speed_Y = speed_y;
+            BaseSpeed_X = speed_x;
+            BaseSpeed_Y = speed_y;
 
             Damage = damage;
             Health = health;
@@ -165,14 +163,11 @@ namespace KBS1.model
         //Movement has been split to horizontal and vertical, to make movement easier
         public void Move()
         {
-            speedEffectNumber = getSpeedBuffNumber();
-
             MoveVerticaly();
             MoveHorizontaly();
 
             //Remove all the movement effects currently active so that after the object moved, the stats return to normal and the object will move the same speed again.
             currentSpeedEffectList.RemoveAll(ob => true);
-            speedEffectNumber = 0;
 
 
             //Failsave if the player moves out of bounds
@@ -225,13 +220,7 @@ namespace KBS1.model
         #region moveUpDownLeftRight
         private void moveUp()
         {
-            //PROBLEM : NEEDS FIX --> MOVEMENT ALSO NEEDS TO BE IMPLEMENTED IN THE 'COLLISION DETECTION OF OBJECT PATH' AND 'GET VITUAL RECTANGLE OF VIRTUAL MOVEMENT'!!
-            //CAN BE FIXED EASILY BY DISABLEING PATH COLLISION AND ALWAYS USING RECTANGLE COLLISION, AND JUST FIXING THE VIRTUAL RECTANGLES
             int movement = Speed_Y - speedCollisionDebuff_vertical;
-            if(!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_Y -= movement;
             speedCollisionDebuff_vertical = 0;
@@ -240,10 +229,6 @@ namespace KBS1.model
         private void moveDown()
         {
             int movement = Speed_Y - speedCollisionDebuff_vertical;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_Y += movement;
             speedCollisionDebuff_vertical = 0;
@@ -251,10 +236,6 @@ namespace KBS1.model
         private void moveLeft()
         {
             int movement = Speed_X - speedCollisionDebuff_horizontal;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_X -= movement;
             speedCollisionDebuff_horizontal = 0;
@@ -262,10 +243,6 @@ namespace KBS1.model
         private void moveRight()
         {
             int movement = Speed_X - speedCollisionDebuff_horizontal;
-            if (!((movement + speedEffectNumber) < 0))
-            {
-                movement += speedEffectNumber;
-            }
 
             Position_X += movement;
             speedCollisionDebuff_horizontal = 0;
@@ -535,25 +512,19 @@ namespace KBS1.model
         public Rectangle ObjectRectangle
         {
             get { return new Rectangle(Position_X, Position_Y, Width, Height); }
-        }
-        public Rectangle VirutalHorizontalRectangle
+        }       // The B (Begin)
+        public Rectangle VirtualHorizontalRectangle     // The VH (Virtual Horizontal)
         {
             get
             {
-                int speedBuffX = getSpeedBuffNumber();
-                if (Speed_X + speedBuffX < 0)
-                {
-                    speedBuffX = Speed_X * -1;
-                }
-
                 int virutalSpeed = 0;
                 switch (horizontalDirection)
                 {
                     case Direction.EAST:
-                        virutalSpeed += Speed_X + speedBuffX;
+                        virutalSpeed += Speed_X;
                         break;
                     case Direction.WEST:
-                        virutalSpeed -= Speed_X + speedBuffX;
+                        virutalSpeed -= Speed_X;
                         break;
                     default:
                         break;
@@ -561,24 +532,27 @@ namespace KBS1.model
                 return new Rectangle(Position_X + virutalSpeed, Position_Y, Width, Height);
             }
         }
-        public Rectangle VirutalVerticalRectangle
+        public Rectangle VirtualHorizontalCollidedRectangle(GameObject target)     //The VHC(Virtual Horizontal Collided)
+        {
+            int distance = getHorizontalDistanceToObject(target);
+            if (distance < Speed_X)
+            {
+                return new Rectangle(Position_X + distance, Position_Y + Speed_Y, Width, Height);
+            }
+            return VirtualRectangle;
+        }
+        public Rectangle VirtualVerticalRectangle       // The VV (Virtual Vertical)
         {
             get
             {
-                int speedBuffY = getSpeedBuffNumber();
-                if (Speed_Y + speedBuffY < 0)
-                {
-                    speedBuffY = Speed_Y * -1;
-                }
-
                 int virutalSpeed = 0;
                 switch (verticalDirection)
                 {
                     case Direction.SOUTH:
-                        virutalSpeed += Speed_Y + speedBuffY;
+                        virutalSpeed += Speed_Y;
                         break;
                     case Direction.NORTH:
-                        virutalSpeed -= Speed_Y + speedBuffY;
+                        virutalSpeed -= Speed_Y;
                         break;
                     default:
                         break;
@@ -586,31 +560,29 @@ namespace KBS1.model
                 return new Rectangle(Position_X, Position_Y + virutalSpeed, Width, Height);
             }
         }
-        public Rectangle VirtualRectangle
+        public Rectangle VirtualVerticalCollidedRectangle(GameObject target)     //The VVC(Virtual Vertical Collided)
+        {
+            int distance = getVerticalDistanceToObject(target);
+            if (distance < Speed_Y)
+            {
+                return new Rectangle(Position_X + Speed_X, Position_Y + distance, Width, Height);
+    }
+            return VirtualRectangle;
+        }
+        public Rectangle VirtualRectangle   // The V (Virtual)
         {
             get
             {
-                int speedBuffX = getSpeedBuffNumber(); 
-                int speedBuffY = getSpeedBuffNumber();
-                if (Speed_X + speedBuffX < 0)
-                {
-                    speedBuffX = Speed_X*-1;
-                }
-                if (Speed_Y + speedBuffY < 0)
-                {
-                    speedBuffY = Speed_Y * -1;
-                }
-
                 int virutalSpeed_Y = 0;
                 int virutalSpeed_X = 0;
 
                 switch (verticalDirection)
                 {
                     case Direction.SOUTH:
-                        virutalSpeed_Y += Speed_Y + speedBuffY;
+                        virutalSpeed_Y += Speed_Y;
                         break;
                     case Direction.NORTH:
-                        virutalSpeed_Y -= Speed_Y + speedBuffY;
+                        virutalSpeed_Y -= Speed_Y;
                         break;
                     default:
                         break;
@@ -618,10 +590,10 @@ namespace KBS1.model
                 switch (horizontalDirection)
                 {
                     case Direction.EAST:
-                        virutalSpeed_X += Speed_X + speedBuffX;
+                        virutalSpeed_X += Speed_X;
                         break;
                     case Direction.WEST:
-                        virutalSpeed_X -= Speed_X + speedBuffX;
+                        virutalSpeed_X -= Speed_X;
                         break;
                     default:
                         break;
@@ -631,6 +603,91 @@ namespace KBS1.model
             }
         }
 
+
+
+        //Radar Rectangles
+        /// <summary>
+        /// North Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NORTH
+        {
+            get
+            {
+                return new Rectangle(Position_X,    Position_Y - Speed_Y,   Width,  Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SOUTH
+        {
+            get
+            {
+                return new Rectangle(Position_X,    Position_Y + Height + Speed_Y,  Width,  Speed_Y);
+            }
+        }
+        /// <summary>
+        /// East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_EAST
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width + Speed_X,  Position_Y,     Speed_X,    Height);
+            }
+        }
+        /// <summary>
+        /// West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_WEST
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X,  Position_Y,     Speed_X,    Height);
+            }
+        }
+        /// <summary>
+        /// North West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NW
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X,  Position_Y - Speed_Y, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// North East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_NE
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width, Position_Y - Speed_X, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South West Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SW
+        {
+            get
+            {
+                return new Rectangle(Position_X - Speed_X, Position_Y + Height, Speed_X, Speed_Y);
+            }
+        }
+        /// <summary>
+        /// South East Radar Rectangle
+        /// </summary>
+        public Rectangle Radar_SE
+        {
+            get
+            {
+                return new Rectangle(Position_X + Width, Position_Y + Height, Speed_X, Speed_Y);
+            }
+        }
+
+
         //Collision debuff        
         public void horizontalCollisionWithObject(GameObject target)
         {
@@ -638,10 +695,6 @@ namespace KBS1.model
             if(CollisionAI(target))       //TODO
             {
                 debuff = Speed_X - getHorizontalDistanceToObject(target);
-            }
-            else
-            {
-                //MessageBox.Show("YAY");
             }
             
 
@@ -687,13 +740,42 @@ namespace KBS1.model
                 speedCollisionDebuff_vertical = Speed_Y;
             }
         }
+        public bool hasCollidedVertically
+        {
+            get
+            {
+                if (speedCollisionDebuff_vertical == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        public bool hasCollidedHorizontally
+        {
+            get
+            {
+                if (speedCollisionDebuff_horizontal == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
 
         //Effect Giving
         public void giveSpeedEffect(SpeedEffects effect)
         {
             currentSpeedEffectList.Add(effect);
         }
-        private int getSpeedBuffNumber()
+        public int getSpeedBuffNumber()
         {
             int speedBuff = 0;
             int lowest = 0;
@@ -738,6 +820,14 @@ namespace KBS1.model
             return speedBuff;
         }
 
-
+        //Edited Speed_X to accomidate for the Speed Effects
+        protected int Speed_X
+        {
+            get { return BaseSpeed_X + getSpeedBuffNumber(); }
+        }
+        protected int Speed_Y
+        {
+            get { return BaseSpeed_Y + getSpeedBuffNumber(); }
+        }
     }
 }

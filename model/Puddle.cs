@@ -13,7 +13,7 @@ namespace KBS1.model
             : base(pos_x, pos_y, 50, 50, 0, 0, 0, 999, 0, props, form)
         {
             this.image = Properties.Resources.pool;
-            this.description = "This puddle will cause you to slow down then you are near it. You don't want to slip and fall, do you?";
+            this.description = "This puddle will cause you to slow down then you are near it.";
 
             isSolid = false;
         }
@@ -37,7 +37,7 @@ namespace KBS1.model
         {
             foreach (GameObject ob in allObjects)
             {
-                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect))
+                if (ob.ObjectRectangle.IntersectsWith(RectangleOfEffect) && (ob.Type == ObjectType.PLAYER))
                 {
                     ob.giveSpeedEffect(SpeedEffects.SLOW_2);
                 }
