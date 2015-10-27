@@ -101,7 +101,9 @@ namespace KBS1.view {
                         g.DrawImage(i, e.X, e.Y, 50, 50);
                     else if( selectedItemName == "finish" && !Contains(this.addedObjects, "finish") )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
-                    else if( selectedItemName == "enemy" || selectedItemName == "static" || selectedItemName == "aura" )
+                    else if( selectedItemName == "enemy" || selectedItemName == "static" ||
+                        selectedItemName == "aura" || selectedItemName == "water" ||
+                        selectedItemName == "logs" || selectedItemName == "bolt" )
                         g.DrawImage(i, e.X, e.Y, 50, 50);
 
                     this.Invalidate();
@@ -117,7 +119,9 @@ namespace KBS1.view {
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 5);
                         else if( selectedItemName == "finish" && !Contains(this.addedObjects, "finish") )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
-                        else
+                        else if( selectedItemName == "enemy" || selectedItemName == "static" ||
+                            selectedItemName == "aura" || selectedItemName == "water" ||
+                            selectedItemName == "logs" || selectedItemName == "bolt" )
                             this.AddObjectToMap(selectedItemName, e.X, e.Y, 0);
                     }
                 }

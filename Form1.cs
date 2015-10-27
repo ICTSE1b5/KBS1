@@ -507,6 +507,9 @@ namespace KBS1
             data.Add("enemy", Properties.Resources.wolf_up);
             data.Add("finish", Properties.Resources.loghouse);
             data.Add("static", Properties.Resources.bush);
+            data.Add("bolt", Properties.Resources.bolt);
+            data.Add("logs", Properties.Resources.log);
+            data.Add("water", Properties.Resources.pool);
             return data;
         } 
     }
