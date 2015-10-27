@@ -97,6 +97,9 @@ namespace KBS1.controller
 
             */
 
+            //Set default method to the Direction Radar
+            method = CollisionCalculationMethod.DIRECTION_RADAR;
+
             //Because of the little bug in the Direction Radar, the enemy will continue to use the Object Path method
             if (subject.Type == GameObject.ObjectType.ENEMY)
             {

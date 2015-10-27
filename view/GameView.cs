@@ -20,7 +20,7 @@ namespace KBS1.view
         Form game_Form;
         GameLoop game_loop;
 
-        public bool showHitBox = false;
+        public bool showHitBox = true;
 
         public GameView(Form form, GameLoop loop)
         {

@@ -183,7 +183,7 @@ namespace KBS1.model
             {
                 Position_X = 0;
             }
-            if (pos_y > game_Form.getWidthOfGame() - Width) //Right
+            if (pos_x > game_Form.getWidthOfGame() - Width) //Right
             {
                 Position_X = game_Form.getWidthOfGame() - Width;
             }

@@ -90,6 +90,7 @@
 	height="20"/>
 	
   <!-- Static objects are things like walls -->
+  
   <static
     x="100"
     y="300"
