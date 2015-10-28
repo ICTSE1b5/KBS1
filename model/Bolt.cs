@@ -33,6 +33,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.bolt;
         }
 
+        //This method speeds up the player when there has been collision with this object.
         protected override void AI()
         {
             foreach (GameObject ob in allObjects)

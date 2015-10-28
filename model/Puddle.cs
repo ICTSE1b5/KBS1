@@ -17,6 +17,8 @@ namespace KBS1.model
 
             isSolid = false;
         }
+
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.pool;
@@ -32,7 +34,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.pool;
         }
 
-
+        //This method slows down the player when there has been collision with this object.
         protected override void AI()
         {
             foreach (GameObject ob in allObjects)

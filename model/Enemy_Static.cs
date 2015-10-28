@@ -31,6 +31,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.imagenotfound;
         }
 
+        //This method lets the player die when there has been collision with this object.
         protected override void AI()
         {
             foreach (GameObject ob in currentCollisionObjectsList)

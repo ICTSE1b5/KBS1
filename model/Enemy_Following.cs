@@ -33,6 +33,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.wolf_down_right;
         }
 
+        //This method lets the player die when there has been collision with this object.
         protected override void AI()
         {
             int playerX = player1.pos_x;

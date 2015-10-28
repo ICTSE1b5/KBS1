@@ -18,6 +18,7 @@ namespace KBS1.model
 
         }
 
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.bush;
@@ -33,6 +34,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.bush;
         }
 
+        //This method does nothing when there has been collision with this object because this is a wall
         protected override void AI()
         {
             //Can't do anything

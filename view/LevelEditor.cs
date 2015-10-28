@@ -51,6 +51,7 @@ namespace KBS1.view {
             this.button2.Location = new Point(btnX - 100, btnY);
         }
 
+        //Cleans level editor / removes references
         public void Destruct() {
             this.listView1.Items.Clear();
             this.items = null;
@@ -58,7 +59,6 @@ namespace KBS1.view {
             this.Visible = false;
             this.Enabled = false;
         }
-
 
         public Button Get_Button_Cancel() {
             return this.button2;
@@ -71,7 +71,8 @@ namespace KBS1.view {
         public Dictionary<int, Tuple<string, Dictionary<string, int>>> GetAddedObjects() {
             return this.addedObjects;
         }
-
+        
+        //Creates a list with images for each gameobject.
         private void CreateList() {
             this.AddToImageList();
 
@@ -86,6 +87,7 @@ namespace KBS1.view {
             }
         }
 
+        //Adds images to the image list
         private void AddToImageList() {
             foreach( KeyValuePair<string, Image> pair in this.items ) {
                 this.imageList1.Images.Add(pair.Key, pair.Value);
