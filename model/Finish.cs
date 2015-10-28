@@ -20,6 +20,7 @@ namespace KBS1.model
         
         }
 
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.loghouse;
@@ -35,6 +36,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.loghouse;
         }
 
+        
         protected override void AI()
         {
             foreach(GameObject ob in currentCollisionObjectsList)
@@ -49,7 +51,6 @@ namespace KBS1.model
                     default:
                         break;
                 }
-
             }
         }
 

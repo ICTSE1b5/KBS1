@@ -194,6 +194,7 @@ namespace KBS1.controller
             }
         }
 
+        //This method writes the data created by the level editor to a XML file. If there isn't a XML file, this method also creates a new file.
         public string SaveLevel( Dictionary<int, Tuple<string, Dictionary<string, int>>> levelData ) {
             if( !Directory.Exists(this.directory) )
                 Directory.CreateDirectory(this.directory);
@@ -220,6 +221,7 @@ namespace KBS1.controller
             return this.path;
         }
 
+        //This method is used by the SaveLevel method, it adds data to the XML writer, which is later used to create the XML file
         private void Write( XmlTextWriter writer, string name, Dictionary<string, int> objectData ) {
             writer.WriteStartElement(name);
             if(name == "player" || name == "enemy")
@@ -252,6 +254,7 @@ namespace KBS1.controller
             return "level" + ( amount + 1 );
         }
 
+        //This method writes the Highscores to an XML for a specific level
         public void SubmitScore(string name, string score, int currentLevel)
         {
             //file location

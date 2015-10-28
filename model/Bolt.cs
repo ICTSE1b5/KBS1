@@ -16,6 +16,8 @@ namespace KBS1.model
 
             isSolid = false;
         }
+
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.bolt;

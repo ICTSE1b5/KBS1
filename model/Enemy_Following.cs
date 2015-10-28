@@ -17,6 +17,7 @@ namespace KBS1.model
             this.description = "The wolf will chase you and when he reaches you, you are dead";
         }
 
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.wolf_up_left;

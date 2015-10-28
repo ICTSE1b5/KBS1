@@ -25,6 +25,7 @@ namespace KBS1.model
             updateRectangleOfEffect();
         }
 
+        //Updates the image of effects
         protected void updateRectangleOfEffect()
         {
             RectangleOfEffect = new Rectangle(pos_x - EffectRadius, pos_y - EffectRadius, Width + EffectRadius * 2, Height + EffectRadius * 2);

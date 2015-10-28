@@ -19,6 +19,7 @@ namespace KBS1.model
 
         }
 
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.bush;
@@ -41,7 +42,6 @@ namespace KBS1.model
 
         protected override void OnDeath()
         {
-            //TODO
         }
 
         protected override bool CollisionAI(GameObject target)
