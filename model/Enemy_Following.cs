@@ -78,8 +78,7 @@ namespace KBS1.model
                 switch (ob.Type)
                 {
                     case ObjectType.PLAYER:
-                        game_Form.showGameOver();
-                        game_Form.playSoundEffectDead();
+                        ob.Kill();
                         break;
                     default:
                         break;
@@ -90,18 +89,9 @@ namespace KBS1.model
         
         protected override void OnDeath()
         {
-            //throw new NotImplementedException();
+            //Can't die -yet-
         }
 
-        protected override bool CollisionAI(GameObject target)
-        {
-            switch(target.Type)
-            {
-                case ObjectType.PLAYER:
-                    return true;
-                default:
-                    return true;
-            }
-        }
+
     }
 }

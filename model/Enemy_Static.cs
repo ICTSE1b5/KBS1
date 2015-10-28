@@ -33,25 +33,25 @@ namespace KBS1.model
 
         protected override void AI()
         {
-            
+            foreach (GameObject ob in currentCollisionObjectsList)
+            {
+                switch (ob.Type)
+                {
+                    case ObjectType.PLAYER:
+                        ob.Kill();
+                        break;
+                    default:
+                        break;
+                }
+
+            }
         }
 
         protected override void OnDeath()
         {
-            
+            //Can't die -yet-
         }
 
-        protected override bool CollisionAI(GameObject target)
-        {
-            
-            switch (target.Type)
-            {
-                case ObjectType.PLAYER:
-                    return true;
-                default:
-                    return true;
-            }
-        
-        }
+
     }
 }

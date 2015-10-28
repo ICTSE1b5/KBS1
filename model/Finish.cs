@@ -56,18 +56,7 @@ namespace KBS1.model
 
         protected override void OnDeath()
         {
-            //TODO
-        }
-
-        protected override bool CollisionAI(GameObject target_object)
-        {
-            switch (target_object.Type)
-            {
-                case ObjectType.PLAYER:
-                    return false;
-                default:
-                    return true;
-            }
+            //Can't die
         }
     }
 }

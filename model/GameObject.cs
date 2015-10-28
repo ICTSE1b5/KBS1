@@ -286,7 +286,7 @@ namespace KBS1.model
 
             }
         */
-        protected abstract bool CollisionAI(GameObject target); //Give an object to collide with, and return if the collision should stop that type of object. False means that it can pass through.
+        //protected abstract bool CollisionAI(GameObject target); //Give an object to collide with, and return if the collision should stop that type of object. False means that it can pass through.
         /* EXAMPLE
         switch(target.Type)
             {
@@ -692,10 +692,9 @@ namespace KBS1.model
         public void horizontalCollisionWithObject(GameObject target)
         {
             int debuff = 0;
-            if(CollisionAI(target))       //TODO
-            {
-                debuff = Speed_X - getHorizontalDistanceToObject(target);
-            }
+            
+            //Sets the debuff
+            debuff = Speed_X - getHorizontalDistanceToObject(target);
             
 
             //checks to see if the debuff is greater than the current debuff and then applies it, and sets the target to the collision target for the AI
@@ -717,11 +716,9 @@ namespace KBS1.model
         public void verticalCollisionWithObject(GameObject target)
         {
             int debuff = 0;
-            if (CollisionAI(target))        //TODO
-            {
-                debuff = Speed_Y - getVerticalDistanceToObject(target);
-            }
             
+            //Sets the debuff
+            debuff = Speed_Y - getVerticalDistanceToObject(target);
             
 
             //checks to see if the debuff is greater than the current debuff and then applies it, and sets the target to the collision target for the AI

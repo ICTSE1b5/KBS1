@@ -44,14 +44,9 @@ namespace KBS1.model
             }
         }
 
-        protected override bool CollisionAI(GameObject target)
-        {
-            return false;
-        }
-
         protected override void OnDeath()
         {
-            //The pile is destroyed
+            //Can't die
         }
 
 

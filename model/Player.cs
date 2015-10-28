@@ -63,23 +63,14 @@ namespace KBS1.model
 
         protected override void AI()
         {
-            //throw new NotImplementedException();
+            //Can't do anything
         }
 
         protected override void OnDeath()
         {
-            //throw new NotImplementedException();
-        }
-
-        protected override bool CollisionAI(GameObject target)
-        {
-            switch (target.Type)
-            {
-                case ObjectType.PLAYER:
-                    return true;
-                default:
-                    return true;
-            }
+            //Gameover
+            game_Form.showGameOver();
+            game_Form.playSoundEffectDead();
         }
     }
 }

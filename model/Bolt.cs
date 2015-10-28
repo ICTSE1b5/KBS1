@@ -44,14 +44,9 @@ namespace KBS1.model
             }
         }
 
-        protected override bool CollisionAI(GameObject target)
-        {
-            return false;
-        }
-
         protected override void OnDeath()
         {
-            //The thunder has subsided
+            //Can't die
         }
 
 
