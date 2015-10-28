@@ -10,8 +10,8 @@ namespace KBS1.model
 {
     class Enemy_Following : Enemy
     {
-        public Enemy_Following(int pos_x, int pos_y, List<GameObject> props, Form1 form)
-            : base(pos_x, pos_y, 80, 80, 1, 1, 5, 10, props, form)
+        public Enemy_Following(int pos_x, int pos_y, int speed, List<GameObject> props, Form1 form)
+            : base(pos_x, pos_y, 80, 80, speed, speed, 5, 10, props, form)
         {
             this.image = Properties.Resources.wolf_up;
             this.description = "The wolf will chase you and when he reaches you, you are dead";

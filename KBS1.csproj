@@ -80,7 +80,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\GameController.cs" />
-    <Compile Include="controller\GameLevels.cs" />
     <Compile Include="model\Bolt.cs" />
     <Compile Include="model\Border.cs" />
     <Compile Include="model\EffectGiver.cs" />

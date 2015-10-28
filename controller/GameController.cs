@@ -16,18 +16,17 @@ namespace KBS1.controller
         private List<GameObject> game_ObjectList;
         public enum CollisionCalculationMethod
         {
-            ANY,
+            DIRECTION_RADAR,
             RECTANGLE_CALCULATION,
-            OBJECT_PATH_CALCULATION
+            OBJECT_PATH
         }
-        private CollisionCalculationMethod method = CollisionCalculationMethod.ANY;
+        private CollisionCalculationMethod method = CollisionCalculationMethod.DIRECTION_RADAR;
 
         public GameController(Form form, GameLoop loop)
         {
             game_Form = form;
             game_Loop = loop;
             game_ObjectList = new List<GameObject>();
-            //needs extra initialization items
         }
 
         public void Update(List<GameObject> list)
@@ -83,54 +82,218 @@ namespace KBS1.controller
         //Tests if an object is about to collide with another object and acts on that
         private void TestForCollision(GameObject subject, GameObject target)
         {
+            /*
+
             //If the speed is greater than that the objects size, calculate with the Object Path otherwise, if the object has a low speed, calculate with the Rectangle Calculation
             if (subject.speed_X > subject.width || subject.speed_Y > subject.height)
             {
-                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
+                method = CollisionCalculationMethod.OBJECT_PATH;
             }
             else
             {
                 method = CollisionCalculationMethod.RECTANGLE_CALCULATION;
             }
 
-            if(subject.Type == GameObject.ObjectType.ENEMY)
-            {
-                method = CollisionCalculationMethod.OBJECT_PATH_CALCULATION;
-            }
+            */
+
             
 
 
-
+            //Because of the little bug in the Direction Radar, the enemy will continue to use the Object Path method
+            switch(subject.Type)
+            {
+                case GameObject.ObjectType.ENEMY:
+                    method = CollisionCalculationMethod.OBJECT_PATH;
+                    break;
+                default:
+                    //Set default method to the Direction Radar. This is the default method for all objects.
+                    method = CollisionCalculationMethod.DIRECTION_RADAR;
+                    break;
+            }
 
             /*
                     NOTICE:
-                    Object Path Calculation will cause smooth running allong the edges of walls, but you are able to go through them when going diagonal
-                    Rectangle Calculation will cause no diagonal phasing, but you will get stuck at the edge of a row of walls       
+                    Object Path will cause smooth running allong the edges of walls, but you are able to go through them when going diagonal.
+                    This will look at the path to the destination and look if there are any objects in the way. (Looks at all the other objects and compares their positions with the subject's speed and direction)
+
+                    Rectangle Calculation will cause no diagonal phasing, but you will get stuck at the edge of a row of walls.       
+                    This will look at the destination in stead of the path to it. It can cause problems in jumping/phasing at fast speeds
+                    
+                    Direction Radar has a little problem with the way that the objects are loaded that causes sticky walls that stop moving objects.
+                    This will look in the direction it is headed and checks if there are any objects in the exact path it takes to get to the destination. (The area it checks is as big as the subjects speed)
+                    If there is an object in the area, there WILL be a collision.
+                    
+
             */
 
 
-            //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
-            if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
+            //A mix of the Rectangle Calculation and the Object Path Calculation
+            //It creates a mix of both positives and ignores the negatives. This should be the main Collision Detection Algorithm
+            #region DirectionRadar
+            if(method == CollisionCalculationMethod.DIRECTION_RADAR)
             {
-                if (subject.getHorizontalDirection() != GameObject.Direction.NONE || subject.getVerticalDirection() != GameObject.Direction.NONE)
+                GameObject.Direction horizontalDir = subject.getHorizontalDirection();
+                GameObject.Direction verticalDir = subject.getVerticalDirection();
+
+                bool horizontalCollide = false;
+                bool verticalCollide = false;
+                bool diagonalCollide = false;
+
+                //Check Horizontal Radar
+                if (horizontalDir != GameObject.Direction.NONE)
                 {
-                    if (subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirutalHorizontalRectangle.IntersectsWith(target.ObjectRectangle))
+                    switch(horizontalDir)
                     {
-                        CollidesWith(subject, target, false);
+                        case GameObject.Direction.EAST:
+                            if(subject.Radar_EAST.IntersectsWith(target.ObjectRectangle))
+                            {
+                                horizontalCollide = true;
+                            }
+                            break;
+                        case GameObject.Direction.WEST:
+                            if (subject.Radar_WEST.IntersectsWith(target.ObjectRectangle))
+                            {
+                                horizontalCollide = true;
+                            }
+                            break;
+                        default:
+                            break;
                     }
-                    if (subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirutalVerticalRectangle.IntersectsWith(target.ObjectRectangle))
+                }
+
+                //Check Vertical Radar
+                if(verticalDir != GameObject.Direction.NONE)
+                {
+                    switch (verticalDir)
+                    {
+                        case GameObject.Direction.NORTH:
+                            if (subject.Radar_NORTH.IntersectsWith(target.ObjectRectangle))
+                            {
+                                verticalCollide = true;
+                            }
+                            break;
+                        case GameObject.Direction.SOUTH:
+                            if (subject.Radar_SOUTH.IntersectsWith(target.ObjectRectangle))
+                            {
+                                verticalCollide = true;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                //Check Diagonal Radar (only if horizontal and vertical are both not NONE)
+                if(horizontalDir != GameObject.Direction.NONE && verticalDir != GameObject.Direction.NONE)
+                {
+                    //North West
+                    if(horizontalDir == GameObject.Direction.WEST && verticalDir == GameObject.Direction.NORTH)
+                    {
+                        if(subject.Radar_NW.IntersectsWith(target.ObjectRectangle))
+                        {
+                            diagonalCollide = true;
+                        }
+                    }
+                    //North East
+                    if (horizontalDir == GameObject.Direction.EAST && verticalDir == GameObject.Direction.NORTH)
+                    {
+                        if (subject.Radar_NE.IntersectsWith(target.ObjectRectangle))
+                        {
+                            diagonalCollide = true;
+                        }
+                    }
+
+                    //South West
+                    if (horizontalDir == GameObject.Direction.WEST && verticalDir == GameObject.Direction.SOUTH)
+                    {
+                        if (subject.Radar_SW.IntersectsWith(target.ObjectRectangle))
+                        {
+                            diagonalCollide = true;
+                        }
+                    }
+                    //South East
+                    if (horizontalDir == GameObject.Direction.EAST && verticalDir == GameObject.Direction.SOUTH)
+                    {
+                        if (subject.Radar_SE.IntersectsWith(target.ObjectRectangle))
+                        {
+                            diagonalCollide = true;
+                        }
+                    }
+                }
+
+                //If there was a horizontal collision, notify the object
+                if(horizontalCollide)
+                {
+                    CollidesWith(subject, target, false);
+                }
+                //If there was a vertical collision, notify the object
+                if (verticalCollide)
+                {
+                    CollidesWith(subject, target, true);
+                }
+
+                //If there was a diagonal collision, check if there was a horizontal collision, is so, notify the object of a horizontal collision
+                if(diagonalCollide && subject.hasCollidedHorizontally)
+                {
+                    CollidesWith(subject, target, false);
+                }
+                //If there was no horizontal collision but there is a vertical collision, notify the object of a vertical collision
+                else if(diagonalCollide && subject.hasCollidedVertically)
+                {
+                    CollidesWith(subject, target, true);
+                }
+                //If the object has not had a collision yet, neither horizontal or vertical, noticy the object of a horizontal collision
+                else if(diagonalCollide)
+                {
+                    //This has to do with how the game loads. It loads the items left top to right bottom and it creates a problem, that only going SouthWest creates that specific problem
+
+                    if(verticalDir == GameObject.Direction.SOUTH && horizontalDir == GameObject.Direction.WEST)
                     {
                         CollidesWith(subject, target, true);
                     }
-                }
-                //The virtual test if no horizontal or vertical collision happens
-                if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
-                {
-                    CollidesWith(subject, target, true);
-                    CollidesWith(subject, target, false);
+                    else
+                    {
+                        CollidesWith(subject, target, false);
+                    }
                 }
             }
-            else if (method == CollisionCalculationMethod.OBJECT_PATH_CALCULATION)
+            #endregion DirectionRadar
+
+            //Selects the faster method, which can cause warpinig issues, or the slower method, which calculates the collision path even with fast moving objects
+            #region RectangleCalculation
+            else if (method == CollisionCalculationMethod.RECTANGLE_CALCULATION)
+            {
+                //Horizontal-Collision-Test
+                if (subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirtualHorizontalRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    //MessageBox.Show("Test");
+                    CollidesWith(subject, target, false);
+                }
+                //Virtual-Horizontal-Rectangle does Vertical-Collision-Test Test
+                else if(subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    CollidesWith(subject, target, true);
+                }
+
+
+
+                //Vertical-Collision-Test
+                if (subject.getVerticalDirection() != GameObject.Direction.NONE && subject.VirtualVerticalRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    CollidesWith(subject, target, true);
+                }
+                //Virtual-Vertical-Rectangle does Horizontal-Collision-Test Test
+                else if(subject.getHorizontalDirection() != GameObject.Direction.NONE && subject.VirtualRectangle.IntersectsWith(target.ObjectRectangle))
+                {
+                    //MessageBox.Show("Test2");
+                    //CollidesWith(subject, target, false);
+                }
+            }
+            #endregion RectangleCalculation
+
+            //For more info, see the comments below near the Object Path Calculation region
+            #region ObjectPath
+            else if (method == CollisionCalculationMethod.OBJECT_PATH)
             {
                 //Tests on horizontaly and verticaly beside the subject
                 bool Vertical = TestVerticalCollision(subject, target, false);
@@ -180,6 +343,7 @@ namespace KBS1.controller
                 }
 
             }
+            #endregion ObjectPath
         }
 
 
@@ -216,7 +380,7 @@ namespace KBS1.controller
             Rectangle targetRectangle = target.ObjectRectangle;
             if (isVirtual)
             {
-                subjectRectangle = subject.VirutalHorizontalRectangle;
+                subjectRectangle = subject.VirtualHorizontalRectangle;
             }
             else
             {
@@ -266,7 +430,7 @@ namespace KBS1.controller
             Rectangle targetRectangle = target.ObjectRectangle;
             if (isVirtual)
             {
-                subjectRectangle = subject.VirutalVerticalRectangle;
+                subjectRectangle = subject.VirtualVerticalRectangle;
             }
             else
             {

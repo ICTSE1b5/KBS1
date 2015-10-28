@@ -14,14 +14,14 @@
     height="50"/>
   <enemy
     hp="1"
-    speed="3"
+    speed="2"
     x="0"
     y="0"
     width="3"
     height="9"/>
   <enemy
     hp="1"
-    speed="3"
+    speed="2"
     x="400"
     y="300"
     width="3"
