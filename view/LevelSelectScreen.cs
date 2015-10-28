@@ -45,7 +45,7 @@ namespace KBS1.view
             return button_Main_Menu;
         }
 
-
+        //Creates a button for each level in the folder 'levels'.
         public void CreateDynamicButton()
         {
             // get file directory from levels
@@ -89,12 +89,9 @@ namespace KBS1.view
                     eachFive += 5;
                 }
             }
-
-
-
         }
 
-
+        //Adds functionality for created dynamic butotns
         private void DynamicButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;

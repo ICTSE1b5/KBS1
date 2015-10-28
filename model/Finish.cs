@@ -36,7 +36,7 @@ namespace KBS1.model
             imageSouthEast = Properties.Resources.loghouse;
         }
 
-        
+        //This method does something when there has been collision with this object.
         protected override void AI()
         {
             foreach(GameObject ob in currentCollisionObjectsList)

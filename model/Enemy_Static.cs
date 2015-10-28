@@ -15,7 +15,7 @@ namespace KBS1.model
             this.image = Properties.Resources.wolf_right;
             this.description = "This wolf doesn't move but when you hit him, you are dead";
         }
-
+        //Sets the image for this Class
         protected override void setupImages()
         {
             imageNorthWest = Properties.Resources.imagenotfound;
