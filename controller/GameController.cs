@@ -16,12 +16,11 @@ namespace KBS1.controller
         private List<GameObject> game_ObjectList;
         public enum CollisionCalculationMethod
         {
-            ANY,
             DIRECTION_RADAR,
             RECTANGLE_CALCULATION,
             OBJECT_PATH
         }
-        private CollisionCalculationMethod method = CollisionCalculationMethod.ANY;
+        private CollisionCalculationMethod method = CollisionCalculationMethod.DIRECTION_RADAR;
 
         public GameController(Form form, GameLoop loop)
         {
@@ -97,16 +96,20 @@ namespace KBS1.controller
 
             */
 
-            //Set default method to the Direction Radar
-            method = CollisionCalculationMethod.DIRECTION_RADAR;
+            
+
 
             //Because of the little bug in the Direction Radar, the enemy will continue to use the Object Path method
-            if (subject.Type == GameObject.ObjectType.ENEMY)
+            switch(subject.Type)
             {
-                method = CollisionCalculationMethod.OBJECT_PATH;
+                case GameObject.ObjectType.ENEMY:
+                    method = CollisionCalculationMethod.OBJECT_PATH;
+                    break;
+                default:
+                    //Set default method to the Direction Radar. This is the default method for all objects.
+                    method = CollisionCalculationMethod.DIRECTION_RADAR;
+                    break;
             }
-
-
 
 
 
