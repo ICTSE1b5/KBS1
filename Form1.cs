@@ -19,7 +19,6 @@ namespace KBS1
     {
         private GameLoop game_loop;
         private GameView game_view;
-        private GameLevels game_levels;
         private SoundPlayer player;
         private bool mainOptions;
         public int currentlevel = 1;
@@ -110,7 +109,6 @@ namespace KBS1
         {
             game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY, statisticsScreen1);
             game_view = new GameView(this, game_loop);
-            game_levels = new GameLevels(this);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -445,7 +443,6 @@ namespace KBS1
         {
             game_loop = new GameLoop(this, GameLoop.FrameRate.SIXTY, statisticsScreen1);
             game_view = new GameView(this, game_loop);
-            game_levels = new GameLevels(this);
 
             if (optionsMenu.Get_CheckBox_Statistics().Checked)
             {

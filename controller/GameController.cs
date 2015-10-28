@@ -103,17 +103,9 @@ namespace KBS1.controller
 
 
             /*
-
-
-
                     NOTICE:
                     Object Path Calculation will cause smooth running allong the edges of walls, but you are able to go through them when going diagonal
                     Rectangle Calculation will cause no diagonal phasing, but you will get stuck at the edge of a row of walls       
-
-
-
-
-
             */
 
 
