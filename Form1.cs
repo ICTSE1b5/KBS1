@@ -390,9 +390,10 @@ namespace KBS1
                 highScoresScreen.Enabled = false;
             }
         }
-
+        //Method to play background music
         private void playMusic()
         {
+            // Check if checkbox have been checked
             if (optionsMenu.Get_CheckBox_Music().Checked)
             {
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
@@ -402,6 +403,7 @@ namespace KBS1
                 optionsMenu.Enabled = false;
                 optionsMenu.Enabled = true;
             }
+            // if not: stop backbround music
             else
             {
                 wmp.controls.stop();
@@ -410,28 +412,33 @@ namespace KBS1
             }
         }
 
+        //method to play soundeffect game over screen
         public void playSoundEffectDead()
         {
+            // check if checkbox soundeffect have been checked, if checked play the right soundeffect
             if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
             {
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
                 GameOver.URL = path + @"\SoundEffects\wolfSoundeffect.wav";
                 GameOver.controls.play();
             }
+            // if not: dont play any soundeffects
             else
             {
 
             }
         }
-
+        //method to play soundeffect victory screen
         public void playSoundEffectVictory()
         {
+            // check if checkbox soundeffect have been checked, if checked play the right soundeffect
             if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
             {
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
                 LevelWon.URL = path + @"\SoundEffects\DoorSoundeffect.wav";
                 LevelWon.controls.play();
             }
+            // if not: dont play any soundeffects
             else
             {
 
