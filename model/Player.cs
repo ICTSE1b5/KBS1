@@ -69,7 +69,7 @@ namespace KBS1.model
 
         protected override void OnDeath()
         {
-            // Play soundeffect if player is death and show gameover screen
+            //Gameover
             game_Form.showGameOver();
             game_Form.playSoundEffectDead();
         }

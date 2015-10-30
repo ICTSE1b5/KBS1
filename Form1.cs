@@ -43,7 +43,7 @@ namespace KBS1
             levelEditor.LevelEditorButtonClick += new EventHandler(LevelEditor_ButtonHandler);
             highScoresScreen.HighscoresScreenClick += new EventHandler(Highscores_ButtonHandler);
             levelSelectScreen.AddForm(this);
-
+            
 
             this.SetStyle(
           ControlStyles.UserPaint |
@@ -396,13 +396,9 @@ namespace KBS1
             // Check if checkbox have been checked
             if (optionsMenu.Get_CheckBox_Music().Checked)
             {
-                //get path
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                //use path to get background music
                 wmp.URL = path + @"\SoundEffects\MainMenuMusic.wav";
-                // make the background music loop
                 wmp.settings.setMode("loop", true);
-                // play background music
                 wmp.controls.play();
                 optionsMenu.Enabled = false;
                 optionsMenu.Enabled = true;
@@ -422,11 +418,8 @@ namespace KBS1
             // check if checkbox soundeffect have been checked, if checked play the right soundeffect
             if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
             {
-                //get path
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                //use path to get soundeffect
                 GameOver.URL = path + @"\SoundEffects\wolfSoundeffect.wav";
-                // play soundeffect
                 GameOver.controls.play();
             }
             // if not: dont play any soundeffects
@@ -441,11 +434,8 @@ namespace KBS1
             // check if checkbox soundeffect have been checked, if checked play the right soundeffect
             if (optionsMenu.Get_CheckBox_Soundeffects().Checked)
             {
-                //get path
                 string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                //use path to get soundeffect
                 LevelWon.URL = path + @"\SoundEffects\DoorSoundeffect.wav";
-                // play soundeffect
                 LevelWon.controls.play();
             }
             // if not: dont play any soundeffects
