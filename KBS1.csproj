@@ -218,8 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Creepy_Ambient_Horror_Suspense_Music_%28Instrumental_Scary_Music%29.wav" />
+    <None Include="Images\bolt.gif" />
     <Content Include="Images\bush.png" />
     <None Include="Resources\bolt.gif" />
+    <None Include="Images\pool.gif" />
+    <None Include="Images\log.gif" />
     <Content Include="SoundEffects\DoorSoundeffect.wav" />
     <Content Include="SoundEffects\MainMenuMusic.wav" />
     <Content Include="SoundEffects\wolfSoundeffect.wav" />
