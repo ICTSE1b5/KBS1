@@ -606,6 +606,7 @@ namespace KBS1.model
 
 
         //Radar Rectangles
+        #region RadarRectangles
         /// <summary>
         /// North Radar Rectangle
         /// </summary>
@@ -686,6 +687,7 @@ namespace KBS1.model
                 return new Rectangle(Position_X + Width, Position_Y + Height, Speed_X, Speed_Y);
             }
         }
+        #endregion RadarRectangles
 
 
         //Collision debuff        
